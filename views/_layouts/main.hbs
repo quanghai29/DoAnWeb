@@ -6,6 +6,29 @@
     <title>Example App</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <style type="text/css">
+        .submenu {
+            display: none;
+        }
+
+        .menu .menu-item{
+            list-style-type: none;
+            margin-left: -30px;
+        }
+
+        .menu .menu-item:hover .submenu {
+            display: block;
+            position: relative;
+        }
+
+        .submenu li {
+            list-style-type: none;
+            margin: 0;
+        }
+        .submenu li a{
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -54,8 +77,27 @@
                         Categories
                     </h4>
                     <div class="list-group list-group-flush">
-                        <a href="#" class="list-group-item list-group-item-action"> Điện thoại di động</a>
-                        <a href="#" class="list-group-item list-group-item-action">Máy tính xách tay</a>
+                        <ul class="menu">
+                            <li class="menu-item">
+                                <a href="#" class="list-group-item list-group-item-action">Điện thoại di động</a>
+                                <ul class="submenu">
+                                    <li><a href="#" rel="stylesheet">Samsung</a></li>
+                                    <li><a href="#" rel="stylesheet">Nokia</a></li>
+                                    <li><a href="#" rel="stylesheet">Xiaomi</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#" class="list-group-item list-group-item-action">Máy tính xách tay</a>
+                                <ul class="submenu">
+                                    <li><a href="#" rel="stylesheet">Dell</a></li>
+                                    <li><a href="#" rel="stylesheet">Asua</a></li>
+                                    <li><a href="#" rel="stylesheet">Apple</a></li>
+                                    <li><a href="#" rel="stylesheet">Lenove</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+
                     </div>
                 </div>
             </div>
