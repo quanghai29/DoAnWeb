@@ -1,0 +1,22 @@
+{
+  "name": "1712349_1712365_1712407",
+  "version": "1.0.0",
+  "description": "auction",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quanghai29/DoAnWeb.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/quanghai29/DoAnWeb/issues"
+  },
+  "homepage": "https://github.com/quanghai29/DoAnWeb#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
