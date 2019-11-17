@@ -14,4 +14,6 @@ app.get('/', (req, res) => {
     res.render('home');
 })
 
+
+app.use(express.static(__dirname + '/Contents'));
 app.listen(3000);
