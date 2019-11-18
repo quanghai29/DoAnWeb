@@ -6,47 +6,22 @@
     <title>Example App</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="css/{{style}}">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light stiky-top shadow">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <div class="topnav">
+        <a class="active" href="#home"><i class="fa fa-fw fa-home"></i> Home</a>
+        <a href="#news"><i class="fa fa-fw fa-newspaper-o"></i> News</a>
+        <a href="#contact"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+        <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
+        <div class="search-container">
+            <form action="/action_page.php">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
             </form>
         </div>
-    </nav>
+    </div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3 mt-4">
@@ -55,8 +30,31 @@
                         Categories
                     </h4>
                     <div class="list-group list-group-flush">
-                        <a href="#" class="list-group-item list-group-item-action"> Điện thoại di động</a>
-                        <a href="#" class="list-group-item list-group-item-action">Máy tính xách tay</a>
+                        <ul class="menu">
+                            <li class="menu-item">
+
+                                <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-mobile fa-lg"
+                                        aria-hidden="true"></i> Điện thoại di động</a>
+                                <ul class="submenu">
+                                    <li><a href="#" rel="stylesheet">Samsung</a></li>
+                                    <li><a href="#" rel="stylesheet">Nokia</a></li>
+                                    <li><a href="#" rel="stylesheet">Xiaomi</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item">
+
+                                <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-laptop fa-lg"
+                                        aria-hidden="true"></i> Máy tính xách tay</a>
+                                <ul class="submenu">
+                                    <li><a href="#" rel="stylesheet">Dell</a></li>
+                                    <li><a href="#" rel="stylesheet">Asua</a></li>
+                                    <li><a href="#" rel="stylesheet">Apple</a></li>
+                                    <li><a href="#" rel="stylesheet">Lenove</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+
                     </div>
                 </div>
             </div>
