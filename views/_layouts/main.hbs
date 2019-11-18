@@ -14,12 +14,16 @@
         <a href="#" rel="stylesheet" class="navbar-brand"><i class="fa fa-home fa-fw" aria-hidden="true"></i> Home</a>
         <form class="form-inline">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit">Search</button>
+            <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
             <button onclick="document.getElementById('id01').style.display='block'"
                 class="btn btn-outline-success my-2 my-sm-0 mr-sm-2"><i class="fa fa-user" aria-hidden="true"></i>
                 Login</button>
             <div id="id01" class="modalLogin">
                 <form class="modal-contentLogin animate" action="/action_page.php" method="post">
+                    <div class="imgcontainer">
+                        <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                            title="Close Modal">&times;</span>
+                    </div>
                     <div class="containerLogin">
                         <label for="uname"><b>Username</b></label>
                         <input type="text" placeholder="Enter Username" name="uname" required>
@@ -34,14 +38,14 @@
                     </div>
 
                     <div class="containerLogin" style="background-color:#f1f1f1">
-                        <button type="button"
-                            onclick="document.getElementById('id01').style.display='none'"
+                        <button type="button" onclick="document.getElementById('id01').style.display='none'"
                             class="cancelbtn buttonLogin">Cancel</button>
                         <span class="psw">Forgot <a href="#">password?</a></span>
                     </div>
                 </form>
             </div>
-            <button onclick="document.getElementById('id02').style.display='block'" class="btn btn-outline-success my-2 my-sm-0 mr-sm-2"><i class="fa fa-pencil" aria-hidden="true"></i>
+            <button onclick="document.getElementById('id02').style.display='block'"
+                class="btn btn-outline-success my-2 my-sm-0 mr-sm-2"><i class="fa fa-pencil" aria-hidden="true"></i>
                 Signup</button>
             <div id="id02" class="modalSignUp">
                 <span onclick="document.getElementById('id02').style.display='none'" class="closeSignUp"
