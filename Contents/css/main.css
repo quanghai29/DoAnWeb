@@ -1,3 +1,18 @@
+/*Header*/
+.nav-header{
+    width:100%;
+    height: auto;
+    margin-bottom:20px;
+    background-color:white;
+}
+#inputSearch{
+    width: 600px;
+    height: 45px;
+    margin:10px 160px 10px 0px;
+    background-color:#f7f7f7;
+}
+
+
 
 /* Use for list menu */
  .submenu 
@@ -234,7 +249,7 @@ input[type=password]:focus {
 
 /* The Modal (background) */
 .modalSignUp {
-    /*display: none;
+    display: none;
     /* Hidden by default */
     position: fixed;
     /* Stay in place */
