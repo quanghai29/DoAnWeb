@@ -1,5 +1,52 @@
+/*Header*/
+.nav-header{
+    width:100%;
+    height: auto;
+    z-index: 1;
+    background-color:white;
+    box-shadow:0px 0px 5px 0px;
+    position: fixed;
+    
+}
+#iconHomePage{
+    color: #5ba4de;
+    font-size: 40px;
+    margin: 0px 7px 5px 0px;
+}
+#linkhome{
+    font-size: 30px;
+    color: #176ead;
+    font-style: italic;
+    text-decoration: underline wavy #176ead;
+}
 
+#inputSearch{
+    width: 450px;
+    height: 45px;
+    margin:10px 0px 10px 0px;
+    background-color:#f7f7f7;
+}
+
+
+
+#searchButton{
+    margin: 0 90px 0 0;
+    height: 45px;
+    background-color: #5ba4de;
+    color: white;
+    border-radius: 0%;
+}
+
+#btnheader{
+    height: 45px;
+    background-color:#5ba4de;
+    color:white;
+}
 /* Use for list menu */
+#Menu-Slider{
+    position:absolute;
+    top: 20%;
+}
  .submenu 
  {
     display: none;
@@ -39,7 +86,7 @@ input[type=password] {
 
 /* Set a style for all buttons */
 .buttonLogin {
-    background-color: #4CAF50;
+    background-color: #5ba4de;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -234,7 +281,7 @@ input[type=password]:focus {
 
 /* The Modal (background) */
 .modalSignUp {
-    /*display: none;
+    display: none;
     /* Hidden by default */
     position: fixed;
     /* Stay in place */
