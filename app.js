@@ -46,6 +46,13 @@ app.get('/dell', (req, res)=>{
     });
 })
 
+app.get('/cart', (req, res)=>{
+    res.render('cart',{
+        style: 'main.css',
+        title:'Cart'
+    });
+})
+
 // Set directory for css
 app.use(express.static(__dirname + '/Contents'));
 
