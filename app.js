@@ -18,6 +18,34 @@ app.get('/', (req, res) => {
     });
 })
 
+app.get('/samsung', (req, res)=>{
+    res.render('samsung',{
+        style: 'main.css',
+        title:'Samsung'
+    });
+})
+
+app.get('/nokia', (req, res)=>{
+    res.render('nokia',{
+        style: 'main.css',
+        title:'Nokia'
+    });
+})
+
+app.get('/xiaomi', (req, res)=>{
+    res.render('xiaomi',{
+        style: 'main.css',
+        title:'Xiaomi'
+    });
+})
+
+app.get('/dell', (req, res)=>{
+    res.render('dell',{
+        style: 'main.css',
+        title:'Dell'
+    });
+})
+
 // Set directory for css
 app.use(express.static(__dirname + '/Contents'));
 
