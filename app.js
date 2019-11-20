@@ -4,60 +4,107 @@ var exphbs = require('express-handlebars');
 var app = express();
 
 app.engine('hbs', exphbs(
-{
-    defaultLayout: 'main.hbs',
-    layoutsDir: 'views/_layouts'
-})
+    {
+        defaultLayout: 'main.hbs',
+        layoutsDir: 'views/_layouts'
+    })
 );
 app.set('view engine', 'hbs');
 
+//Data ----------------------
+const top5day =
+[
+   {
+        image: "Dell/lap01.jpg",
+        lastupdate:"3 mins"
+   },
+    {
+        image: "Dell/lap02.jpg",
+        lastupdate: "3 mins"
+    },
+    {
+        image: "Dell/lap03.jpg",
+        lastupdate: "3 mins"
+    },
+    {
+        image: "Dell/lap04.jpg",
+        lastupdate: "3 mins"
+    },
+    {
+        image: "Dell/lap05.jpg",
+        lastupdate: "3 mins"
+    }
+]
+
+const top5offer=
+[
+    {
+        image: "Dell/lap06.jpg",
+        lastupdate: "3 mins"
+    },
+    {
+        image: "Dell/lap07.jpg",
+        lastupdate: "3 mins"
+    }
+]
+
+const top5value=
+[
+    {
+        image: "Dell/lap06.jpg",
+        lastupdate: "3 mins"
+    },
+]
+//----------------------------------------
+
 // Set cho từng trang
 app.get('/', (req, res) => {
-    res.render('home',{
+    res.render('home', {
         style: 'main.css',
-        title:'Home-auction'
+        title: 'Home-auction', 
+        top5day, top5offer, top5value
     });
 })
 
-app.get('/samsung', (req, res)=>{
-    res.render('samsung',{
+app.get('/samsung', (req, res) => {
+    res.render('samsung', {
         style: 'main.css',
-        title:'Samsung'
+        title: 'Samsung'
     });
 })
 
-app.get('/nokia', (req, res)=>{
-    res.render('nokia',{
+app.get('/nokia', (req, res) => {
+    res.render('nokia', {
         style: 'main.css',
-        title:'Nokia'
+        title: 'Nokia'
     });
 })
 
-app.get('/xiaomi', (req, res)=>{
-    res.render('xiaomi',{
+app.get('/xiaomi', (req, res) => {
+    res.render('xiaomi', {
         style: 'main.css',
-        title:'Xiaomi'
+        title: 'Xiaomi'
     });
 })
 
-app.get('/dell', (req, res)=>{
-    res.render('dell',{
+app.get('/dell', (req, res) => {
+    res.render('dell', {
         style: 'main.css',
-        title:'Dell'
+        title: 'Dell'
     });
 })
 
-app.get('/cart', (req, res)=>{
-    res.render('cart',{
+app.get('/cart', (req, res) => {
+    res.render('cart', {
         style: 'main.css',
-        title:'Cart'
+        title: 'Cart'
     });
 })
 
-app.get('/dell001', (req, res)=>{
-    res.render('dell001',{
+app.get('/dell001', (req, res) => {
+    res.render('dell001', {
         style: 'main.css',
-        title:'Product dell'
+        title: 'Product dell'
     });
 })
 
@@ -66,7 +113,7 @@ app.get('/dell001', (req, res)=>{
 app.use(express.static(__dirname + '/Contents'));
 
 // Set path for Detail Product
-app.use('/user/detail',require('./routes/user/detail.product'));
+app.use('/user/detail', require('./routes/user/detail.product'));
 
 
 //Listen to port 3000

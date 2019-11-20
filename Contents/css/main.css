@@ -1,3 +1,8 @@
+body
+{
+    background-color:#f7f7f7;
+}
+
 /*Header*/
 .nav-header{
     width:100%;
@@ -6,6 +11,8 @@
     background-color:white;
     box-shadow:0px 0px 5px 0px;
     position: fixed;
+    margin:0;
+    top: 0;
     
 }
 #iconHomePage{
@@ -353,10 +360,6 @@ hr {
 
 }
 
-
-body{
-    background: rgb(231, 226, 226);
-}
 .zoom {
     transition: transform .2s; /* Animation */
     margin: 0 auto;
@@ -401,3 +404,11 @@ hr{
 .f-infor{
     display: inline-flex;
 }
+
+
+/*Home Style list*/
+.spanTop h3{
+    color:Red;
+    display:block;
+}
+
