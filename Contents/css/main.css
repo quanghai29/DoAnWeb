@@ -397,3 +397,7 @@ hr{
     border-style: inset;
     border-width: 1px;
 }
+
+.f-infor{
+    display: inline-flex;
+}

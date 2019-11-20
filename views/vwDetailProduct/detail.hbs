@@ -1,54 +1,60 @@
+
 <div class="container-fluid mt-4">
+    
     <div class="row">
+        
         <div class="col-sm-5">
             <div class="row">
-                <img id="imgMain" src="Images/Dell/lap01.jpg"
+                <img id="imgMain" src="/Images/{{image}}"
                     class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
                     alt="">
             </div>
             <div class="row">
                 <div class="col-md-4">
                     <img onclick="document.getElementById('imgMain').src = 'Images/Dell/lap01.jpg'"
-                        src="Images/Dell/lap01.jpg"
+                        src="/Images/{{image}}"
                         class="img-fluid ${4|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
                         alt="">
                 </div>
                 <div class="col-md-4">
                     <img onclick="document.getElementById('imgMain').src = 'Images/Dell/lap02.jpg'"
-                        src="Images/Dell/lap02.jpg"
+                        src="/Images/{{image}}"
                         class="img-fluid ${4|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
                         alt="">
                 </div>
                 <div class="col-md-4">
                     <img onclick="document.getElementById('imgMain').src = 'Images/Dell/lap03.jpg'"
-                        src="Images/Dell/lap03.jpg"
+                        src="/Images/{{image}}"
                         class="img-fluid ${4|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
                         alt="">
                 </div>
             </div>
         </div>
+        
         <div class="col-sm-7">
-            <h3>Laptop Dell Vostro V5481A P92G001 (i5 8265U/4GB RAM/1TB HDD/MX130 2G/14" FHD/Win 10)</h3>
-            <p>Giá hiện tại: 300.000đ</p>
-            <p>Giá mua ngay: 260.000đ</p>
+            
+            <h3>{{detail.Name}}</h3>
+            <p>Giá hiện tại: {{detail.Value0}} </p>
+            <p>Giá mua ngay: {{detail.Value1}}</p>
             <hr>
-            <p>Người bán: Nguyễn Quang Hải (vote: 4.6/5)</p>
-            <p>Người đặt giá cao nhất hiện tại: Đặng Văn Lâm (500.000đ)</p>
-            <p>Thời điểm đăng: 3 ngày trước</p>
-            <p>Thời điểm kết thúc: 2 ngày sau</p>
+            <p>Người bán: {{detail.Author}} (vote: {{detail.Vote}})</p>
+            
+            <p>Người đặt giá cao nhất hiện tại: {{detail.Buyer}} (500.000đ)</p>
+            <p>Thời điểm đăng: {{detail.StartDate}}</p>
+            <p>Thời điểm kết thúc: {{detail.EndDate}}</p>
             <hr>
             <p>Thông số sản phẩm</p>
             <ul>
-                <li>Bộ vi xử lý Intel Core™ i5 8265U (1.6Ghz, 6MB Cache)</li>
-                <li>Chipset Intel</li>
-                <li>Bộ nhớ trong 4GB DDR4 2666MHz</li>
-                <li>VGA Nvidia Geforce MX130 2G DDR5</li>
-                <li>Ổ cứng 1TB 5400rpm</li>
-                <li>Màn hình 14.0” FHD (1920 * 1080), LED backlight</li>
-                <li>Bảo mật, công nghệ Finger Print</li>
+                <li>{{detail.Chipset}}</li>
+                <li>{{detail.Rom}}</li>
+                <li>{{detail.GraphicCard}}</li>
+                <li>{{detail.HardDriver}}</li>
+                <li>{{detail.Screen}}</li>
+                <li>{{detail.Security}}</li>
             </ul>
         </div>
     </div>
+    
     <hr>
     <div class="row">
         <h3>Sản phẩm cùng chuyên mục</h3>
@@ -101,3 +107,4 @@
         </div>
     </div>
 </div>
+

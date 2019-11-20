@@ -4,16 +4,16 @@ var exphbs = require('express-handlebars');
 var app = express();
 
 app.engine('hbs', exphbs(
-    {
-        defaultLayout: 'main.hbs',
-        layoutsDir: 'views/_layouts'
-    }));
+{
+    defaultLayout: 'main.hbs',
+    layoutsDir: 'views/_layouts'
+})
+);
 app.set('view engine', 'hbs');
 
 // Set cho từng trang
 app.get('/', (req, res) => {
     res.render('home',{
-        
         style: 'main.css',
         title:'Home-auction'
     });
@@ -82,8 +82,13 @@ app.get('/dell001', (req, res)=>{
     });
 })
 
-// Set directory for css
+
+// Set path for css
 app.use(express.static(__dirname + '/Contents'));
+
+// Set path for Detail Product
+app.use('/user/detail',require('./routes/user/detail.product'));
+
 
 //Listen to port 3000
 app.listen(3000);

@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/{{style}}">
+    <link rel="stylesheet" href="/css/{{style}}">
 </head>
 <!--Header-->
 <div class="nav-header">
     <nav class="navbar navbar-light">
-        <a href="./" rel="stylesheet" class="navbar-brand" id="linkhome">
+        <a href="/" rel="stylesheet" class="navbar-brand" id="linkhome">
             <i class="fa fa-gavel" id="iconHomePage" aria-hidden="true"></i>
             Micromart
         </a>
@@ -136,8 +136,8 @@
                             <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-laptop fa-lg"
                                     aria-hidden="true"></i> Máy tính xách tay</a>
                             <ul class="submenu">
-                                <li><a href="/dell" rel="stylesheet">Dell</a></li>
-                                <li><a href="/asus" rel="stylesheet">Asus</a></li>
+                                <li><a href="/user/detail/dellvostro3560" rel="stylesheet">Dell</a></li>
+                                <li><a href="/asus" rel="stylesheet">Asua</a></li>
                                 <li><a href="/apple" rel="stylesheet">Apple</a></li>
                                 <li><a href="/lenovo" rel="stylesheet">Lenovo</a></li>
                             </ul>
@@ -153,8 +153,53 @@
             <hr>
             <footer class="container">
                 <p class="float-right"><a href="#">Back to top</a></p>
-                <p>© Hoa Rơi Cửa Phật Team-3/4. · <a href="#">Information</a> ·</p>
+                <p>© Hoa Rơi Cửa Phật Team-3/4. · <a data-toggle="modal" href="#d1">Information</a> ·</p>
             </footer>
+            <div class="modal fade" id="d1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Thông tin các thành viên</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="f-infor">
+                                <div>
+                                    <img src="Images/Footer_Infor/dunggay.jpg" width="200" height="150" class="zoom">
+                                </div>
+                                <div class="ml-4">
+                                    <p><b>Bùi Tiến Dũng</b></p>
+                                    <p>...</p>
+                                </div>
+                            </div>
+                             <div class="f-infor mt-2">
+                                <div>
+                                    <img src="Images/Footer_Infor/linhdong.jpg" width="200" height="150" class="zoom">
+                                </div>
+                                <div class="ml-4">
+                                    <p><b>Mai Linh Đồng</b></p>
+                                    <p>...</p>
+                                </div>
+                            </div>
+                             <div class="f-infor mt-2">
+                                <div>
+                                    <img src="Images/Footer_Infor/quanghai.jpg" width="200" height="150" class="zoom">
+                                </div>
+                                <div class="ml-4">
+                                    <p><b>Lê Quang Hải</b></p>
+                                    <p>...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/core.js"></script>
