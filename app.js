@@ -94,17 +94,31 @@ app.get('/dell', (req, res) => {
     });
 })
 
-app.get('/cart', (req, res) => {
-    res.render('cart', {
+app.get('/asus', (req, res)=>{
+    res.render('asus',{
         style: 'main.css',
-        title: 'Cart'
+        title:'Asus'
     });
 })
 
-app.get('/dell001', (req, res) => {
-    res.render('dell001', {
+app.get('/apple', (req, res)=>{
+    res.render('apple',{
         style: 'main.css',
-        title: 'Product dell'
+        title:'Apple'
+    });
+})
+
+app.get('/lenovo', (req, res)=>{
+    res.render('lenovo',{
+        style: 'main.css',
+        title:'Lenovo'
+    });
+})
+
+app.get('/cart', (req, res)=>{
+    res.render('cart',{
+        style: 'main.css',
+        title:'Cart'
     });
 })
 

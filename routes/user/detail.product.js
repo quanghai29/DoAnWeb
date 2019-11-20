@@ -20,7 +20,29 @@ const details =
         GraphicCard: "VGA Nvidia Geforce MX130 2G DDR5",
         HardDriver: "Ổ cứng 1TB 5400rpm",
         Screen : "Màn hình 14.0” FHD(1920 * 1080), LED backlight",
-        Security: "Bảo mật, công nghệ Finger Print"
+        Security: "Bảo mật, công nghệ Finger Print",
+        image1: 'Dell/lap01.jpg',
+        image2: 'Dell/lap02.jpg',
+        image3: 'Dell/lap03.jpg'
+    },
+    {
+        Name: `Laptop Dell Vostro 3580 P75F010 (i5 8265U/4GB RAM/1TB HDD/AMD Radeon 520 2GB/15.6" FHD/Win 10)`,
+        Value0: `400.000đ`,// giá mua hiện tại
+        Value1: `360.000đ`,// giá mua ngay
+        Author: "Nguyễn Quang Hải",
+        Buyer: "Nguyễn Công Phượng",
+        StartDate: "2 ngày trước",
+        EndDate: "4 ngày sau",
+        Vote: "4.4/5",
+        Chipset : "Intel Core i5-8265U (4 x 1.6GHz/6MB cache)",
+        Rom: "Bộ nhớ trong 4GB DDR4 2666MHz",
+        GraphicCard: "VGA Nvidia Geforce MX130 2G DDR5",
+        HardDriver: "Ổ cứng 1TB 5400rpm",
+        Screen : "Màn hình 14.0” FHD(1920 * 1080), LED backlight",
+        Security: "Bảo mật, công nghệ Finger Print",
+        image1: 'Dell/lap05.jpg',
+        image2: 'Dell/lap06.jpg',
+        image3: 'Dell/lap07.jpg'
     }
 ]
 
@@ -29,7 +51,15 @@ router.get('/dellvostro3560', (req, res) => {
     res.render('vwDetailProduct/detail.hbs', {
         style: 'main.css',
         title: 'Product dell',
-        image: 'Dell/lap01.jpg',
+        detail,
+    });
+})
+
+router.get('/dellvostro3580', (req, res) => {
+    const detail =details[1];
+    res.render('vwDetailProduct/detail.hbs', {
+        style: 'main.css',
+        title: 'Product dell',
         detail,
     });
 })
