@@ -4,16 +4,16 @@ var exphbs = require('express-handlebars');
 var app = express();
 
 app.engine('hbs', exphbs(
-    {
-        defaultLayout: 'main.hbs',
-        layoutsDir: 'views/_layouts'
-    }));
+{
+    defaultLayout: 'main.hbs',
+    layoutsDir: 'views/_layouts'
+})
+);
 app.set('view engine', 'hbs');
 
 // Set cho từng trang
 app.get('/', (req, res) => {
     res.render('home',{
-        
         style: 'main.css',
         title:'Home-auction'
     });
