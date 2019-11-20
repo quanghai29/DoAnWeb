@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>{{title}}</title>
-    
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -21,20 +21,20 @@
             <input class="form-control" id="inputSearch" type="search" placeholder="Search" aria-label="Search">
             <button class="btn my-2 my-sm-0" id="searchButton" type="submit">
                 <i class="fa fa-search" aria-hidden="true"></i>
-            &nbsp; Tìm kiếm 
+                &nbsp; Tìm kiếm
             </button>
-            <button onclick="document.getElementById('id01').style.display='block'"
-             class="btn my-sm-0 mr-sm-2" id="btnheader">
-                <i class="fa fa-user"  aria-hidden="true"></i>
+            <button onclick="document.getElementById('id01').style.display='block'" class="btn my-sm-0 mr-sm-2"
+                id="btnheader">
+                <i class="fa fa-user" aria-hidden="true"></i>
                 Đăng nhập
             </button>
-            <button onclick="document.getElementById('id02').style.display='block'"
-                class="btn my-2 my-sm-0 mr-sm-2" id="btnheader">
+            <button onclick="document.getElementById('id02').style.display='block'" class="btn my-2 my-sm-0 mr-sm-2"
+                id="btnheader">
                 <i class="fa fa-pencil" aria-hidden="true"></i>
                 Tạo tài khoản
             </button>
             <a rel="stylesheet" href="/cart">
-            <i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i></a>
+                <i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i></a>
 
             <!--Login Form-->
             <div id="id01" class="modalLogin">
@@ -149,9 +149,15 @@
         <div class="col-sm-9 mt-4 ">
             {{{body}}}
         </div>
+        <div class="container-fluid mt-4">
+            <hr>
+            <footer class="container">
+                <p class="float-right"><a href="#">Back to top</a></p>
+                <p>© Hoa Rơi Cửa Phật Team-3/4. · <a href="#">Information</a> ·</p>
+            </footer>
+        </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/core.js">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/core.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -169,19 +175,19 @@
             }
         }
     }
-</script>
-<!--javascrip cua signup-->
-<script>
-    // Get the modal
-    var modalSignUp = document.getElementById('id02');
+    </script>
+    <!--javascrip cua signup-->
+    <script>
+        // Get the modal
+        var modalSignUp = document.getElementById('id02');
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modalSignUp) {
-            modalSignUp.style.display = "none";
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modalSignUp) {
+                modalSignUp.style.display = "none";
+            }
         }
-    }
-</script>
-</body>
+    </script>
+    </body>
 
 </html>
