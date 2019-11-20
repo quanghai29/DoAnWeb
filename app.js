@@ -13,6 +13,7 @@ app.set('view engine', 'hbs');
 // Set cho từng trang
 app.get('/', (req, res) => {
     res.render('home',{
+        
         style: 'main.css',
         title:'Home-auction'
     });
