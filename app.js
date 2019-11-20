@@ -61,8 +61,13 @@ app.get('/dell001', (req, res)=>{
     });
 })
 
-// Set directory for css
+
+// Set path for css
 app.use(express.static(__dirname + '/Contents'));
+
+// Set path for Detail Product
+app.use('/user/detail',require('./routes/user/detail.product'));
+
 
 //Listen to port 3000
 app.listen(3000);

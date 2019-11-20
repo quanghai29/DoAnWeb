@@ -1,0 +1,110 @@
+
+<div class="container-fluid mt-4">
+    
+    <div class="row">
+        {{#each this.mydetail}}
+        <div class="col-sm-5">
+            <div class="row">
+                <img id="imgMain" src="/Images/{{image}}"
+                    class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                    alt="">
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <img onclick="document.getElementById('imgMain').src = 'Images/Dell/lap01.jpg'"
+                        src="/Images/{{image}}"
+                        class="img-fluid ${4|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                        alt="">
+                </div>
+                <div class="col-md-4">
+                    <img onclick="document.getElementById('imgMain').src = 'Images/Dell/lap02.jpg'"
+                        src="/Images/{{image}}"
+                        class="img-fluid ${4|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                        alt="">
+                </div>
+                <div class="col-md-4">
+                    <img onclick="document.getElementById('imgMain').src = 'Images/Dell/lap03.jpg'"
+                        src="/Images/{{image}}"
+                        class="img-fluid ${4|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                        alt="">
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-sm-7">
+            <h3>{{Name}}</h3>
+            <p>Giá hiện tại:{{Value0}} </p>
+            <p>Giá mua ngay: {{Value1}}</p>
+            <hr>
+            <p>Người bán: {{Author}} (vote: {{Vote}})</p>
+            <p>Người đặt giá cao nhất hiện tại: Đặng Văn Lâm (500.000đ)</p>
+            <p>Thời điểm đăng: 3 ngày trước</p>
+            <p>Thời điểm kết thúc: 2 ngày sau</p>
+            <hr>
+            <p>Thông số sản phẩm</p>
+            <ul>
+                <li>Bộ vi xử lý Intel Core™ i5 8265U (1.6Ghz, 6MB Cache)</li>
+                <li>Chipset Intel</li>
+                <li>Bộ nhớ trong 4GB DDR4 2666MHz</li>
+                <li>VGA Nvidia Geforce MX130 2G DDR5</li>
+                <li>Ổ cứng 1TB 5400rpm</li>
+                <li>Màn hình 14.0” FHD (1920 * 1080), LED backlight</li>
+                <li>Bảo mật, công nghệ Finger Print</li>
+            </ul>
+        </div>
+        {{/each}}
+    </div>
+    
+    <hr>
+    <div class="row">
+        <h3>Sản phẩm cùng chuyên mục</h3>
+        <div class="card-deck mt-5">
+            <div class="card border-0 zoom">
+                <img src="Images/Dell/lap06.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text"></p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <button type="button" class="btn btn-danger mr-5 w-100">I am a Button</button>
+                </div>
+            </div>
+            <div class="card border-0 zoom">
+                <img src="Images/Dell/lap07.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text"></p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <button type="button" class="btn btn-danger mr-5 w-100">I am a Button</button>
+                </div>
+            </div>
+            <div class="card border-0 zoom">
+                <img src="Images/Dell/lap05.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text"></p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <button type="button" class="btn btn-danger mr-5 w-100">I am a Button</button>
+                </div>
+            </div>
+            <div class="card border-0 zoom">
+                <img src="Images/Dell/lap09.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text"></p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <button type="button" class="btn btn-danger mr-5 w-100">I am a Button</button>
+                </div>
+            </div>
+            <div class="card border-0 zoom">
+                <img src="Images/Dell/lap01.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text"></p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <button type="button" class="btn btn-danger mr-5 w-100">I am a Button</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
