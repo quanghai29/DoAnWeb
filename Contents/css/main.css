@@ -426,3 +426,35 @@ hr{
     transform: scale(1.001);
     z-index: 1;
 }
+
+/* css của MyProfile */
+.tablinkMyProfile {
+    background-color: #ccc;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+    border: 1px solid #ccc;
+    border-bottom: none;
+  }
+  
+  .tablinkMyProfile:hover {
+    background-color: #777;
+  }
+  
+  /* Style the tab content */
+  .tabcontentMyProfile {
+    color: black;
+    display: none;
+    padding: 50px;
+    border: 1px solid #ccc;
+    border-top: none;
+    height: 800px;
+  }
+
+  .changeCountry {
+        text-align: center;
+  }
