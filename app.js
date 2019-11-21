@@ -66,55 +66,6 @@ app.get('/', (req, res) => {
     });
 })
 
-app.get('/samsung', (req, res) => {
-    res.render('samsung', {
-        style: 'main.css',
-        title: 'Samsung'
-    });
-})
-
-app.get('/nokia', (req, res) => {
-    res.render('nokia', {
-        style: 'main.css',
-        title: 'Nokia'
-    });
-})
-
-app.get('/xiaomi', (req, res) => {
-    res.render('xiaomi', {
-        style: 'main.css',
-        title: 'Xiaomi'
-    });
-})
-
-app.get('/dell', (req, res) => {
-    res.render('dell', {
-        style: 'main.css',
-        title: 'Dell'
-    });
-})
-
-app.get('/asus', (req, res)=>{
-    res.render('asus',{
-        style: 'main.css',
-        title:'Asus'
-    });
-})
-
-app.get('/apple', (req, res)=>{
-    res.render('apple',{
-        style: 'main.css',
-        title:'Apple'
-    });
-})
-
-app.get('/lenovo', (req, res)=>{
-    res.render('lenovo',{
-        style: 'main.css',
-        title:'Lenovo'
-    });
-})
-
 app.get('/cart', (req, res)=>{
     res.render('cart',{
         style: 'main.css',
@@ -129,6 +80,8 @@ app.use(express.static(__dirname + '/Contents'));
 // Set path for Detail Product
 app.use('/user/detail', require('./routes/user/detail.product'));
 
+// Set path for list prototype
+app.use('/user/list', require('./routes/user/prototype'));
 
 //Listen to port 3000
 app.listen(3000);

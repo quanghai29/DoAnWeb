@@ -18,7 +18,7 @@
             <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-laptop fa-lg"
                 aria-hidden="true"></i> Máy tính xách tay</a>
             <ul class="submenu">
-              <li><a href="/user/detail/dellvostro3560" rel="stylesheet">Dell</a></li>
+              <li><a href="/user/list/dell" rel="stylesheet">Dell</a></li>
               <li><a href="#" rel="stylesheet">Asua</a></li>
               <li><a href="#" rel="stylesheet">Apple</a></li>
               <li><a href="#" rel="stylesheet">Lenovo</a></li>
@@ -64,55 +64,59 @@
 <!-- Phần trưng bày sản phẩm nổi bật -->
 <div class="mt-5 mr-3 ml-3">
   <!--Top 5 sản phẩm gần kết thúc-->
-  <div class="spanTop">
-    <h3>Top 5 sản phẩm gần đây nhất</h3>
-    <div class="card-deck">
-      {{#each top5day}}
-      <div class="card border-0 zoom">
-        <img src="Images/{{image}}" class="card-img-top img-card" alt="...">
-        <div class="card-body mt-2">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text"></p>
-          <p class="card-text"><small class="text-muted">Last updated {{lastupdate}} ago</small></p>
-          <button type="button" class="btn btn-danger mr-5 w-100">I am a Button</button>
-        </div>
+  <div class="mytitle">
+    <h2>Top 5 sản phẩm gần đây nhất</h2>
+    <hr>
+  </div>
+  <div class="mygroupcard">
+    {{#each top5day}}
+    <div class="card zoom" id="mycard">
+      <img src="Images/{{image}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">card title</h5>
+        <p class="card-text"></p>
+        <p class="card-text"><small class="text-muted">Last updated {{lastupdate}} ago</small></p>
+        <button type="button" class="btn btn-danger mr-5 w-100">I am a Button</button>
       </div>
-      {{/each}}
     </div>
+    {{/each}}
   </div>
 
   <!--Top 5 sản phẩm có nhiều lượt ra giá nhất-->
-  <div class="spanTop">
-    <h3>Top 5 sản phẩm có nhiều lượt ra giá nhất</h3>
-    <div class="card-deck">
-      {{#each top5offer}}
-      <div class="card border-0 zoom">
-        <img src="Images/{{image}}" class="card-img-top img-card" alt="...">
-        <div class="card-body mt-2">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text"></p>
-          <p class="card-text"><small class="text-muted">Last updated {{lastupdate}} ago</small></p>
-          <button type="button" class="btn btn-danger mr-5 w-100">I am a Button</button>
-        </div>
+  <div class="mytitle">
+    <h2>Top 5 sản phẩm có nhiều lượt ra giá nhất</h2>
+    <hr>
+  </div>
+  <div class="mygroupcard">
+    {{#each top5offer}}
+    <div class="card zoom" id="mycard">
+      <img src="Images/{{image}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">card title</h5>
+        <p class="card-text"></p>
+        <p class="card-text"><small class="text-muted">Last updated {{lastupdate}} ago</small></p>
+        <button type="button" class="btn btn-danger mr-5 w-100">I am a Button</button>
       </div>
-      {{/each}}
     </div>
+    {{/each}}
   </div>
 
   <!--TOp 5 sản phẩm có giá cao nhất-->
-  <div class="spanTop">
-    <h3>Top 5 sản phẩm có giá cao nhất</h3>
-    <div class="card-deck">
-      {{#each top5value}}
-      <div class="card border-0 zoom">
-        <img src="Images/{{image}}" class="card-img-top img-card" alt="...">
-        <div class="card-body mt-2">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text"></p>
-          <p class="card-text"><small class="text-muted">Last updated {{lastupdate}} ago</small></p>
-          <button type="button" class="btn btn-danger mr-5 w-100">I am a Button</button>
-        </div>
-      </div>
-      {{/each}}
-    </div>
+  <div class="mytitle">
+    <h2>Top 5 sản phẩm có giá cao nhất</h2>
+    <hr>
   </div>
+  <div class="mygroupcard">
+    {{#each top5value}}
+    <div class="card zoom" id="mycard">
+      <img src="Images/{{image}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">card title</h5>
+        <p class="card-text"></p>
+        <p class="card-text"><small class="text-muted">Last updated {{lastupdate}} ago</small></p>
+        <button type="button" class="btn btn-danger mr-5 w-100">I am a Button</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="mytitle">
+    <h2>Sản phẩm {{namelist}}</h2>
+    <hr>
+</div>
+<div class="mygroupcard">
+    {{#each this.list}}
+    <div class="card zoom" id="mycard">
+        <img src="Images/{{image}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{namePrototype}}</h5>
+            <p class="card-text"></p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <button type="button" class="btn btn-danger mr-5 w-100">I am a Button</button>
+        </div>
+    </div>
+    {{/each}}
+</div>
