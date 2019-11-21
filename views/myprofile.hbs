@@ -1,0 +1,177 @@
+<h2>Welcome con chó</h2>
+<hr>
+
+
+<div class="row">
+    <div class="col-sm-1">
+
+    </div>
+    <div class="col-sm-8">
+        <button class="tablinkMyProfile btn" onclick="openCity('Personal', this, 'white')"
+            id="defaultOpen">Personal</button>
+        <button class="tablinkMyProfile btn" onclick="openCity('Addresses', this, 'white')">My Addresses</button>
+        <button class="tablinkMyProfile btn" onclick="openCity('Country', this, 'white')">My Country</button>
+        <button class="tablinkMyProfile btn" onclick="openCity('Wallet', this, 'white')">My Wallet</button>
+        <div id="Personal" class="tabcontentMyProfile">
+            <h4 class="mt-4 mb-5"><b>Personal</b> information</h2>
+                <form>
+                    <div class="form-group row">
+                        <label for="inputUsername" class="col-sm-2 col-form-label">User Name</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="inputEmail3" value="Hanh phuc co don" readonly>
+                        </div>
+                        <a name="" id="" class="pt-2" href="#" role="button"><i class="fa fa-pencil"
+                                aria-hidden="true"></i> Edit</a>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label">User Name</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="inputEmail3" value="Hau" readonly>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="inputEmail3" value="Nguyen" readonly>
+                        </div>
+                        <a name="" id="" class="pt-2" href="#" role="button"><i class="fa fa-pencil"
+                                aria-hidden="true"></i> Edit</a>
+                    </div>
+                    <fieldset class="form-group">
+                        <div class="row">
+                            <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
+                                        value="option1" checked>
+                                    <label class="form-check-label" for="gridRadios1">
+                                        Male
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
+                                        value="option2">
+                                    <label class="form-check-label" for="gridRadios2">
+                                        Female
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-8">
+                            <input type="email" class="form-control" id="inputEmail3" value="nguyenvanhau@gmail.com"
+                                readonly>
+                        </div>
+                        <a name="" id="" class="pt-2" href="#" role="button"><i class="fa fa-pencil"
+                                aria-hidden="true"></i> Edit</a>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputMobile" class="col-sm-2 col-form-label">Mobile Phone</label>
+                        <div class="col-sm-8">
+                            <input type="email" class="form-control" id="inputEmail3" value="0334830097" readonly>
+                        </div>
+                        <a name="" id="" class="pt-2" href="#" role="button"><i class="fa fa-pencil"
+                                aria-hidden="true"></i> Edit</a>
+                    </div>
+        </div>
+
+        <div id="Addresses" class="tabcontentMyProfile">
+            <h4 class="mt-4 mb-5"><b>Address</b> information</h2>
+                <button onclick="document.getElementById('id03').style.display='block'" type="button"
+                    class="btn btn-outline-primary mb-4">+ Add New Address</button>
+                <div id="id03" class="modalSignUp">
+                    <div class="modal-contentSignUp">
+                        <div class="imgcontainer">
+                            <span onclick="document.getElementById('id03').style.display='none'" class="closeSignUp"
+                                title="Close Modal">&times;</span>
+                        </div>
+                        <form action="/action_page.php">
+                            <div class="containerSignUp">
+                                <h1>Add New Address</h1>
+                                <p>Please fill in this form to add new an address.</p>
+                                <hr>
+                                <label for="firstname"><b>Name</b></label>
+                                <input type="text" placeholder="First name" name="firstname" required>
+
+                                <label for="lastname"><b>Last Name</b></label>
+                                <input type="text" placeholder="Last name" name="lastname" required>
+
+                                <label for="phone"><b>Mobile phone</b></label>
+                                <input type="text" placeholder="Mobile phone" name="phone" required>
+
+                                <label for="address"><b>Address</b></label>
+                                <input type="text" placeholder="Number + village + street" name="address" required>
+
+                                <div class="clearfixSignUp">
+                                    <button type="button" onclick="document.getElementById('id03').style.display='none'"
+                                        class="cancelbtnSignUp buttonSignUp">Cancel</button>
+                                    <button type="submit" class="signupbtn buttonSignUp">Save Address</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+        </div>
+
+        <div id="Country" class="tabcontentMyProfile">
+            <div class="row">
+                <h4 class="mt-4 mb-5"><b>Country</b> information</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <p>Coutry</p>
+                </div>
+                <div class="col-sm-8">
+                    <p>Việt Nam</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <p>Language</p>
+                </div>
+                <div class="col-sm-8">
+                    <p>Việt Nam</p>
+                </div>
+            </div>
+            <div class="row">
+                <a name="" id="" class="changeCountry" href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Change
+                    Country</a>
+            </div>
+        </div>
+
+        <div id="Wallet" class="tabcontentMyProfile">
+            <div class="row">
+                <h4 class="mt-4 mb-5"><b>Credit</b> information</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <p>Total Credit</p>
+                </div>
+                <div class="col-sm-8">
+                    <p>0đ</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <p>Refundable</p>
+                </div>
+                <div class="col-sm-8">
+                    <p>0đ</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <p>Non Refundable</p>
+                </div>
+                <div class="col-sm-8">
+                    <p>0đ</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+
+    </div>
+</div>

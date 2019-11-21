@@ -73,6 +73,13 @@ app.get('/cart', (req, res)=>{
     });
 })
 
+app.get('/myprofile', (req, res)=>{
+    res.render('myprofile',{
+        style: 'main.css',
+        title:'MyProfile'
+    });
+})
+
 
 // Set path for css
 app.use(express.static(__dirname + '/Contents'));

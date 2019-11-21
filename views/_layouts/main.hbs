@@ -37,6 +37,8 @@
                 </button>
                 <a rel="stylesheet" href="/cart">
                     <i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i></a>
+                <a name="" id="" class="btn btn-primary" href="/myprofile" role="button"><i class="fa fa-pencil"
+                        aria-hidden="true"></i></a>
 
                 <!--Login Form-->
                 <div id="id01" class="modalLogin">
@@ -116,7 +118,7 @@
     <div class="container-fluid" id="Menu-Slider">
         <!--Nội dung của từng trang -->
         {{{body}}}
-        
+
 
         <!--Foot Page-->
         <footer>
@@ -139,7 +141,8 @@
                             <div class="modal-body">
                                 <div class="f-infor">
                                     <div>
-                                        <img src="Images/Footer_Infor/dunggay.jpg" width="200" height="150" class="zoom">
+                                        <img src="Images/Footer_Infor/dunggay.jpg" width="200" height="150"
+                                            class="zoom">
                                     </div>
                                     <div class="ml-4">
                                         <p><b>Bùi Tiến Dũng</b></p>
@@ -148,7 +151,8 @@
                                 </div>
                                 <div class="f-infor mt-2">
                                     <div>
-                                        <img src="Images/Footer_Infor/linhdong.jpg" width="200" height="150" class="zoom">
+                                        <img src="Images/Footer_Infor/linhdong.jpg" width="200" height="150"
+                                            class="zoom">
                                     </div>
                                     <div class="ml-4">
                                         <p><b>Mai Linh Đồng</b></p>
@@ -157,7 +161,8 @@
                                 </div>
                                 <div class="f-infor mt-2">
                                     <div>
-                                        <img src="Images/Footer_Infor/quanghai.jpg" width="200" height="150" class="zoom">
+                                        <img src="Images/Footer_Infor/quanghai.jpg" width="200" height="150"
+                                            class="zoom">
                                     </div>
                                     <div class="ml-4">
                                         <p><b>Lê Quang Hải</b></p>
@@ -205,6 +210,39 @@
             }
         }
     </script>
+    {{!-- javascrip của MyProfile --}}
+    <script>
+        function openCity(cityName, elmnt, color) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontentMyProfile");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinkMyProfile");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.backgroundColor = "";
+            }
+            document.getElementById(cityName).style.display = "block";
+            elmnt.style.backgroundColor = color;
+
+        }
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+
+    {{!-- javascrip cho add new address --}}
+    <script>
+        // Get the modal
+        var modalSignUp = document.getElementById('id03');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modalSignUp) {
+                modalSignUp.style.display = "none";
+            }
+        }
+    </script>
+
 </body>
 
 </html>
