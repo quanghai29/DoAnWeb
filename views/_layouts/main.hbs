@@ -37,8 +37,18 @@
                 </button>
                 <a rel="stylesheet" href="/cart">
                     <i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i></a>
-                <a name="" id="" class="btn btn-primary" href="/myprofile" role="button"><i class="fa fa-pencil"
-                        aria-hidden="true"></i></a>
+                <div class="dropdown ml-2">
+                    <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        My account
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="/myprofile"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a>
+                        <a class="dropdown-item" href="/myorders"><i class="fa fa-check" aria-hidden="true"></i> My Orders</a>
+                        <a class="dropdown-item" href="#"><i class="fa fa-unlock" aria-hidden="true"></i> Log Out</a>
+                    </div>
+                </div>
 
                 <!--Login Form-->
                 <div id="id01" class="modalLogin">
