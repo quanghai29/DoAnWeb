@@ -211,6 +211,35 @@
         }
     </script>
     
+     <script>
+        function openCity(cityName, elmnt, color) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontentMyProfile");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinkMyProfile");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.backgroundColor = "";
+            }
+            document.getElementById(cityName).style.display = "block";
+            elmnt.style.backgroundColor = color;
+        }
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+
+    {{!-- javascrip cho add new address --}}
+    <script>
+        // Get the modal
+        var modalSignUp = document.getElementById('id03');
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modalSignUp) {
+                modalSignUp.style.display = "none";
+            }
+        }
+    </script>
 </body>
 
 </html>
