@@ -359,7 +359,9 @@ hr {
     }
 
 }
-
+.f-infor{
+    display: inline-flex;
+}
 .zoom {
     transition: transform .2s; /* Animation */
     margin: 0 auto;
@@ -367,14 +369,9 @@ hr {
 .zoom:hover{
     cursor:pointer;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -ms-transform: scale(1.2); /* IE 9 */
-    -webkit-transform: scale(1.2); /* Safari 3-8 */
-    transform: scale(1.2); 
-}
-
-div.card-deck{
-    background-color: white;
-    height: 400px;
+    -ms-transform: scale(1.15); /* IE 9 */
+    -webkit-transform: scale(1.15); /* Safari 3-8 */
+    transform: scale(1.15);
 }
 
 div.card{
@@ -387,7 +384,7 @@ div.card{
 }
 
 .img-card{
-    width: 150px;
+    width: 200px;
     height: 100px;
 }
 
@@ -401,10 +398,6 @@ hr{
     border-width: 1px;
 }
 
-.f-infor{
-    display: inline-flex;
-}
-
 /*View card*/
 .mytitle{
     color:red;
@@ -415,6 +408,7 @@ hr{
 .mygroupcard
 {
     display: flex;
+    justify-content: start !important;
     padding: 5px;
     background-color: white;
     flex-wrap:wrap;
@@ -432,3 +426,35 @@ hr{
     transform: scale(1.001);
     z-index: 1;
 }
+
+/* css của MyProfile */
+.tablinkMyProfile {
+    background-color: #ccc;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+    border: 1px solid #ccc;
+    border-bottom: none;
+  }
+  
+  .tablinkMyProfile:hover {
+    background-color: #777;
+  }
+  
+  /* Style the tab content */
+  .tabcontentMyProfile {
+    color: black;
+    display: none;
+    padding: 50px;
+    border: 1px solid #ccc;
+    border-top: none;
+    height: 800px;
+  }
+
+  .changeCountry {
+        text-align: center;
+  }
