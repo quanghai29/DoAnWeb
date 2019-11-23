@@ -9,9 +9,9 @@
             <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-mobile fa-lg"
                 aria-hidden="true"></i> Điện thoại di động</a>
             <ul class="submenu">
-              <li><a href="/samsung" rel="stylesheet">Samsung</a></li>
-              <li><a href="/nokia" rel="stylesheet">Nokia</a></li>
-              <li><a href="/xiaomi" rel="stylesheet">Xiaomi</a></li>
+              <li><a href="/user/list/samsung" rel="stylesheet">Samsung</a></li>
+              <li><a href="/user/list/nokia" rel="stylesheet">Nokia</a></li>
+              <li><a href="/user/list/xiaomi" rel="stylesheet">Xiaomi</a></li>
             </ul>
           </li>
           <li class="menu-item">
@@ -19,9 +19,9 @@
                 aria-hidden="true"></i> Máy tính xách tay</a>
             <ul class="submenu">
               <li><a href="/user/list/dell" rel="stylesheet">Dell</a></li>
-              <li><a href="#" rel="stylesheet">Asua</a></li>
-              <li><a href="#" rel="stylesheet">Apple</a></li>
-              <li><a href="#" rel="stylesheet">Lenovo</a></li>
+              <li><a href="/user/list/asua" rel="stylesheet">Asua</a></li>
+              <li><a href="/user/list/apple" rel="stylesheet">Apple</a></li>
+              <li><a href="/user/list/lenovo" rel="stylesheet">Lenovo</a></li>
             </ul>
           </li>
         </ul>
@@ -71,14 +71,14 @@
   <div class="mygroupcard">
     {{#each top5day}}
       <div class="card zoom img-card  mt-2 ml-5 mr-1" data-toggle="modal" data-target="#modalDetail">
-        <img src="Images/{{image}}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">card title</h5>
-          <p class="card-text"></p>
-          <p class="card-text"><small class="text-muted">Last updated {{lastupdate}} ago</small></p>
-          <button type="button" class="btn btn-danger mr-5 w-100">I am a Button</button>
-        </div>
+      <img src="Images/{{image}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">card title</h5>
+        <p class="card-text"></p>
+        <p class="card-text"><small class="text-muted">Last updated {{lastupdate}} ago</small></p>
+        <button type="button" class="btn btn-danger mr-5 w-100">I am a Button</button>
       </div>
+    </div>
     {{/each}}
   </div>
 

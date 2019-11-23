@@ -13,77 +13,77 @@ app.set('view engine', 'hbs');
 
 //Data ----------------------
 const top5day =
-[
-   {
-        image: "Dell/lap01.jpg",
-        lastupdate:"3 mins"
-   },
-    {
-        image: "Dell/lap02.jpg",
-        lastupdate: "3 mins"
-    },
-    {
-        image: "Dell/lap03.jpg",
-        lastupdate: "3 mins"
-    },
-    {
-        image: "Dell/lap04.jpg",
-        lastupdate: "3 mins"
-    },
-    {
-        image: "Dell/lap05.jpg",
-        lastupdate: "3 mins"
-    }
-]
+    [
+        {
+            image: "Dell/lap01.jpg",
+            lastupdate: "3 mins"
+        },
+        {
+            image: "Dell/lap02.jpg",
+            lastupdate: "3 mins"
+        },
+        {
+            image: "Dell/lap03.jpg",
+            lastupdate: "3 mins"
+        },
+        {
+            image: "Dell/lap04.jpg",
+            lastupdate: "3 mins"
+        },
+        {
+            image: "Dell/lap05.jpg",
+            lastupdate: "3 mins"
+        }
+    ]
 
-const top5offer=
-[
-    {
-        image: "Dell/lap06.jpg",
-        lastupdate: "3 mins"
-    },
-    {
-        image: "Dell/lap07.jpg",
-        lastupdate: "3 mins"
-    }
-]
+const top5offer =
+    [
+        {
+            image: "Dell/lap06.jpg",
+            lastupdate: "3 mins"
+        },
+        {
+            image: "Dell/lap07.jpg",
+            lastupdate: "3 mins"
+        }
+    ]
 
-const top5value=
-[
-    {
-        image: "Dell/lap06.jpg",
-        lastupdate: "3 mins"
-    },
-]
+const top5value =
+    [
+        {
+            image: "Dell/lap06.jpg",
+            lastupdate: "3 mins"
+        },
+    ]
 //----------------------------------------
 
 // Set cho từng trang
 app.get('/', (req, res) => {
     res.render('home', {
         style: 'main.css',
-        title: 'Home-auction', 
+        title: 'Home-auction',
         top5day, top5offer, top5value
     });
 })
 
-app.get('/cart', (req, res)=>{
-    res.render('cart',{
+app.get('/cart', (req, res) => {
+    res.render('cart', {
         style: 'main.css',
-        title:'Cart'
+        title: 'Cart'
     });
 })
 
-app.get('/myprofile', (req, res)=>{
-    res.render('myprofile',{
+app.get('/myprofile', (req, res) => {
+    res.render('myprofile', {
         style: 'main.css',
-        title:'My Profile'
+        title: 'My Profile'
     });
 })
 
-app.get('/myorders', (req, res)=>{
-    res.render('myorders',{
+app.get('/myorders', (req, res) => {
+    res.render('myorders', {
         style: 'main.css',
-        title:'My Orders'
+        title: 'My Orders'
     });
 })
 
