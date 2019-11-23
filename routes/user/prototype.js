@@ -6,81 +6,369 @@ const router = express.Router();
 const listsamsung=[
     {
         image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap02.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap03.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap04.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap05.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap06.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap07.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap11.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap09.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap10.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
         image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
-        image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        image: "Dell/lap02.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
-        image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        image: "Dell/lap03.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
-        image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        image: "Dell/lap04.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
-        image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        image: "Dell/lap05.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap06.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap07.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap11.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap09.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap10.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     }
 ]
 
 const listnokia=[
     {
         image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap02.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap03.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap04.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap05.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap06.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap07.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap11.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap09.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap10.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
         image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
-        image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        image: "Dell/lap02.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
-        image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        image: "Dell/lap03.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
-        image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        image: "Dell/lap04.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
-        image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        image: "Dell/lap05.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap06.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap07.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap11.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap09.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap10.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     }
 ]
 
 const listxiaomi=[
     {
         image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap02.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap03.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap04.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap05.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap06.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap07.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap11.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap09.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap10.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
         image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
-        image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        image: "Dell/lap02.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
-        image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        image: "Dell/lap03.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
-        image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        image: "Dell/lap04.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
-        image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        image: "Dell/lap05.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap06.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap07.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap11.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap09.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap10.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     }
 ]
 
@@ -88,184 +376,492 @@ const listdell =
 [
         {
             image: "Dell/lap01.jpg",
-            namePrototype: "Dell Vostro 3568",
-            linkdetail: "/user/detail/dellvostro3560"
+            name: "Dell Vostro 3580",
+            pricecurrent: "50",
+            IDcustomer: "b003"
         },
         {
             image: "Dell/lap02.jpg",
-            namePrototype: "Dell Vostro 3568",
-            linkdetail: "/user/detail/dellvostro3560"
+            name: "Dell Vostro 3580",
+            pricecurrent: "50",
+            IDcustomer: "b003"
         },
         {
             image: "Dell/lap03.jpg",
-            namePrototype: "Dell Vostro 3568",
-            linkdetail: "/user/detail/dellvostro3560"
+            name: "Dell Vostro 3580",
+            pricecurrent: "50",
+            IDcustomer: "b003"
         },
         {
             image: "Dell/lap04.jpg",
-            namePrototype: "Dell Vostro 3568",
-            linkdetail: "/user/detail/dellvostro3560"
+            name: "Dell Vostro 3580",
+            pricecurrent: "50",
+            IDcustomer: "b003"
         },
         {
             image: "Dell/lap05.jpg",
-            namePrototype: "Dell Vostro 3568",
-            linkdetail: "/user/detail/dellvostro3560"
+            name: "Dell Vostro 3580",
+            pricecurrent: "50",
+            IDcustomer: "b003"
         },
         {
             image: "Dell/lap06.jpg",
-            namePrototype: "Dell Vostro 3568",
-            linkdetail: "/user/detail/dellvostro3560"
+            name: "Dell Vostro 3580",
+            pricecurrent: "50",
+            IDcustomer: "b003"
         },
         {
             image: "Dell/lap07.jpg",
-            namePrototype: "Dell Vostro 3568",
-            linkdetail: "/user/detail/dellvostro3560"
+            name: "Dell Vostro 3580",
+            pricecurrent: "50",
+            IDcustomer: "b003"
         },
         {
             image: "Dell/lap11.jpg",
-            namePrototype: "Dell Vostro 3568",
-            linkdetail: "/user/detail/dellvostro3560"
+            name: "Dell Vostro 3580",
+            pricecurrent: "50",
+            IDcustomer: "b003"
         },
         {
             image: "Dell/lap09.jpg",
-            namePrototype: "Dell Vostro 3568",
-            linkdetail: "/user/detail/dellvostro3560"
+            name: "Dell Vostro 3580",
+            pricecurrent: "50",
+            IDcustomer: "b003"
         },
         {
             image: "Dell/lap10.jpg",
-            namePrototype: "Dell Vostro 3568",
-            linkdetail: "/user/detail/dellvostro3560"
+            name: "Dell Vostro 3580",
+            pricecurrent: "50",
+            IDcustomer: "b003"
         },
         {
             image: "Dell/lap01.jpg",
-            namePrototype: "Dell Vostro 3568",
-            linkdetail: "/user/detail/dellvostro3560"
+            name: "Dell Vostro 3580",
+            pricecurrent: "50",
+            IDcustomer: "b003"
         },
         {
             image: "Dell/lap02.jpg",
-            namePrototype: "Dell Vostro 3568",
-            linkdetail: "/user/detail/dellvostro3560"
+            name: "Dell Vostro 3580",
+            pricecurrent: "50",
+            IDcustomer: "b003"
         },
         {
             image: "Dell/lap03.jpg",
-            namePrototype: "Dell Vostro 3568",
-            linkdetail: "/user/detail/dellvostro3560"
+            name: "Dell Vostro 3580",
+            pricecurrent: "50",
+            IDcustomer: "b003"
         },
         {
             image: "Dell/lap04.jpg",
-            namePrototype: "Dell Vostro 3568",
-            linkdetail: "/user/detail/dellvostro3560"
+            name: "Dell Vostro 3580",
+            pricecurrent: "50",
+            IDcustomer: "b003"
         },
         {
             image: "Dell/lap05.jpg",
-            namePrototype: "Dell Vostro 3568",
-            linkdetail: "/user/detail/dellvostro3560"
+            name: "Dell Vostro 3580",
+            pricecurrent: "50",
+            IDcustomer: "b003"
         },
         {
             image: "Dell/lap06.jpg",
-            namePrototype: "Dell Vostro 3568",
-            linkdetail: "/user/detail/dellvostro3560"
+            name: "Dell Vostro 3580",
+            pricecurrent: "50",
+            IDcustomer: "b003"
         },
         {
             image: "Dell/lap07.jpg",
-            namePrototype: "Dell Vostro 3568",
-            linkdetail: "/user/detail/dellvostro3560"
+            name: "Dell Vostro 3580",
+            pricecurrent: "50",
+            IDcustomer: "b003"
         },
         {
             image: "Dell/lap11.jpg",
-            namePrototype: "Dell Vostro 3568",
-            linkdetail: "/user/detail/dellvostro3560"
+            name: "Dell Vostro 3580",
+            pricecurrent: "50",
+            IDcustomer: "b003"
         },
         {
             image: "Dell/lap09.jpg",
-            namePrototype: "Dell Vostro 3568",
-            linkdetail: "/user/detail/dellvostro3560"
+            name: "Dell Vostro 3580",
+            pricecurrent: "50",
+            IDcustomer: "b003"
         },
         {
             image: "Dell/lap10.jpg",
-            namePrototype: "Dell Vostro 3568",
-            linkdetail: "/user/detail/dellvostro3560"
+            name: "Dell Vostro 3580",
+            pricecurrent: "50",
+            IDcustomer: "b003"
         }
 ]
 
 const listasua=[
     {
         image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap02.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap03.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap04.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap05.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap06.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap07.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap11.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap09.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap10.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
         image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
-        image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        image: "Dell/lap02.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
-        image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        image: "Dell/lap03.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
-        image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        image: "Dell/lap04.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
-        image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        image: "Dell/lap05.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap06.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap07.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap11.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap09.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap10.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     }
 ]
 
 const listapple=[
     {
         image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap02.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap03.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap04.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap05.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap06.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap07.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap11.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap09.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap10.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
         image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
-        image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        image: "Dell/lap02.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
-        image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        image: "Dell/lap03.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
-        image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        image: "Dell/lap04.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
-        image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        image: "Dell/lap05.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap06.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap07.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap11.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap09.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap10.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     }
 ]
 
 const listlenovo=[
     {
         image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap02.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap03.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap04.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap05.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap06.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap07.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap11.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap09.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap10.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
         image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
-        image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        image: "Dell/lap02.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
-        image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        image: "Dell/lap03.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
-        image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        image: "Dell/lap04.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     },
     {
-        image: "Dell/lap01.jpg",
-        namePrototype: "ASUS X509FA-EJ239T"
+        image: "Dell/lap05.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap06.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap07.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap11.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap09.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
+    },
+    {
+        image: "Dell/lap10.jpg",
+        name: "Dell Vostro 3580",
+        pricecurrent: "50",
+        IDcustomer: "b003"
     }
 ]
 

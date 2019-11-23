@@ -70,13 +70,12 @@
   </div>
   <div class="mygroupcard">
     {{#each top5day}}
-      <div class="card zoom img-card  mt-2 ml-5 mr-1" data-toggle="modal" data-target="#modalDetail">
-      <img src="Images/{{image}}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">card title</h5>
-        <p class="card-text"></p>
-        <p class="card-text"><small class="text-muted">Last updated {{lastupdate}} ago</small></p>
-        <button type="button" class="btn btn-danger mr-5 w-100">I am a Button</button>
+    <div class="card zoom img-card mt-2 ml-5 mr-1" onclick="detailItem()">
+      <img src="Images/{{image}}" class="card-img-top" alt="..." height="130">
+      <div class="card-body mt-3">
+        <h5 class="card-title mb-4">{{name}}</h5>
+        <p class="card-text text-center"><i class="fa fa-gavel" aria-hidden="true"></i> {{pricecurrent}} (ID:{{IDcustomer}})</p>
+        <p class="card-text timer text-center"></p>
       </div>
     </div>
     {{/each}}
@@ -90,13 +89,12 @@
   </div>
   <div class="mygroupcard">
     {{#each top5offer}}
-    <div class="card zoom img-card  mt-2 ml-5 mr-1" data-toggle="modal" data-target="#modalDetail">
-      <img src="Images/{{image}}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">card title</h5>
-        <p class="card-text"></p>
-        <p class="card-text"><small class="text-muted">Last updated {{lastupdate}} ago</small></p>
-        <button type="button" class="btn btn-danger mr-5 w-100">I am a Button</button>
+    <div class="card zoom img-card mt-2 ml-5 mr-1" onclick="detailItem()">
+      <img src="Images/{{image}}" class="card-img-top" alt="..." height="130">
+      <div class="card-body mt-3">
+        <h5 class="card-title mb-4">{{name}}</h5>
+        <p class="card-text text-center"><i class="fa fa-gavel" aria-hidden="true"></i> {{pricecurrent}} (ID:{{IDcustomer}})</p>
+        <p class="card-text timer text-center"></p>
       </div>
     </div>
     {{/each}}
@@ -109,35 +107,71 @@
   </div>
   <div class="mygroupcard">
     {{#each top5value}}
-    <div class="card zoom img-card mt-2 ml-5 mr-1" data-toggle="modal" data-target="#modalDetail">
-      {{!-- id="mycard" --}}
-      <img src="Images/{{image}}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">card title</h5>
-        <p class="card-text"></p>
-        <p class="card-text"><small class="text-muted">Last updated {{lastupdate}} ago</small></p>
-        <button type="button" class="btn btn-danger mr-5 w-100">I am a Button</button>
+    <div class="card zoom img-card mt-2 ml-5 mr-1" onclick="detailItem()">
+      <img src="Images/{{image}}" class="card-img-top" alt="..." height="130">
+      <div class="card-body mt-3">
+        <h5 class="card-title mb-4">{{name}}</h5>
+        <p class="card-text text-center"><i class="fa fa-gavel" aria-hidden="true"></i> {{pricecurrent}} (ID:{{IDcustomer}})</p>
+        <p class="card-text timer text-center"></p>
       </div>
     </div>
     {{/each}}
   </div>
 </div>
-<div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Thông tin chi tiết</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+<p class="show">
+</p>
+<!--///////////////////////////////////////////////////////////////////////-->
+{{!-- <!--Tạo bộ đếm thời gian-->
+<script>
+  var myVar = setInterval(myTimer, 1000);
+  var sec = 21;
+  var min = 1;
+  var h = 0;
+  function myTimer() {
+    sec--;
+
+    var sec_str = sec.toString();
+    var min_str = min.toString();
+    var h_str = h.toString();
+
+    if (h < 10) {
+      h_str = "0" + h_str;
+    }
+
+    if (min < 10) {
+      min_str = "0" + min_str;
+    }
+
+    if (sec < 10) {
+      sec_str = "0" + sec_str;
+    }
+
+    var myTime = document.getElementsByClassName("card-text timer");
+    for (var i = 0; i < myTime.length; i++) {
+      myTime[i].innerHTML = `${h_str}:${min_str}:${sec_str}`.bold().fontcolor("Red");
+    }
+
+    if (min === 0 && sec === 0 && h === 0) {
+      for (var i = 0; i < myTime.length; i++)
+      {
+        myTime[i].innerHTML = "Ending...".bold().fontcolor("Red");
+      }
+      clearInterval(myVar);
+    }
+    if (sec === 0 && min > 0) {
+      min--;
+      sec = 60;
+    }
+    if (min === 0 && sec === 0) {
+      h--;
+      min = 59;
+      sec = 60;
+    }
+  }
+</script>
+<!-- Xử lí sự kiện điều hướng trang khi click vào card-->
+<script>
+  function detailItem(){
+    window.location="/user/detail/dellvostro3580";
+  }
+</script> --}}
