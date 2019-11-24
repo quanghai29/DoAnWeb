@@ -55,37 +55,48 @@ const top5value=
         lastupdate: "3 mins"
     },
 ]
+
+const user =
+[
+
+];
+
 //----------------------------------------
+app.get('/login', (req, res) => {
+    res.render('login', {
+        style: 'main.css',
+        title: 'Login',
+        empty: user.length === 0
+    });
+})
+app.get('/signup', (req, res) => {
+    res.render('login', {
+        style: 'main.css',
+        title: 'Login',
+        empty: user.length === 0
+    });
+})
 
 // Set cho từng trang
 app.get('/', (req, res) => {
+   
     res.render('home', {
         style: 'main.css',
         title: 'Home-auction', 
-        top5day, top5offer, top5value
+        top5day, top5offer, top5value,
+        empty: user.length === 0
     });
 })
-
 app.get('/cart', (req, res)=>{
     res.render('cart',{
         style: 'main.css',
-        title:'Cart'
+        title:'Cart',
+        empty: user.length === 0
     });
 })
 
-app.get('/myprofile', (req, res)=>{
-    res.render('myprofile',{
-        style: 'main.css',
-        title:'My Profile'
-    });
-})
 
-app.get('/myorders', (req, res)=>{
-    res.render('myorders',{
-        style: 'main.css',
-        title:'My Orders'
-    });
-})
+
 
 
 // Set path for css
