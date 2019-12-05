@@ -48,4 +48,3 @@ javacript: để bỏ file javacript
 routes có hai routes 
 - admin là đứa có taì khoản để đăng nhập bao gồm các view như xem thông tin cá nhân giỏ hàng, đặt cọc đăng hàng
 - user là đứa không có tài khoản chỉ xem được sản phẩm chi tiết sản phẩm
-- app.js cho những route chung mà user admin đều xem như nhau
