@@ -2,6 +2,9 @@ var express = require('express');
 var exphbs = require('express-handlebars');
 
 var app = express();
+var hbs = exphbs.create();
+
+
 
 app.engine('hbs', exphbs(
     {
@@ -11,6 +14,8 @@ app.engine('hbs', exphbs(
 );
 app.set('view engine', 'hbs');
 
+// Set path for css
+app.use(express.static('Contents'));
 //Data ----------------------
 const top5day =
     [
@@ -119,63 +124,47 @@ const top5value =
         }
     ]
 //----------------------------------------
+//note: biến user để phân biệt người thường đăng nhập hay thành viên có tài khoản
+
 app.get('/login', (req, res) => {
     res.render('login', {
         style: 'main.css',
         title: 'Login',
+        user:true,
         empty: user.length === 0
     });
 })
 app.get('/signup', (req, res) => {
     res.render('signup', {
         style: 'main.css',
-        title: 'Login',
+        title: 'user sign up',
+        user:true,
         empty: user.length === 0
     });
 })
 
 // Set cho từng trang
 app.get('/', (req, res) => {
-   
     res.render('home', {
-        style: 'main.css',
-        title: 'Home-auction', 
+        title: 'Home-auction',
+        user: true, 
         top5day, top5offer, top5value,
         empty: user.length === 0
     });
 })
-app.get('/cart', (req, res)=>{
-    res.render('cart',{
-        style: 'main.css',
-        title:'Cart',
-        empty: user.length === 0
-    });
-})
 
 
-app.get('/myprofile', (req, res) => {
-    res.render('myprofile', {
-        style: 'main.css',
-        title: 'My Profile'
-    });
-})
-
-app.get('/myorders', (req, res) => {
-    res.render('myorders', {
-        style: 'main.css',
-        title: 'My Orders'
-    });
-})
 
 
-// Set path for css
-app.use(express.static(__dirname + '/Contents'));
-
-// Set path for Detail Product
-app.use('/user/detail', require('./routes/user/detail.product'));
 
 // Set path for list prototype
-app.use('/user/list', require('./routes/user/prototype'));
+app.use('/user', require('./routes/user/index.js'));
 
-//Listen to port 3000
-app.listen(3000);
+app.use('/admin', require('./routes/admin/index.js'));
+
+
+//listen to Port 3000
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+})

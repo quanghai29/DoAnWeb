@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/{{style}}">
+    <link rel="stylesheet" href="/css/main.css">
 
 </head>
 
@@ -16,10 +16,17 @@
     <!--Đầu trang -->
     <div class="nav-header">
         <nav class="navbar navbar-light">
+            {{#if user}}
             <a href="/" rel="stylesheet" class="navbar-brand" id="linkhome">
                 <i class="fa fa-gavel" id="iconHomePage" aria-hidden="true"></i>
                 Micromart
             </a>
+            {{else}}
+            <a href="/admin/home" rel="stylesheet" class="navbar-brand" id="linkhome">
+                <i class="fa fa-gavel" id="iconHomePage" aria-hidden="true"></i>
+                Micromart
+            </a>
+            {{/if}}
             <form class="form-inline">
                 <input class="form-control" id="inputSearch" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn my-2 my-sm-0" id="searchButton" type="submit">
@@ -27,19 +34,18 @@
                     &nbsp; Tìm kiếm
                 </button>
 
-                {{#if this.empty }}
-                <button id="dangnhap" class="btn my-sm-0 mr-sm-2 btnheader">
+                {{#if user }}
+                <a href="/login" id="btnheader">
                     <i class="fa fa-user" aria-hidden="true"></i>
                     Đăng nhập
-                </button>
+                </a>
 
-                <button id="dangky" class="btn my-2 my-sm-0 mr-sm-2 btnheader">
+                <a href="/signup" id="btnheader">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                     Tạo tài khoản
-                </button>
-
+                </a>
                 {{else}}
-                <a rel="stylesheet" href="/cart">
+                <a rel="stylesheet" href="/admin/cart">
                     <i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i></a>
                 <div class="dropdown ml-2">
                     <a class="btn dropdown-toggle btnheader" href="#" role="button" id="dropdownMenuLink"
@@ -48,11 +54,13 @@
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="/myprofile"><i class="fa fa-user" aria-hidden="true"></i> My
+                        <a class="dropdown-item" href="/admin/myprofile"><i class="fa fa-user" aria-hidden="true"></i>
+                            My
                             Profile</a>
-                        <a class="dropdown-item" href="/myorders"><i class="fa fa-check" aria-hidden="true"></i> My
+                        <a class="dropdown-item" href="/admin/myorders"><i class="fa fa-check" aria-hidden="true"></i>
+                            My
                             Orders</a>
-                        <a class="dropdown-item" href="#"><i class="fa fa-unlock" aria-hidden="true"></i> Log Out</a>
+                        <a class="dropdown-item" href="/"><i class="fa fa-unlock" aria-hidden="true"></i> Log Out</a>
                     </div>
                 </div>
                 {{/if}}
@@ -60,11 +68,10 @@
         </nav>
     </div>
 
+
     <div class="container-fluid" id="Menu-Slider">
         <!--Nội dung của từng trang -->
         {{{body}}}
-
-
         <!--Foot Page-->
         <footer>
             <div class="container-fluid mt-4">
@@ -124,112 +131,14 @@
             </div>
         </footer>
 
-
-
     </div>
 
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <script>
-        $(document).ready(function () {
-            // Click button sign in
-            $("#dangnhap").click(function () {
-              window.open("/login");
-            });
-
-            $("#dangky").click(function () {
-                window.open("/signup");
-            });
-        });
-    </script>
-    
-     <script>
-        function openCity(cityName, elmnt, color) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontentMyProfile");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinkMyProfile");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].style.backgroundColor = "";
-            }
-            document.getElementById(cityName).style.display = "block";
-            elmnt.style.backgroundColor = color;
-        }
-        // Get the element with id="defaultOpen" and click on it
-        document.getElementById("defaultOpen").click();
-    </script>
-
-    {{!-- javascrip cho add new address --}}
-    <script>
-        // Get the modal
-        var modalSignUp = document.getElementById('id03');
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modalSignUp) {
-                modalSignUp.style.display = "none";
-            }
-        }
-    </script>
-
-    <!--Tạo bộ đếm thời gian-->
-<script>
-  var myVar = setInterval(myTimer, 1000);
-  var sec = 21;
-  var min = 1;
-  var h = 0;
-  function myTimer() {
-    sec--;
-
-    var sec_str = sec.toString();
-    var min_str = min.toString();
-    var h_str = h.toString();
-
-    if (h < 10) {
-      h_str = "0" + h_str;
-    }
-
-    if (min < 10) {
-      min_str = "0" + min_str;
-    }
-
-    if (sec < 10) {
-      sec_str = "0" + sec_str;
-    }
-
-    var myTime = document.getElementsByClassName("card-text timer");
-    for (var i = 0; i < myTime.length; i++) {
-      myTime[i].innerHTML = `${h_str}:${min_str}:${sec_str}`.bold().fontcolor("Red");
-    }
-
-    if (min === 0 && sec === 0 && h === 0) {
-      for (var i = 0; i < myTime.length; i++)
-      {
-        myTime[i].innerHTML = "Ending...".bold().fontcolor("Red");
-      }
-      clearInterval(myVar);
-    }
-    if (sec === 0 && min > 0) {
-      min--;
-      sec = 60;
-    }
-    if (min === 0 && sec === 0) {
-      h--;
-      min = 59;
-      sec = 60;
-    }
-  }
-</script>
-<!-- Xử lí sự kiện điều hướng trang khi click vào card-->
-<script>
-  function detailItem(){
-    window.location="/user/detail/dellvostro3580";
-  }
-</script>
+    <script src="javascript/script.js"></script>
 </body>
 
 </html>

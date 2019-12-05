@@ -2,8 +2,16 @@ body
 {
     background-color:#f9f9f9;
 }
+/*File Main*/
 
 /*Header*/
+#btnheader
+{
+    color:#5ba4de;
+
+    margin-right:25px;
+
+}
 .nav-header{
     width:100%;
     height: auto;
@@ -79,6 +87,10 @@ body
 {
     text-decoration: none;
 }
+.fixform
+{
+    display:flex;
+}
 /*css cho login--------------------------------------*/
 /* Full-width input fields */
 input[type=text],
@@ -91,9 +103,14 @@ input[type=password] {
     box-sizing: border-box;
 }
 
+#fixloginbtn{
+    margin-top: 40px;
+    width: 50%;
+    display:block;
+}
 /* Set a style for all buttons */
 .buttonLogin {
-    background-color: #5ba4de;
+    background-color: #f5722a;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -107,13 +124,6 @@ input[type=password] {
     opacity: 0.8;
 }
 
-/* Extra styles for the cancel button */
-.cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
-    border-radius: 10%;
-}
 
 /* Center the image and position the close button */
 .imgcontainer {
@@ -137,7 +147,7 @@ span.psw {
 }
 
 /* The Modal (background) */
-.modalLogin {
+#idLoginView {
     /* Hidden by default */
     /* Stay in place */
     /* Sit on top */
@@ -146,7 +156,6 @@ span.psw {
     height: 100%;
     /* Full height */
     overflow: auto;
-    
 }
 
 .mytitlelogin{
@@ -158,12 +167,11 @@ span.psw {
 }
 /* Modal Content/Box */
 .modalContentLogin {
-   
     background-color: #fefefe;
     margin: 5% auto 15% auto;
     /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
-    width: 35%;
+    width: 70%;
     height: auto;
     padding: 25px 10px;
     /* Could be more or less, depending on screen size */
