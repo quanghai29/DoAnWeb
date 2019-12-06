@@ -1,5 +1,6 @@
 var express = require('express');
 var exphbs = require('express-handlebars');
+require('express-async-errors');
 
 var app = express();
 var hbs = exphbs.create();
@@ -161,6 +162,18 @@ app.get('/', (req, res) => {
 app.use('/user', require('./routes/user/index.js'));
 
 app.use('/admin', require('./routes/admin/index.js'));
+
+app.use((req,res,next)=>{
+    // res.render('vwError/404');
+    res.send('you \'re lost');
+})
+
+//default error handler
+app.use( (err, req, res, next)=> {
+    console.error(err.stack);
+    // res.render('/vwErro/index');
+    res.status(500).send('View error log in cosole')
+  })
 
 
 //listen to Port 3000

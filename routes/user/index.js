@@ -992,4 +992,8 @@ router.get('/list/lenovo', (req, res) => {
     });
 })
 
+router.get('/err',(req,res)=>{
+    throw new Error('error occured');
+})
+
 module.exports = router;

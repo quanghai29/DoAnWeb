@@ -1,5 +1,11 @@
 const express=require('express');
+const categoryModel=require('../../models/category.model');
 const router=express.Router();
+
+router.get('/demo',async (req,res)=>{
+    const rows = await categoryModel.all();
+    console.log(rows);
+})
 
 ////////////////////
 router.get('/home',(req,res)=>
@@ -27,6 +33,8 @@ router.get('/myorders', (req, res) => {
     });
 })
 
-
+router.get('/err',(req,res)=>{
+    throw new Error('error occured');
+})
 
 module.exports = router;
