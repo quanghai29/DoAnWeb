@@ -5,12 +5,14 @@
 <div class="mygroupcard">
     {{#each this.list}}
     <div class="card zoom img-card mt-2 ml-5 mr-1" onclick="detailItem()">
-        <img src="Images/{{image}}" class="card-img-top" alt="..." height="130">
+        <img src="Images/{{Img}}" class="card-img-top" alt="..." height="130">
         <div class="card-body mt-3">
-            <h5 class="card-title mb-4">{{name}}</h5>
-            <p class="card-text text-center"><i class="fa fa-gavel" aria-hidden="true"></i> {{pricecurrent}}
-                (ID:{{IDcustomer}})</p>
+            <h5 class="card-title mb-4">{{ProName}}</h5>
+            <p class="card-text text-center"><i class="fa fa-gavel" aria-hidden="true"></i> {{Price}}</p>
             <p class="card-text timer text-center"></p>
+            <a class="btn btn-primary" href="/admin/edit/{{ProID}}" role="button">
+            <i class="fa fa-pencil" aria-hidden="true"></i> Edit
+            </a>
         </div>
     </div>
     {{/each}}

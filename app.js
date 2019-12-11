@@ -1,11 +1,16 @@
 var express = require('express');
+const morgan = require('morgan');
 var exphbs = require('express-handlebars');
 require('express-async-errors');
 
 var app = express();
 var hbs = exphbs.create();
 
-
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.urlencoded({
+    extended:true
+}));
 
 app.engine('hbs', exphbs(
     {

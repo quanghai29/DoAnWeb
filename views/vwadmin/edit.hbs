@@ -1,0 +1,44 @@
+<div class="card shadow mb-4">
+    <h4 class="card-header">
+        New Product
+    </h4>
+    <div class="card-body">
+        <form method="POST">
+            <div class="form-group">
+                <label for="txtProName">#</label>
+                <input type="text" class="form-control" id="txtProName" name="ProID" value="{{this.product.ProID}}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="txtProName">Product Name</label>
+                <input type="text" class="form-control" id="txtProName" name="ProName" value="{{this.product.ProName}}">
+            </div>
+            <div class="form-group">
+                <label for="txtItem">ID item</label>
+                <input type="text" class="form-control" id="txtItem" name="Item" value="{{this.product.Item}}">
+            </div>
+            <div class="form-group">
+                <label for="txtImg">Image</label>
+                <input type="text" class="form-control" id="txtImg" name="Img" value="{{this.product.Img}}">
+            </div>
+            <div class="form-group">
+                <label for="txtPrice">Price</label>
+                <input type="text" class="form-control" id="txtPrice" name="Price" value="{{this.product.Price}}">
+            </div>
+            {{!-- <a class="btn btn-primary" href="/admin/categories" role="button">
+                <i class="fa fa-backward" aria-hidden="true"></i>
+                List
+            </a> --}}
+            <button type="submit" class="btn btn-outline-primary" formaction="/admin/patch">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                Save
+            </button>
+            <button type="submit" class="btn btn-outline-danger" formaction="/admin/delete">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                Delete
+            </button>
+        </form>
+    </div>
+    <div class="card-footer text-muted">
+        Footer
+    </div>
+</div>
