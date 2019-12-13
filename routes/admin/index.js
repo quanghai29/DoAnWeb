@@ -20,13 +20,13 @@ router.post('/patch', async (req,res)=>{
     const entity=req.body;
     const results=await productModel.patch(entity);
     console.log(results);
-    res.redirect('/user/list/dell');
+    res.redirect('/');
 })
 
 router.post('/delete', async (req,res)=>{
     const results=await productModel.del(req.body.ProID);
     console.log(results.affectedRows);
-    res.redirect('/user/list/dell');
+    res.redirect('/');
 })
 
 //Thêm dữ liệu vào database

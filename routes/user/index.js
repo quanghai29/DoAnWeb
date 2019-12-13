@@ -64,69 +64,11 @@ router.get('/detail/dellvostro3580', (req, res) => {
     });
 })
 
-
-router.get('/list/samsung', async (req, res) => {
-    //lấy list sản phẩm với Item = 1 (1 là ID của Item samsung)
-    const list = await productModel.all(1);
-    const namelist = "SamSung";
+router.get('/:id/products', async (req,res)=>{
+    const list = await productModel.all(req.params.id);
+    const namelist = "Products";
     res.render('prototype/listprototype.hbs', {
-        title: 'List product SamSung',
-        list, namelist
-    });
-})
-
-router.get('/list/nokia', async (req, res) => {
-    const list = await productModel.all(2);
-    const namelist = "Nokia";
-    res.render('prototype/listprototype.hbs', {
-        title: 'List product Nokia',
-        list, namelist
-    });
-})
-
-router.get('/list/xiaomi', async (req, res) => {
-    const list = await productModel.all(3);
-    const namelist = "Xiaomi";
-    res.render('prototype/listprototype.hbs', {
-        title: 'List product Xiaomi',
-        list, namelist
-    });
-})
-
-
-router.get('/list/dell', async (req, res) => {
-    const list = await productModel.all(4);
-    //console.log(list);
-    const namelist = "Dell";
-    res.render('prototype/listprototype.hbs', {
-        title: 'List product Dell',
-        list, namelist
-    });
-})
-
-router.get('/list/asua', async (req, res) => {
-    const list = await productModel.all(5);
-    const namelist = "Asua";
-    res.render('prototype/listprototype.hbs', {
-        title: 'List product Asua',
-        list, namelist
-    });
-})
-
-router.get('/list/apple', async (req, res) => {
-    const list = await productModel.all(6);;
-    const namelist = "Apple";
-    res.render('prototype/listprototype.hbs', {
-        title: 'List product Apple',
-        list, namelist
-    });
-})
-
-router.get('/list/lenovo', async (req, res) => {
-    const list = await productModel.all(7);
-    const namelist = "Lenovo";
-    res.render('prototype/listprototype.hbs', {
-        title: 'List product Lenovo',
+        title: 'List Product',
         list, namelist
     });
 })

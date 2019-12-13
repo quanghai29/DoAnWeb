@@ -1,28 +1,8 @@
-var express = require('express');
-const morgan = require('morgan');
-var exphbs = require('express-handlebars');
-require('express-async-errors');
+const express = require('express');
+const categoryModel = require('../models/category.model');
 
-var app = express();
-var hbs = exphbs.create();
+const router = express.Router();
 
-app.use(morgan('dev'));
-app.use(express.json());
-app.use(express.urlencoded({
-    extended:true
-}));
-
-app.engine('hbs', exphbs(
-    {
-        defaultLayout: 'main.hbs',
-        layoutsDir: 'views/_layouts'
-    })
-);
-app.set('view engine', 'hbs');
-
-// Set path for css
-app.use(express.static('Contents'));
-//Data ----------------------
 const top5day =
     [
         {
@@ -91,12 +71,7 @@ const top5offer =
         }
     ]
 
-const user =
-[
-
-];
-
-const top5value =
+    const top5value =
     [
         {
             image: "Dell/lap06.jpg",
@@ -129,61 +104,21 @@ const top5value =
             IDcustomer: "b001"
         }
     ]
-//----------------------------------------
-//note: biến user để phân biệt người thường đăng nhập hay thành viên có tài khoản
 
-app.get('/login', (req, res) => {
-    res.render('login', {
-        style: 'main.css',
-        title: 'Login',
-        user:true,
-        empty: user.length === 0
-    });
-})
-app.get('/signup', (req, res) => {
-    res.render('signup', {
-        style: 'main.css',
-        title: 'user sign up',
-        user:true,
-        empty: user.length === 0
-    });
+    const user =
+    [
+    
+    ];
+
+router.get('/', async (req, res) => {
+    const categoryMobile=await categoryModel.allByList(1);
+    const categoryLaptop=await categoryModel.allByList(2);
+    res.render('home',{
+        categoryMobile,categoryLaptop,
+        user: true, 
+        top5day, top5offer, top5value,
+        empty: user.length === 0,
+    })
 })
 
-// Set cho từng trang
-// app.get('/', (req, res) => {
-//     res.render('home', {
-//         title: 'Home-auction',
-//         user: true, 
-//         top5day, top5offer, top5value,
-//         empty: user.length === 0
-//     });
-// })
-
-
-
-//set path for categories
-app.use('/',require('./routes/category.route'));
-
-// Set path for list prototype
-app.use('/user', require('./routes/user/index.js'));
-
-app.use('/admin', require('./routes/admin/index.js'));
-
-app.use((req,res,next)=>{
-    // res.render('vwError/404');
-    res.send('you \'re lost');
-})
-
-//default error handler
-app.use( (err, req, res, next)=> {
-    console.error(err.stack);
-    // res.render('/vwErro/index');
-    res.status(500).send('View error log in cosole')
-  })
-
-
-//listen to Port 3000
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-})
+module.exports = router;
