@@ -1,6 +1,7 @@
-var express = require('express');
+const express = require('express');
 const morgan = require('morgan');
-var exphbs = require('express-handlebars');
+const exphbs = require('express-handlebars');
+const express_handlebars_sections = require('express-handlebars-sections');
 require('express-async-errors');
 
 var app = express();
@@ -15,7 +16,10 @@ app.use(express.urlencoded({
 app.engine('hbs', exphbs(
     {
         defaultLayout: 'main.hbs',
-        layoutsDir: 'views/_layouts'
+        layoutsDir: 'views/_layouts',
+        helpers:{
+            section: express_handlebars_sections()
+        }
     })
 );
 app.set('view engine', 'hbs');
@@ -137,7 +141,6 @@ app.get('/login', (req, res) => {
         style: 'main.css',
         title: 'Login',
         user:true,
-        empty: user.length === 0
     });
 })
 app.get('/signup', (req, res) => {
@@ -149,15 +152,15 @@ app.get('/signup', (req, res) => {
     });
 })
 
-// Set cho từng trang
-// app.get('/', (req, res) => {
-//     res.render('home', {
-//         title: 'Home-auction',
-//         user: true, 
-//         top5day, top5offer, top5value,
-//         empty: user.length === 0
-//     });
-// })
+//Set cho từng trang
+app.get('/', (req, res) => {
+    res.render('home', {
+        title: 'Home-auction',
+        user: true, 
+        top5day, top5offer, top5value,
+        empty: user.length === 0
+    });
+})
 
 
 

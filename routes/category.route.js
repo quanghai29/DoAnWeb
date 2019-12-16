@@ -71,7 +71,7 @@ const top5offer =
         }
     ]
 
-    const top5value =
+const top5value =
     [
         {
             image: "Dell/lap06.jpg",
@@ -105,20 +105,21 @@ const top5offer =
         }
     ]
 
-    const user =
+const user =
     [
-    
+
     ];
 
 router.get('/', async (req, res) => {
-    const categoryMobile=await categoryModel.allByList(1);
-    const categoryLaptop=await categoryModel.allByList(2);
-    res.render('home',{
-        categoryMobile,categoryLaptop,
-        user: true, 
-        top5day, top5offer, top5value,
-        empty: user.length === 0,
-    })
+    const categoryMobile = await categoryModel.allByList(1);
+    const categoryLaptop = await categoryModel.allByList(2);
+    res.render('home',
+        {
+            categoryMobile, categoryLaptop,
+            user: true,
+            top5day, top5offer, top5value,
+            empty: user.length === 0,
+        })
 })
 
 module.exports = router;

@@ -1,5 +1,5 @@
 const express = require('express');
-const productModel=require('../../models/product.model');
+const productModel = require('../../models/product.model');
 
 const router = express.Router();
 
@@ -64,7 +64,7 @@ router.get('/detail/dellvostro3580', (req, res) => {
     });
 })
 
-router.get('/:id/products', async (req,res)=>{
+router.get('/:id/products', async (req, res) => {
     const list = await productModel.all(req.params.id);
     const namelist = "Products";
     res.render('prototype/listprototype.hbs', {
@@ -73,7 +73,7 @@ router.get('/:id/products', async (req,res)=>{
     });
 })
 
-router.get('/err',(req,res)=>{
+router.get('/err', (req, res) => {
     throw new Error('error occured');
 })
 

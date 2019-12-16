@@ -9,19 +9,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/main.css">
-
+    {{{_sections.css}}}
 </head>
 
 <body>
     <!--Đầu trang -->
-    <div class="nav-header">
+    <div class="nav-header" id="header">
         <nav class="navbar navbar-light">
             {{#if user}}
             <a href="/" rel="stylesheet" class="navbar-brand" id="linkhome">
                 <i class="fa fa-gavel" id="iconHomePage" aria-hidden="true"></i>
                 Micromart
             </a>
-            {{else}}
             <a href="/admin/home" rel="stylesheet" class="navbar-brand" id="linkhome">
                 <i class="fa fa-gavel" id="iconHomePage" aria-hidden="true"></i>
                 Micromart
@@ -73,72 +72,66 @@
         <!--Nội dung của từng trang -->
         {{{body}}}
         <!--Foot Page-->
-        <footer>
-            <div class="container-fluid mt-4">
-                <hr>
-                <footer class="container">
-                    <p class="float-right"><a href="#">Back to top</a></p>
-                    <p>© Hoa Rơi Cửa Phật Team-3/4. · <a data-toggle="modal" href="#d1">Information</a> ·</p>
-                </footer>
-                <div class="modal fade" id="d1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Thông tin các thành viên</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="f-infor">
-                                    <div>
-                                        <img src="Images/Footer_Infor/dunggay.jpg" width="200" height="150"
-                                            class="zoom">
-                                    </div>
-                                    <div class="ml-4">
-                                        <p><b>Bùi Tiến Dũng</b></p>
-                                        <p>...</p>
-                                    </div>
+        <div class="container-fluid mt-4 " id="footer">
+            <hr>
+            <footer class="container">
+                <p class="float-right"><a href="#">Back to top</a></p>
+                <p>© Hoa Rơi Cửa Phật Team-3/4. · <a data-toggle="modal" href="#d1">Information</a> ·</p>
+            </footer>
+            <div class="modal fade" id="d1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Thông tin các thành viên</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="f-infor">
+                                <div>
+                                    <img src="Images/Footer_Infor/dunggay.jpg" width="200" height="150" class="zoom">
                                 </div>
-                                <div class="f-infor mt-2">
-                                    <div>
-                                        <img src="Images/Footer_Infor/linhdong.jpg" width="200" height="150"
-                                            class="zoom">
-                                    </div>
-                                    <div class="ml-4">
-                                        <p><b>Mai Linh Đồng</b></p>
-                                        <p>...</p>
-                                    </div>
-                                </div>
-                                <div class="f-infor mt-2">
-                                    <div>
-                                        <img src="Images/Footer_Infor/quanghai.jpg" width="200" height="150"
-                                            class="zoom">
-                                    </div>
-                                    <div class="ml-4">
-                                        <p><b>Lê Quang Hải</b></p>
-                                        <p>...</p>
-                                    </div>
+                                <div class="ml-4">
+                                    <p><b>Bùi Tiến Dũng</b></p>
+                                    <p>...</p>
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <div class="f-infor mt-2">
+                                <div>
+                                    <img src="Images/Footer_Infor/linhdong.jpg" width="200" height="150" class="zoom">
+                                </div>
+                                <div class="ml-4">
+                                    <p><b>Mai Linh Đồng</b></p>
+                                    <p>...</p>
+                                </div>
                             </div>
+                            <div class="f-infor mt-2">
+                                <div>
+                                    <img src="Images/Footer_Infor/quanghai.jpg" width="200" height="150" class="zoom">
+                                </div>
+                                <div class="ml-4">
+                                    <p><b>Lê Quang Hải</b></p>
+                                    <p>...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </footer>
-
+        </div>
     </div>
 
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="javascript/script.js"></script>
+    {{{_sections.js}}}
 </body>
 
 </html>
