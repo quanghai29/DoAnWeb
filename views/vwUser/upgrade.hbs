@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 box-shadow h-25 mx-5">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Bidder</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list mt-3 mb-4 text-left">
+                    <li>Buy product</li>
+                    <li>Upgrade to seller on 7 days</li>
+                </ul>
+                <button type="button" class="btn btn-lg btn-block btn-primary">
+                    <i class="fa fa-check fa-10x">Already</i></button>
+            </div>
+        </div>
+        <div class="card mb-4 box-shadow mx-5 h-25">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Seller</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list mt-3 mb-4 text-left">
+                    <li>Buy product</li>
+                    <li>Sell product</li>
+                </ul>
+                {{#if bidder}}
+                <button type="button" class="btn btn-lg btn-block btn-primary" id="UpgradeSeller">
+                    Get started</button>
+                {{else}}
+                <button type="button" class="btn btn-lg btn-block btn-primary">
+                    <i class="fa fa-check fa-10x">Already</i></button>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>

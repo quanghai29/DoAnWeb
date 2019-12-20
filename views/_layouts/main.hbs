@@ -16,52 +16,55 @@
     <!--Đầu trang -->
     <div class="nav-header" id="header">
         <nav class="navbar navbar-light">
-            {{#if user}}
             <a href="/" rel="stylesheet" class="navbar-brand" id="linkhome">
                 <i class="fa fa-gavel" id="iconHomePage" aria-hidden="true"></i>
                 Micromart
             </a>
-            <a href="/admin/home" rel="stylesheet" class="navbar-brand" id="linkhome">
-                <i class="fa fa-gavel" id="iconHomePage" aria-hidden="true"></i>
-                Micromart
-            </a>
-            {{/if}}
-            <form class="form-inline">
-                <input class="form-control" id="inputSearch" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn my-2 my-sm-0" id="searchButton" type="submit">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                    &nbsp; Tìm kiếm
-                </button>
-
-                {{#if user }}
-                <a href="/login" id="btnheader">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                    Đăng nhập
-                </a>
-
-                <a href="/signup" id="btnheader">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                    Tạo tài khoản
-                </a>
-                {{else}}
+            <input class="form-control ml-auto" id="inputSearch" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn my-2 my-sm-0" id="searchButton" type="submit">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                &nbsp; Tìm kiếm
+            </button>
+            <form action="/account/logout" method="post" id="frmLogout"></form>
+            <form class="form-inline ml-auto">
+                {{#if isAuthenticated}}
                 <a rel="stylesheet" href="/admin/cart">
                     <i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i></a>
-                <div class="dropdown ml-2">
-                    <a class="btn dropdown-toggle btnheader" href="#" role="button" id="dropdownMenuLink"
+                <div class="dropdown ml-5 mr-5">
+                    <a class="btn dropdown-toggle btn-outline-info" href="#" role="button" id="dropdownMenuLink"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        My account
+                        <b>{{authUser.f_Username}}</b>
                     </a>
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="/admin/myprofile"><i class="fa fa-user" aria-hidden="true"></i>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="/user/myprofile"><i class="fa fa-user" aria-hidden="true"></i>
                             My
                             Profile</a>
-                        <a class="dropdown-item" href="/admin/myorders"><i class="fa fa-check" aria-hidden="true"></i>
+                        <a class="dropdown-item" href="/user/myorders"><i class="fa fa-check" aria-hidden="true"></i>
                             My
                             Orders</a>
-                        <a class="dropdown-item" href="/"><i class="fa fa-unlock" aria-hidden="true"></i> Log Out</a>
+                        <a class="dropdown-item" href="/user/products"><i class="fa fa-product-hunt"
+                                aria-hidden="true"></i>
+                            My
+                            Products</a>
+                        <a class="dropdown-item" href="/user/upgrade"><i class="fa fa-user-plus"
+                                aria-hidden="true"></i>
+                            Upgrade Account
+                        </a>
+                        <a class="dropdown-item" href="javascript: $('#frmLogout').submit();">
+                            <i class="fa fa-unlock" aria-hidden="true"></i> Log Out</a>
                     </div>
                 </div>
+                {{else}}
+                <a href="/account/login" id="btnheader">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    Login
+                </a>
+
+                <a href="/account/signup" id="btnheader">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    Sign Up
+                </a>
                 {{/if}}
             </form>
         </nav>
