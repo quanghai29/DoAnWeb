@@ -16,6 +16,7 @@ router.post('/signup', async (req, res) => {
   const N = 10;
   var gioitinh='Nam';
   const hash = bcrypt.hashSync(req.body.raw_password, N);
+  console.log(req.body.dob);
   const dob = moment(req.body.dob, 'DD/MM/YYYY').format('YYYY-MM-DD');
   if(req.body.value_GioiTinh==1)
   {
