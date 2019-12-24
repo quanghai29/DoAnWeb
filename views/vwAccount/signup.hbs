@@ -41,9 +41,14 @@
                 <input type="text" id="txtUsername" name="f_Username" class="form-control" placeholder="haimtp"
                     autofocus="true" required>
             </div>
-            <div class="form-label-group">
+            <div class="form-label-group mb-4">
                 <label for="inputPassword">Password</label>
-                <input type="text" id="txtPassword" name="raw_password" class="form-control" required>
+                <input type="password" id="txtPassword" name="raw_password" class="form-control" required>
+            </div>
+            <div class="form-label-group fg">
+                <label for="inputConfirmPassword">Confirm Password</label>
+                <label id="confirm"></label>
+                <input oninput="checkConfirm()" type="password" id="txtConfirmPassword" name="confirmPass" class="form-control" required>
             </div>
             <hr>
             <div class="mb-4">
@@ -65,7 +70,7 @@
             <div class="form-label-group mb-4 fg">
                 <label for="inputEmail">Email address</label>
                 <label id="warningEmail"></label>
-                <input onkeydown="checkEmail()" onchange="checkEmail()" type="text" id="txtEmail" name="f_Email"
+                <input oninput="checkEmail()" onchange="checkEmail()" type="text" id="txtEmail" name="f_Email"
                     class="form-control" placeholder="QH@micro.com" required>
             </div>
             <div class="form-label-group mb-4">
@@ -101,7 +106,7 @@
             mask: true,
         });
         function validate() {
-            if (checkEmail() == true && checkDOB()== true) {
+            if (checkEmail() == true && checkDOB() == true && checkConfirm()==true) {
                 return true;
             }
             else {
@@ -130,6 +135,20 @@
             else {
                 document.getElementById("warningEmail").innerHTML = "";
                 return true;
+            }
+        }
+
+        function checkConfirm(){
+            var pass=frmRegister.raw_password.value;
+            var confirm=frmRegister.confirmPass.value;
+            if(confirm!=pass)
+            {
+                document.getElementById('confirm').innerHTML="!Uncorrect";
+                return false;
+            }
+            else{
+                document.getElementById('confirm').innerHTML="";
+                  return true;
             }
         }
     </script>
