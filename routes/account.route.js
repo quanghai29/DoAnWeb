@@ -5,41 +5,60 @@ const moment = require('moment');
 const router = express.Router();
 
 router.get('/signup', async (req, res) => {
-  res.render('vwAccount/signup',{
-    layout:false
+  res.render('vwAccount/signup', {
+    layout: false,
   });
-  
 });
 
 
 router.post('/signup', async (req, res) => {
   const N = 10;
-  var gioitinh='Nam';
-  const hash = bcrypt.hashSync(req.body.raw_password, N);
-  console.log(req.body.dob);
-  const dob = moment(req.body.dob, 'DD/MM/YYYY').format('YYYY-MM-DD');
-  if(req.body.value_GioiTinh==1)
-  {
-    gioitinh='Nữ';
-  }
-  const entity = req.body;
-  entity.f_Password = hash;
-  entity.f_DOB = dob;
-  entity.f_GioiTinh=gioitinh;
-  
-  delete entity.value_GioiTinh;
-  delete entity.raw_password;
-  delete entity.dob;
-  console.log(entity);
-  const result = await userModel.add(entity);
-  console.log(result);
+  var gioitinh = 'Nam';
 
-  res.render('home');
+  //Kiểm tra tên username người dùng nhập vào đã tồn tại trong database chưa
+  const userNames = await userModel.allUserNames();
+  var username = req.body.f_Username;
+  var check = false;
+  for (var i = 0; i < userNames.length; i++) {
+    if (username === userNames[i].f_Username) {
+      check = true;
+      break;
+    }
+  }
+
+  if (check) {
+    res.render('vwAccount/signup', {
+      layout: false,
+      check
+    });
+  }
+  else {
+    const hash = bcrypt.hashSync(req.body.raw_password, N);
+    console.log(req.body.dob);
+    const dob = moment(req.body.dob, 'DD/MM/YYYY').format('YYYY-MM-DD');
+    if (req.body.value_GioiTinh == 1) {
+      gioitinh = 'Nữ';
+    }
+    const entity = req.body;
+    entity.f_Password = hash;
+    entity.f_DOB = dob;
+    entity.f_GioiTinh = gioitinh;
+
+    delete entity.value_GioiTinh;
+    delete entity.raw_password;
+    delete entity.dob;
+    delete entity.confirmPass;
+    console.log(entity);
+    const result = await userModel.add(entity);
+    console.log(result);
+
+    res.render('home');
+  }
 });
 
 router.get('/login', async (req, res) => {
-  res.render('vwAccount/login',{
-    layout:false
+  res.render('vwAccount/login', {
+    layout: false
   });
 });
 
@@ -59,7 +78,7 @@ router.post('/login', async (req, res) => {
 
   req.session.isAuthenticated = true;
   req.session.authUser = user;
-  req.session.role=user.ID_loai_member;
+  req.session.role = user.ID_loai_member;
 
   const url = req.query.retUrl || '/';
   res.redirect(url);
@@ -68,7 +87,7 @@ router.post('/login', async (req, res) => {
 router.post('/logout', (req, res) => {
   req.session.isAuthenticated = false;
   req.session.authUser = null;
-  req.session.role=-1;
+  req.session.role = -1;
   res.redirect(req.headers.referer);
 });
 module.exports = router;

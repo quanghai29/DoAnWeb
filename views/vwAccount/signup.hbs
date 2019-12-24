@@ -36,8 +36,11 @@
             <div class="mb-4">
                 <h1 class="h3 mb-3 font-weight-light">Thông tin bắt buộc</h1>
             </div>
-            <div class="form-label-group mb-4">
+            <div class="form-label-group mb-4 fg">
                 <label for="inputUsername">User Name</label>
+                {{#if this.check}}
+                <label id="warningUsername">The name is existed! Please choose a other name</label>
+                {{/if}}
                 <input type="text" id="txtUsername" name="f_Username" class="form-control" placeholder="haimtp"
                     autofocus="true" required>
             </div>
@@ -48,7 +51,8 @@
             <div class="form-label-group fg">
                 <label for="inputConfirmPassword">Confirm Password</label>
                 <label id="confirm"></label>
-                <input oninput="checkConfirm()" type="password" id="txtConfirmPassword" name="confirmPass" class="form-control" required>
+                <input oninput="checkConfirm()" type="password" id="txtConfirmPassword" name="confirmPass"
+                    class="form-control" required>
             </div>
             <hr>
             <div class="mb-4">
@@ -106,7 +110,7 @@
             mask: true,
         });
         function validate() {
-            if (checkEmail() == true && checkDOB() == true && checkConfirm()==true) {
+            if (checkConfirm() == true && checkEmail() == true && checkDOB() == true) {
                 return true;
             }
             else {
@@ -138,17 +142,16 @@
             }
         }
 
-        function checkConfirm(){
-            var pass=frmRegister.raw_password.value;
-            var confirm=frmRegister.confirmPass.value;
-            if(confirm!=pass)
-            {
-                document.getElementById('confirm').innerHTML="!Uncorrect";
+        function checkConfirm() {
+            var pass = frmRegister.raw_password.value;
+            var confirm = frmRegister.confirmPass.value;
+            if (confirm != pass) {
+                document.getElementById('confirm').innerHTML = "!Uncorrect";
                 return false;
             }
-            else{
-                document.getElementById('confirm').innerHTML="";
-                  return true;
+            else {
+                document.getElementById('confirm').innerHTML = "";
+                return true;
             }
         }
     </script>
