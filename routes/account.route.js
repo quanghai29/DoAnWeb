@@ -16,16 +16,8 @@ router.post('/signup', async (req, res) => {
   var gioitinh = 'Nam';
 
   //Kiểm tra tên username người dùng nhập vào đã tồn tại trong database chưa
-  const userNames = await userModel.allUserNames();
   var username = req.body.f_Username;
-  var check = false;
-  for (var i = 0; i < userNames.length; i++) {
-    if (username === userNames[i].f_Username) {
-      check = true;
-      break;
-    }
-  }
-
+  const check = await userModel.allUserNames(username);
   if (check) {
     res.render('vwAccount/signup', {
       layout: false,
@@ -65,8 +57,10 @@ router.get('/login', async (req, res) => {
 router.post('/login', async (req, res) => {
   const user = await userModel.singleByUsername(req.body.username);
   if (user === null)
+  {
     throw new Error('Invalid username or password.');
-
+  }
+   
   const rs = bcrypt.compareSync(req.body.password, user.f_Password);
   if (rs === false)
     return res.render('vwAccount/login', {
