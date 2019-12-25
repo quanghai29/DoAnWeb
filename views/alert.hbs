@@ -1,0 +1,19 @@
+{{#section 'css'}}
+<style>
+  #footer {
+    position: fixed;
+    bottom: 0%;
+    width: 100%;
+  }
+</style>
+{{/section}}
+{{#section 'js'}}
+<script>
+  Swal.fire({
+    icon: 'error',
+    title: 'Error Role',
+    text: 'Bạn không có quyền truy cập vào chức năng này',
+    footer: '<a href>Why do I have this issue?</a>'
+  })
+</script>
+{{/section}}

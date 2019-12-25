@@ -48,7 +48,23 @@ app.get('/', (req, res) => {
     });
 })
 
+app.get('/alert',(req,res)=>{
+    res.render('alert.hbs',{
+        title:'Alert'
+    });
+})
 
+app.get('/alertUpgrade',(req,res)=>{
+    res.render('alertUpgrade.hbs',{
+        title:'Alert Upgrade'
+    });
+})
+
+app.get('/alertComplete',(req,res)=>{
+    res.render('alertComplete.hbs',{
+        title:'Alert Complete'
+    });
+})
 app.use((req,res,next)=>{
     // res.render('vwError/404');
     res.send('you \'re lost');

@@ -1,0 +1,26 @@
+{{#section 'css'}}
+<style>
+    #footer {
+        position: fixed;
+        bottom: 0%;
+        width: 100%;
+    }
+</style>
+{{/section}}
+{{#section 'js'}}
+<script>
+ Swal.fire({
+    title: 'Are you sure?',
+    text: "Bạn cần Upgrade để vào chức năng này",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, I Upgrade'
+  }).then((result) => {
+    if (result.value) {
+      window.location.replace('/user/upgrade');
+    }
+  })
+</script>
+{{/section}}

@@ -1,13 +1,14 @@
 const express=require('express');
 //const productModel=require('../../models/product.model');
 const userModel = require('../../models/user.model');
-const restrict = require('../../middlewares/auth.mdw');
+const roleSeller = require('../../middlewares/authSeller.mdw');
+const roleBidder=require('../../middlewares/authBidder.mdw');
 const router=express.Router();
 
 
 //Chỉnh sửa lại profile có thể edit được
 
-router.get('/myprofile',restrict, (req, res) => {
+router.get('/myprofile',roleBidder, (req, res) => {
     res.render('vwUser/myprofile.hbs', {
         title: 'your profile',
     });

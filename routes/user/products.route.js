@@ -2,33 +2,26 @@ const express=require('express');
 //const categoryModel=require('../../models/category.model');
 //const productModel=require('../../models/product.model');
 const userModel = require('../../models/user.model');
-const restrict = require('../../middlewares/auth.mdw');
+const roleSeller = require('../../middlewares/authSeller.mdw');
 const router=express.Router();
 
 //Thêm sửa xóa sản phẩm của chính seller đó
 
 //Chưa có view myproducts hiện ra list sản phẩm của seller đó
-router.get('/products',restrict, (req, res) => {
-    if (req.session.role === 1)
-    {
-        alert('You must upgrade');
-        return res.redirect('/');
-    }
-     
+router.get('/products',roleSeller, (req, res) => {
     res.render('vwUser/myproducts.hbs', {
         title: 'Your Products',
     });
 })
 
-// //edit dữ liệu của database
+//edit dữ liệu của database
 // router.get('/edit/:id', async (req,res)=>{
 //     const rows= await productModel.getPro(req.params.id);
 //     if(rows.length === 0){
 //         throw new Error('Invalid product id');
-        
 //     }
 //     console.log(req.params.id);
-//     res.render('vwadmin/edit',{
+//     res.render('vwUser/edit',{
 //         product:rows[0]
 //     });
 // })
@@ -46,10 +39,10 @@ router.get('/products',restrict, (req, res) => {
 //     res.redirect('/');
 // })
 
-// //Thêm dữ liệu vào database
-// router.get('/add',(req,res)=>{
-//     res.render('vwadmin/add');
-// })
+//Thêm dữ liệu vào database
+router.get('/add_product',(req,res)=>{
+    res.render('vwUser/add-product');
+})
 
 // router.post('/add', async (req,res)=>{
 //     // console.log(req.body);
