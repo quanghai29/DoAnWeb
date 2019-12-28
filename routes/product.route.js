@@ -23,6 +23,7 @@ router.get('/detail/dellvostro3580', (req, res) => {
 
 router.get('/:id/products', async (req, res) => {
     const list = await productModel.all(req.params.id);
+    console.log(list);
     const namelist = "Products";
     res.render('prototype/listprototype.hbs', {
         title: 'List Product',
