@@ -9,36 +9,31 @@
                 </div>
                 <div class="row tm-edit-product-row">
                     <div class="col-xl-6 col-lg-6 col-md-12">
-                        <form action="/add-product" method = "POST" class="tm-edit-product-form">
-                            <div class="form-group mb-3">
-                                <label for="id">Mã sản phẩm
-                                </label>
-                                <input id="id" name="id" type="text"
-                                    class="form-control validate" />
-                            </div>
+                        <form action="/add-product" method="POST" class="tm-edit-product-form">
                             <div class="form-group mb-3">
                                 <label for="tensanpham">Tên sản phẩm
                                 </label>
-                                <input id="tensanpham" name="tensanpham" type="text"
-                                    class="form-control validate" />
+                                <input id="tensanpham" name="tensanpham" type="text" class="form-control validate" />
                             </div>
-                            <div class="form-group mb-3">
-                                <label for="tentacgia">Tên tác giả
-                                </label>
-                                <input id="tentacgia" name="tentacgia" type="text" value="{{item.tentacgia}}"
-                                    class="form-control validate" />
+                            <div class="row">
+                                <div class="form-group mb-3 col-xs-12 col-sm-6">
+                                    <label for="dongia">Giá Khởi Điểm
+                                    </label>
+                                    <input id="dongia" name="dongia" type="number" class="form-control validate"
+                                        data-large-mode="true" />
+                                </div>
+                                   <div class="form-group mb-3 col-xs-12 col-sm-6">
+                                    <label for="dongia">Bước giá
+                                    </label>
+                                    <input id="dongia" name="dongia" type="number" class="form-control validate"
+                                        data-large-mode="true" />
+                                </div>
                             </div>
-                            <div class="form-group mb-3">
-                                <label for="nxb">Tên nhà xuất bản
-                                </label>
-                                <input id="nxb" name="nxb" type="text"
-                                    class="form-control validate" />
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="id_theloai">Thể loại
-                                </label>
-                                <input id="id_theloai" name="id_theloai" type="text"
-                                    class="form-control validate" />
+                            <div class="form-group mb-3 col-xs-12 col-sm-6">
+                                    <label for="dongia">Giá Mua Ngay
+                                    </label>
+                                    <input id="dongia" name="dongia" type="number" class="form-control validate"
+                                        data-large-mode="true" />
                             </div>
 
                             <!-- <div class="form-group mb-3">
@@ -50,26 +45,11 @@
                                     <option value="3">Trending</option>
                                 </select>
                             </div> -->
-                            <div class="row">
-                                <div class="form-group mb-3 col-xs-12 col-sm-6">
-                                    <label for="dongia">Đơn giá
-                                    </label>
-                                    <input id="dongia" name="dongia" type="number"
-                                        class="form-control validate" data-large-mode="true" />
-                                </div>
-                                <div class="form-group mb-3 col-xs-12 col-sm-6">
-                                    
-                                        <label for="sl">Số lượng
-                                </label>
-                                <input id="sl" name="sl" type="number"
-                                    class="form-control validate" />
-                                </div>
-                            </div>
+
                             <div class="form-group mb-3">
                                 <label for="img">Link ảnh
-                                    </label>
-                                    <input id="img" name="img" type="text"
-                                        class="form-control validate" />
+                                </label>
+                                <input id="img" name="img" type="text" class="form-control validate" />
                             </div>
 
                     </div>
