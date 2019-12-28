@@ -47,8 +47,7 @@
                                 aria-hidden="true"></i>
                             My
                             Products</a>
-                        <a class="dropdown-item" href="/user/upgrade"><i class="fa fa-user-plus"
-                                aria-hidden="true"></i>
+                        <a class="dropdown-item" href="/user/upgrade"><i class="fa fa-user-plus" aria-hidden="true"></i>
                             Upgrade Account
                         </a>
                         <a class="dropdown-item" href="javascript: $('#frmLogout').submit();">
@@ -69,71 +68,33 @@
             </form>
         </nav>
     </div>
-
-
-    <div class="container-fluid" id="Menu-Slider">
+   
+    <div style="width:100%; position: absolute; top:20% ;"  >
         <!--Nội dung của từng trang -->
-        {{{body}}}
-        <!--Foot Page-->
-        <div class="container-fluid mt-4 " id="footer">
-            <hr>
-            <footer class="container">
-                <p class="float-right"><a href="#">Back to top</a></p>
-                <p>© Hoa Rơi Cửa Phật Team-3/4. · <a data-toggle="modal" href="#d1">Information</a> ·</p>
-            </footer>
-            <div class="modal fade" id="d1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Thông tin các thành viên</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="f-infor">
-                                <div>
-                                    <img src="Images/Footer_Infor/dunggay.jpg" width="200" height="150" class="zoom">
-                                </div>
-                                <div class="ml-4">
-                                    <p><b>Bùi Tiến Dũng</b></p>
-                                    <p>...</p>
-                                </div>
-                            </div>
-                            <div class="f-infor mt-2">
-                                <div>
-                                    <img src="Images/Footer_Infor/linhdong.jpg" width="200" height="150" class="zoom">
-                                </div>
-                                <div class="ml-4">
-                                    <p><b>Mai Linh Đồng</b></p>
-                                    <p>...</p>
-                                </div>
-                            </div>
-                            <div class="f-infor mt-2">
-                                <div>
-                                    <img src="Images/Footer_Infor/quanghai.jpg" width="200" height="150" class="zoom">
-                                </div>
-                                <div class="ml-4">
-                                    <p><b>Lê Quang Hải</b></p>
-                                    <p>...</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="container-fluid">
+            {{{body}}}
         </div>
+        <!--Foot Page--> 
+        <footer class="text-white bg-info m-0 p-4 shadow-sm" id="footer" >
+            <div class="container-fluid ">
+                <p class="float-right">
+                    <a href="#" class="text-white">Back to top</a>
+                </p>
+                <p class="font-weight-bold">© Hoa Rơi Cửa Phật Team</p>
+                <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a
+                        href="../../getting-started/">getting started guide</a>.</p>
+            </div>
+        </footer>    
     </div>
-
+   
+    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
     {{{_sections.js}}}
 </body>
 

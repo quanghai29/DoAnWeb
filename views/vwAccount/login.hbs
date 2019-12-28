@@ -28,7 +28,12 @@
         .mt-5 {
             margin-top: 7% !important;
         }
-        
+
+        .fg label:nth-child(2) {
+            float: right;
+            color: red;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -45,27 +50,32 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 {{err_message}}
+                {{#if this.invalidPass}}
+                <label id="invalidUsername">Invalid Password!</label>
+                {{/if}}
             </div>
             {{/if}}
-
-            <div class="form-label-group mb-4">
+            <div class="form-label-group mb-4 fg">
                 <label for="inputUsername">User Name</label>
-                <input type="text" id="txtUsername" name="username" class="form-control" placeholder="haimtp"
-                    autofocus="true">
+                <label id="warningUsername"></label>
+                <input oninput="checkUsername()" type="text" id="txtUsername" name="username" class="form-control"
+                    placeholder="haimtp" autofocus="true" required>
             </div>
-            <div class="form-label-group mb-4">
+            <div class="form-label-group mb-4 fg">
                 <label for="inputPassword">Password</label>
-                <input type="text" id="txtPassword" name="password" class="form-control">
+                <label id="warningPass"></label>
+                <input oninput="checkPass()" type="password" id="txtPassword" name="password" class="form-control"
+                    required>
             </div>
-            <button class="btn btn-lg btn-info mb-2" type="submit">Login</button> 
+            <button class="btn btn-lg btn-info mb-2" type="submit">Login</button>
         </form>
         <div class="container text-center">
-        <a class href="/">
-            <button class="btn btn-lg btn-warning mb-2" type="submit"> 
-                Home<i class="fa fa-home fa-10x"></i>
-            </button>
-        </a>
-        </div>         
+            <a class href="/">
+                <button class="btn btn-lg btn-warning mb-2" type="submit">
+                    Home<i class="fa fa-home fa-10x"></i>
+                </button>
+            </a>
+        </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -78,6 +88,33 @@
 
 <script>
     function validate() {
+        if (checkUsername() === true && checkPass() === true)
+            return true;
+        else
+            return false;
+    }
+
+    function checkUsername() {
+        var userName = frmLogin.username.value;
+        if (userName === '') {
+            document.getElementById('warningUsername').innerHTML = "Please enter your user name!";
+            return false;
+        }
+        else {
+            document.getElementById('warningUsername').innerHTML = "";
+        }
+        return true;
+    }
+
+    function checkPass() {
+        var pass = frmLogin.password.value;
+        if (pass === '') {
+            document.getElementById('warningPass').innerHTML = "Please enter your password!";
+            return false;
+        }
+        else {
+            document.getElementById('warningPass').innerHTML = "";
+        }
         return true;
     }
 </script>
