@@ -1,4 +1,5 @@
 const db = require('../utils/db');
+const config = require('../config/default.json');
 
 module.exports = {
     all: id => db.load(`select * from products where Item = ${id}`),
@@ -8,7 +9,11 @@ module.exports = {
     patch: entity => {
         const condition = { ProID: entity.ProID };
         delete entity.ProID;
-        console.log(condition, entity);
-        return db.patch('products',entity,condition);
-    }
+        return db.patch('products', entity, condition);
+    },
+    countByCat: async Item => {
+        const rows = await db.load(`select count(*) as total from products where Item = ${Item}`);
+        return rows[0].total;
+    },
+    pageByCat: (Item, offset) => db.load(`select * from products where Item = ${Item} limit ${config.paginate.limit} offset ${offset}`),
 };
