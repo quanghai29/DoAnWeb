@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 const express_handlebars_sections = require('express-handlebars-sections');
 const session = require('express-session');
+const numeral = require('numeral');
 require('express-async-errors');
 
 var app = express();
@@ -29,7 +30,8 @@ app.engine('hbs', exphbs(
         defaultLayout: 'main.hbs',
         layoutsDir: 'views/_layouts',
         helpers:{
-            section: express_handlebars_sections()
+            section: express_handlebars_sections(),
+            format: val => numeral(val).format('0,0')
         }
     })
 );

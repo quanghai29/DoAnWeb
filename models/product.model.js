@@ -16,4 +16,9 @@ module.exports = {
         return rows[0].total;
     },
     pageByCat: (Item, offset) => db.load(`select * from products where Item = ${Item} limit ${config.paginate.limit} offset ${offset}`),
+    //     console.log(condition, entity);
+    //     return db.patch('products',entity,condition);
+    // },
+    addDetailProduct: entity => db.add('prodetails', entity),
+    addImageProduct: entity => db.add('proimage', entity),
 };

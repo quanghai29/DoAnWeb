@@ -1,0 +1,86 @@
+{{#section 'css'}}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/css/fileinput.min.css" media="all"
+  rel="stylesheet" type="text/css" />
+{{/section}}
+
+{{#section 'js'}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/js/fileinput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/themes/fa/theme.min.js"></script>
+<script>
+  $('#Extra').fileinput({
+    theme: 'fa',
+    dropZoneEnabled: false,
+    allowedFileExtensions: ['png', 'jpg', 'gif'],
+  });
+
+  //Thông báo đã đăng kí thành công
+  {{#if complete}}
+       Swal.fire({
+  title: 'Sweet!',
+  text: 'Chúc mừng bạn đã add thành công sản phẩm của bạn đang chờ phê duyệt của admin',
+  imageUrl: 'https://www.ampmpodcast.com/wp-content/uploads/2016/12/EP88.jpg',
+  imageWidth: 400,
+  imageHeight: 200,
+  imageAlt: 'Custom image',
+  showCancelButton: true,
+  confirmButtonText: 'Continute',
+  cancelButtonText: 'Home',
+  cancelButtonColor: '#d33',
+  }).then((result) => {
+  if (result.value) {
+    window.location.replace('/user/add_product');
+  }
+  else{
+     window.location.replace('/');
+  }
+  })
+  {{/if}}
+</script>
+{{/section}}
+
+<div class="row mb-5">
+  <div class="col-xl-1 col-lg-1"></div>
+  <div class="col-xl-9 col-lg-9 col-md-12">
+    <form method="POST" novalidate enctype="multipart/form-data" onsubmit="return validate();">
+      <div class="card shadow h-100">
+        <h4 class="card-header">
+          Upload Image of Product
+        </h4>
+        <div class="card-body">
+          <div class="form-group">
+            <div class="row mt-2 mb-4">
+              <div class="col-xl-12 col-lg-12 col-md-12 mb-4">
+                <h5 for="Extra" class="text-danger">Upload Extra Image</h5>
+                <div class="file-loading">
+                  <input id="Extra" name="Extra[]" type="file" multiple>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-right mb-5">
+          <button type="submit" class="btn btn-lg btn-success btn-block">
+            <i class="fa fa-check" aria-hidden="true"></i>
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-xl-1 col-lg-1"></div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+      function validate() {
+        /*******************************************************/
+        // Kiểm tra người dùng có tải lên file ảnh đã hỗ trợ ở trên hay không
+        // kiểm tra người dùng có tải 4 ảnh trở lên hay chưa 
+        //console.log($('#Extra').val());
+        return true;
+      }
+
+    })
+
+</script>
