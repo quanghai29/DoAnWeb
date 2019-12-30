@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/main.css">
+  {{{_sections.css}}}
+</head>
+
+<body>
+
+  <!--Đầu trang -->
+  <div class="nav-header" id="header">
+    <nav class="navbar navbar-light">
+      <a href="/admin/categories" rel="stylesheet" class="navbar-brand" id="linkhome">
+        <i class="fa fa-gavel" id="iconHomePage" aria-hidden="true"></i>
+        Micromart
+      </a>
+      {{!-- <input class="form-control ml-auto" id="inputSearch" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn my-2 my-sm-0" id="searchButton" type="submit">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        &nbsp; Tìm kiếm
+      </button> --}}
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form action="/account/logout" method="post" id="frmLogout"></form>
+      <form class="form-inline ml-auto">
+        {{#if isAuthenticated}}
+        <a rel="stylesheet" href="/admin/cart">
+          <i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i></a>
+        <div class="dropdown ml-5 mr-5">
+          <a class="btn dropdown-toggle btn-outline-info" href="#" role="button" id="dropdownMenuLink"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <b>{{authUser.f_Username}}</b>
+          </a>
+
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="/user/myprofile"><i class="fa fa-user" aria-hidden="true"></i>
+              My
+              Profile</a>
+            <a class="dropdown-item" href="/user/myorders"><i class="fa fa-check" aria-hidden="true"></i>
+              My
+              Orders</a>
+            <a class="dropdown-item" href="/user/products"><i class="fa fa-product-hunt" aria-hidden="true"></i>
+              My
+              Products</a>
+            <a class="dropdown-item" href="/user/upgrade"><i class="fa fa-user-plus" aria-hidden="true"></i>
+              Upgrade Account
+            </a>
+            <a class="dropdown-item" href="javascript: $('#frmLogout').submit();">
+              <i class="fa fa-unlock" aria-hidden="true"></i> Log Out</a>
+          </div>
+        </div>
+        {{else}}
+        <a href="/account/login" id="btnheader">
+          <i class="fa fa-user" aria-hidden="true"></i>
+          Login
+        </a>
+
+        <a href="/account/signup" id="btnheader">
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+          Sign Up
+        </a>
+        {{/if}}
+      </form>
+    </nav>
+  </div>
+
+  <div style="width:100%; position: absolute; top:20% ;">
+    <div class="container-fluid mt-4">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="card shadow">
+            <h4 class="card-header">
+              Categories
+            </h4>
+            <div class="list-group list-group-flush">
+              {{#each lcCategories}}
+              <a href="/admin/categories/{{ItemID}}/products?page=1"
+                class="list-group-item list-group-item-action {{#if isActive}}active{{/if}}">
+                {{ItemName}}
+                {{#if num_of_products}}
+                <span class="badge badge-danger float-right">{{num_of_products}}</span>
+                {{/if}}
+              </a>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-9">
+          {{{body}}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
