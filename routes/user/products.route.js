@@ -19,7 +19,6 @@ router.get('/products', (req, res) => {
 
 //add product
 router.get('/add_product', (req, res) => {
-   
     res.render('vwUser/add-product.hbs', {
         title: 'Your Products',
     });
@@ -37,7 +36,9 @@ router.post('/add_product', async (req, res) => {
     entity.PriceStep = numeral(entity.PriceStep).value();
     entity.PriBuyNow = numeral(entity.PriBuyNow).value();
     entity.TimeBegin = moment().format('YYYY-MM-DD HH:mm:ss');
+    entity.SellerID= req.session.authUser.f_ID;//ID của seller đang đăng nhập
 
+    console.log(entity.SellerID);
     console.log('time begin: ' + entity.TimeBegin);
     entity.TimeEnd = doe;
     const des=entity.Description;
@@ -121,6 +122,8 @@ router.post('/upload_image/:id', function (req, res) {
     });
 })
 
+
+
 // //edit dữ liệu của database
 // router.get('/edit/:id', async (req, res) => {
 //     const rows = await productModel.getPro(req.params.id);
@@ -144,18 +147,7 @@ router.post('/upload_image/:id', function (req, res) {
 //     console.log(results.affectedRows);
 //     res.redirect('/');
 // })
-// //Thêm dữ liệu vào database
-// router.get('/add', (req, res) => {
-//     res.render('vwUser/add');
-// })
-// router.post('/add', async (req, res) => {
-//     // console.log(req.body);
-//     const entity = req.body;
-//     const results = await productModel.add(entity);
-//     console.log(results);
-//     res.render('vwUser/add');
-//     // res.end();
-// })
+
 
 // router.get('/cart', (req, res) => {
 //     res.render('vwadmin/cart.hbs', {

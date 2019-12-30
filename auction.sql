@@ -216,6 +216,7 @@ CREATE TABLE `prodetails` (
 
 LOCK TABLES `prodetails` WRITE;
 /*!40000 ALTER TABLE `prodetails` DISABLE KEYS */;
+INSERT INTO `prodetails` VALUES (34,'<ul>\r\n<li>&nbsp;Name: `Laptop Dell Vostro V5481A P92G001(i5 8265U / 4GB RAM / 1TB HDD / MX130 2G / 14\" FHD/Win 10)`,</li>\r\n<li>&nbsp;Chipset: \"Bộ vi xử l&yacute; Intel Core&trade; i5 8265U (1.6Ghz, 6MB Cache)\"</li>\r\n<li>&nbsp;Rom: \"Bộ nhớ trong 4GB DDR4 2666MHz\"</li>\r\n<li>&nbsp;GraphicCard: \"VGA Nvidia Geforce MX130 2G DDR5\",</li>\r\n<li>HardDriver: \"Ổ cứng 1TB 5400rpm\",</li>\r\n<li>Screen: \"M&agrave;n h&igrave;nh 14.0&rdquo; FHD(1920 * 1080), LED backlight&nbsp;</li>\r\n</ul>\r\n<div id=\"eJOY__extension_root\" style=\"all: unset;\">&nbsp;</div>','2019-12-30 16:59:41');
 /*!40000 ALTER TABLE `prodetails` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,7 +240,7 @@ CREATE TABLE `products` (
   `StatusID` int(11) DEFAULT NULL,
   `AutoReset` int(11) DEFAULT NULL,
   PRIMARY KEY (`ProID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -248,7 +249,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,4,'Dell Vostro 3580',1000000,100,950000,'2019-12-18 12:38:31','2020-01-01 12:38:49',14,1,NULL);
+INSERT INTO `products` VALUES (34,NULL,'Dell Vostro 3580',50000,50000,15000000,'2019-12-30 16:59:41','2020-01-02 21:00:00',14,NULL,1);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -264,7 +265,7 @@ CREATE TABLE `proimage` (
   `ProID` int(11) DEFAULT NULL,
   `imgURL` text COLLATE utf8_bin,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -273,6 +274,7 @@ CREATE TABLE `proimage` (
 
 LOCK TABLES `proimage` WRITE;
 /*!40000 ALTER TABLE `proimage` DISABLE KEYS */;
+INSERT INTO `proimage` VALUES (13,34,'2e165c80-2aeb-11ea-9260-fbe94b06d95a.png'),(14,34,'2e185850-2aeb-11ea-9260-fbe94b06d95a.png'),(15,34,'2e18cd80-2aeb-11ea-9260-fbe94b06d95a.png');
 /*!40000 ALTER TABLE `proimage` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -308,4 +310,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-30 13:15:18
+-- Dump completed on 2019-12-30 17:03:16
