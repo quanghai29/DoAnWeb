@@ -1,80 +1,160 @@
-<div class="container tm-mt-big tm-mb-big mb-5">
+<div class="container tm-mt-big tm-mb-big">
     <div class="row">
         <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
             <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="tm-block-title d-inline-block">Thêm sản phẩm</h2>
+                        <h2 class="tm-block-title d-inline-block bg-info p-3 text-light rounded-pill shadow">Thêm sản
+                            phẩm</h2>
                     </div>
                 </div>
-                <div class="row tm-edit-product-row">
-                    <div class="col-xl-6 col-lg-6 col-md-12">
-                        <form action="/add-product" method="POST" class="tm-edit-product-form">
+                <div class="row tm-edit-product-row mt-3" style="font-size:20px;">
+                    <div class="col-xl-12 col-lg-12 col-md-12 font-weight-bolder">
+                        <form onsubmit="return validate();" method="POST" novalidate id="frmLogin" name="frmLogin">
                             <div class="form-group mb-3">
-                                <label for="tensanpham">Tên sản phẩm
+                                <label for="ProName">Tên sản phẩm
                                 </label>
-                                <input id="tensanpham" name="tensanpham" type="text" class="form-control validate" />
+                                <input id="ProName" name="ProName" class="form-control validate" />
                             </div>
                             <div class="row">
                                 <div class="form-group mb-3 col-xs-12 col-sm-6">
-                                    <label for="dongia">Giá Khởi Điểm
-                                    </label>
-                                    <input id="dongia" name="dongia" type="number" class="form-control validate"
-                                        data-large-mode="true" />
+                                    <div class="form-label-group fg d-flex">
+                                        <label for="PriceBegin">Giá Khởi Điểm
+                                        </label>
+                                        <label class="ml-auto text-danger font-italic" style="visibility:collapse;"
+                                            for="PriceBegin" id="warnPriceBegin">
+                                            <h6>Please Fill With a Number!</h6>
+                                        </label>
+                                    </div>
+                                    <input id="PriceBegin" oninput="formatNumber(this,warnPriceBegin)" name="PriceBegin"
+                                        onkeypress="return formatNumber(this,warnPriceBegin);"
+                                        class="form-control validate" />
                                 </div>
-                                   <div class="form-group mb-3 col-xs-12 col-sm-6">
-                                    <label for="dongia">Bước giá
-                                    </label>
-                                    <input id="dongia" name="dongia" type="number" class="form-control validate"
-                                        data-large-mode="true" />
+                                <div class="form-group mb-3 col-xs-12 col-sm-6">
+                                    <div class="form-label-group fg d-flex">
+                                        <label for="PriceStep">Bước Giá
+                                        </label>
+                                        <label class="ml-auto text-danger font-italic" style="visibility:collapse;"
+                                            for="PriceStep" id="warnPriceStep">
+                                            <h6>Please Fill With a number bigger 1!</h6>
+                                        </label>
+                                    </div>
+                                    <input id="PriceStep" oninput="formatNumber(this,warnPriceStep)" name="PriceStep"
+                                        onkeypress="return formatNumber(this,warnPriceStep);"
+                                        class="form-control validate" />
                                 </div>
                             </div>
-                            <div class="form-group mb-3 col-xs-12 col-sm-6">
-                                    <label for="dongia">Giá Mua Ngay
-                                    </label>
-                                    <input id="dongia" name="dongia" type="number" class="form-control validate"
-                                        data-large-mode="true" />
-                            </div>
-
-                            <!-- <div class="form-group mb-3">
-                                <label for="category">Thể loại</label>
-                                <select class="custom-select tm-select-accounts" id="category">
-                                    <option>Select category</option>
-                                    <option value="1" selected>New Arrival</option>
-                                    <option value="2">Most Popular</option>
-                                    <option value="3">Trending</option>
-                                </select>
-                            </div> -->
-
                             <div class="form-group mb-3">
-                                <label for="img">Link ảnh
-                                </label>
-                                <input id="img" name="img" type="text" class="form-control validate" />
+                                <div class="form-label-group fg d-flex">
+                                    <label for="PriBuyNow">Giá mua ngay
+                                    </label>
+                                    <label class="ml-auto text-danger font-italic" style="visibility:collapse;"
+                                        for="inputUsername" id="warnPriBuy">
+                                        <h6>Please Fill With a Number!</h6>
+                                    </label>
+                                </div>
+                                <input id="PriBuyNow" oninput="formatNumber(this,warnPriBuy)" name="PriBuyNow"
+                                    onkeypress="return formatNumber(this,warnPriBuy);" class="form-control validate" />
                             </div>
-
+                            <div class="row mb-4">
+                                <div class="form-group mb-3 col-xs-12 col-sm-6">
+                                    <label for="DOE">Ngày Hết Hạn</label>
+                                    <label id="warningDate"></label>
+                                    <input id="DOE" name="DOE" class="form-control" required>
+                                </div>
+                                <div class="form-group mb-3 col-xs-12 col-sm-6 mt-1">
+                                    <label for="category">Gia Hạn Tự Động</label>
+                                    <select class="custom-select tm-select-accounts" id="category" name="AutoReset">
+                                        <option value="0" selected>Không</option>
+                                        <option value="1">Có</option>
+                                    </select>
+                                </div>
+                            </div>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
-                        <div class="tm-product-img-dummy mx-auto">
-                            <i class="fas fa-cloud-upload-alt tm-upload-icon"
-                                onclick="document.getElementById('fileInput').click();"></i>
-                        </div>
-                        <div class="custom-file mt-3 mb-3">
-                            <input id="fileInput" type="file" style="display:none;" />
-                            <input type="button" class="btn btn-primary btn-block mx-auto" value="UPLOAD PRODUCT IMAGE"
-                                onclick="document.getElementById('fileInput').click();" />
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Product Now</button>
-                    </div>
-                    </form>
                 </div>
+                <div class="row tm-edit-product-row mt-2 mb-4">
+                    <div class="col-xl-12 col-lg-12 col-md-12 mb-4">
+                        <div class="card shadow h-100">
+                            <h4 class="card-header">
+                                Mô Tả Sản Phẩm
+                            </h4>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="Description">Điền đầy đủ đặc điểm của sản phẩm</label>
+                                    <textarea class="form-control" id="Description" name="Description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row tm-edit-product-row mb-5 ">
+                    <div class="col-xl-3 col-lg-4 col-md-4 mb-4">
+                        <button type="submit" class="btn btn-primary btn-block text-align d-flex">
+                            <h4>Continute</h4>
+                            <i class="fa fa-arrow-right fa-lg ml-2 mt-2"></i>
+                        </button>
+                    </div>
+                </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
+
+{{#section 'css'}}
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+{{/section}}
+{{#section 'js'}}
+<script
+    src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=ezd73nxbzc7bu6e86g2l82jbbffke0mwevwrnyvc5q8h89j6"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
 <script>
-    $(function () {
-        $("#expire_date").datepicker();
+    tinymce.init({
+        selector: '#Description',
+        height: 400,
+        plugins: 'paste image link autolink lists table media',
+        menubar: false,
+        toolbar: [
+            'undo redo | bold italic underline strikethrough | numlist bullist | alignleft aligncenter alignright',
+            'forecolor backcolor',
+            'table link image media',
+        ],
     });
+    //Formart Number
+    function formatNumber(el, idEL) {
+        console.log("el.value" + el.value);
+        var number = numeral(el.value);
+        
+        var strFormart = number.format('0,0');
+        console.log("strformat" + strFormart);
+
+        el.value = strFormart + ' đ';
+        return true;
+    };
+
+    //Date expries
+    $('#DOE').datetimepicker({
+        format: 'd/m/Y H:i',
+        //format: 'd/m/Y',
+        timepicker: true,
+        mask: true,
+    });
+
+    //$('#DOE').datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+
+    //Form Submit
+    function validate() {
+
+        /****************************/
+        // Check form add product
+        // check bắt buộc nhập : ten sản phẩm , giá khởi điểm , bước giá, thời gian kết thúc
+        // thông báo khi ng dùng nhập chữ trong khung nhập số
+        // check thời gian kết thúc phải lớn hơn thời gian đăng hiện tại (tham khảo package moment cho js)
+        
+        return true;
+    }
 </script>
+{{/section}}

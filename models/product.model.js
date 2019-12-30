@@ -10,5 +10,7 @@ module.exports = {
         delete entity.ProID;
         console.log(condition, entity);
         return db.patch('products',entity,condition);
-    }
+    },
+    addDetailProduct: entity => db.add('prodetails', entity),
+    addImageProduct: entity => db.add('proimage', entity),
 };

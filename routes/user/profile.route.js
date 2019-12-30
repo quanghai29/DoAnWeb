@@ -14,9 +14,9 @@ router.get('/myprofile',roleBidder, (req, res) => {
     });
 })
 
-// edit được profile
+// // edit được profile
 
-router.get('/err',(req,res)=>{
-    throw new Error('error occured');
-})
+// router.get('/err',(req,res)=>{
+//     throw new Error('error occured');
+// })
 module.exports = router;

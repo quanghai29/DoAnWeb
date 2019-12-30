@@ -43,7 +43,6 @@ router.post('/signup', async (req, res) => {
     console.log(entity);
     const result = await userModel.add(entity);
     console.log(result);
-
     res.render('home');
   }
 });
