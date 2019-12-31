@@ -7,7 +7,6 @@ const router=express.Router();
 
 
 //Chỉnh sửa lại profile có thể edit được
-
 router.get('/myprofile',roleBidder, (req, res) => {
     res.render('vwUser/myprofile.hbs', {
         title: 'your profile',
