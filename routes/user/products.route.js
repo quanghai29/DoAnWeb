@@ -28,6 +28,7 @@ router.get('/add_product', (req, res) => {
 router.post('/add_product', async (req, res) => {
 
     const doe = moment(req.body.DOE,'DD-MM-YYYY HH:mm').format('YYYY-MM-DD HH:mm');
+    console.log("DOE : "+ doe);
     //Dữ liệu nhận được
     const entity = req.body;
 
@@ -47,7 +48,7 @@ router.post('/add_product', async (req, res) => {
     //thêm vào bảng product
     const results = await productModel.add(entity);
 
-    console.log('add product\n' + results);
+    console.log('add product' + results.TimeEnd);
     //Dữ liệu cho bảng Detail Product
     var entityDetail= {
         ProID : results.insertId,
@@ -122,7 +123,74 @@ router.post('/upload_image/:id', function (req, res) {
     });
 })
 
+//---Đấu Giá
+//Update Giá đặt mới 
+router.post('/product/PlaceBid/:id',async (req, res) => {
 
+    var newPlaceBid= numeral(req.body.PlaceBid).value();//giá đặt của người ra giá
+    var StatusCurrentWinner = 0;//Trạng thái đấu giá của người đang đấu giá
+
+    //Người đang giữ giá cao nhất trước đó
+    var BestPricePrevious = await productModel.getBestPricePrevious(req.params.id);
+    var ProductPrice = await productModel.getProductPrice(req.params.id);
+
+    console.log(BestPricePrevious);
+    console.log(ProductPrice);
+
+    //Nếu đã có người ra giá trước đó
+    if(BestPricePrevious.length !== 0)
+    {
+        console.log("length #0");
+        
+        var BestPrice =  BestPricePrevious[0].PricePlaceBid;//Gía đang giữ
+        var Step =  ProductPrice[0].PriceStep;//Bước giá
+
+        console.log(newPlaceBid);
+        console.log(BestPrice);
+        console.log(Step);
+
+        //Nếu giá đặt sau cao hơn giá đang giữ công với bước giá
+        if(newPlaceBid > (BestPrice + Step))
+        {
+            console.log("Update status");
+            //Cập nhật lại trạng thái giữ giá của người đang ra giá
+            StatusCurrentWinner=1;
+
+            // Cập nhật lại trạng thái giữ giá của người đã giữ giá trước đó
+            const entityStatusWinner = {
+                ProID: req.params.id,
+                Bidder: BestPricePrevious[0].Bidder,
+                StatusWinner : 0
+            };
+
+            console.log(entityStatusWinner);
+            const UpdateStatusWinner = await productModel.updateStatusWinner(entityStatusWinner);
+        }
+    }
+
+    //Nếu Người đặt không có giá cao hơn người đang giữ thì không lưu vào csdl
+    if(StatusCurrentWinner === 0)
+    {
+        res.redirect(`/categories/product/${req.params.id}`);
+    }
+
+    //Nếu chưa có ai ra giá thì so sáng với giá khởi didemr  //xử lý ở client
+
+
+    //Thêm vào model ra giá sản phẩm
+    var entity={
+        ProID: req.params.id,
+        Bidder: req.session.authUser.f_ID,
+        PricePlaceBid: newPlaceBid,
+        TimePlace: moment().format('YYYY-MM-DD HH:mm:ss'),
+        StatusWinner: StatusCurrentWinner
+    };
+    console.log(entity);
+    const results = await productModel.addOfferProduct(entity);
+
+    //quay lại trang đang xem chi tiết sản phẩm
+    res.redirect(`/categories/product/${req.params.id}`);
+})
 
 // //edit dữ liệu của database
 // router.get('/edit/:id', async (req, res) => {

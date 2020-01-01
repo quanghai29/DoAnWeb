@@ -1,58 +1,96 @@
-
-<div class="container-fluid mt-4">
+<div class="container-fluid mt-1">
     <div class="row">
-        <div class="col-sm-5">
+        <div class="col-xl-5">
             <div class="row">
-                <img id="imgMain" src="/Images/{{detail.image1}}"
-                    class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
-                    alt="">
+                <img id="MainImg" src="/Images/{{this.mainImgPro.ProID}}/{{this.mainImgPro.imgURL}}"
+                    class="${4|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|} shadow"
+                    style="height: 400px; width:520px" alt="">
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <img onclick="document.getElementById('imgMain').src = 'Images/{{detail.image1}}'"
-                        src="/Images/{{detail.image1}}"
-                        class="img-fluid ${4|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
-                        alt="">
+            <div class="row mt-5 ">
+                {{#each this.imgPro}}
+                <div class="col-xl-2">
+                    <img src="/Images/{{ProID}}/{{imgURL}}"
+                        class="img-fluid ${4|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|} border border-warning p-2 rounded shadow"
+                        style="height: 60px; width:70px" alt="">
                 </div>
-                <div class="col-md-4">
-                    <img onclick="document.getElementById('imgMain').src = 'Images/{{detail.image2}}'"
-                        src="/Images/{{detail.image2}}"
-                        class="img-fluid ${4|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
-                        alt="">
-                </div>
-                <div class="col-md-4">
-                    <img onclick="document.getElementById('imgMain').src = 'Images/{{detail.image3}}'"
-                        src="/Images/{{detail.image3}}"
-                        class="img-fluid ${4|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
-                        alt="">
-                </div>
+                {{/each}}
             </div>
         </div>
-        
-        <div class="col-sm-7">
-            
-            <h3>{{detail.Name}}</h3>
-            <p>Giá hiện tại: {{detail.Value0}} </p>
-            <p>Giá mua ngay: {{detail.Value1}}</p>
-            <hr>
-            <p>Người bán: {{detail.Author}} (vote: {{detail.Vote}})</p>
-            
-            <p>Người đặt giá cao nhất hiện tại: {{detail.Buyer}} (500.000đ)</p>
-            <p>Thời điểm đăng: {{detail.StartDate}}</p>
-            <p>Thời điểm kết thúc: {{detail.EndDate}}</p>
-            <hr>
-            <p>Thông số sản phẩm</p>
-            <ul>
-                <li>{{detail.Chipset}}</li>
-                <li>{{detail.Rom}}</li>
-                <li>{{detail.GraphicCard}}</li>
-                <li>{{detail.HardDriver}}</li>
-                <li>{{detail.Screen}}</li>
-                <li>{{detail.Security}}</li>
-            </ul>
+
+        {{!-- Gởi thời gian kết thúc mới --}}
+         <form action="/categories/product/updateTimeEnd/{{this.product.ProID}}" method="post"  name="frmTimeEnd" id="frmTimeEnd">
+            <input  name="newTimeEnd"
+                    class="form-control d-none">
+         </form>
+
+        <div class="col-xl-7 border-left">
+            <h3 class="text-uppercase font-weight-bold text-danger">{{this.product.ProName}}</h3>
+            <div class="row mt-4">
+                <h5 class="col-xl-2 p-1 font-weight-bold ml-2">Duration: </h5>
+                <h5 class="col-xl-4 timeExipre bg-light  text-info font-weight-bold  p-1 
+                text-center rounded border border-warning" 
+                style="width: auto;"></h5>
+            </div>
+            <div class="row mt-5 ml-2">
+                <div class="col-xl-3 col-sm-6 mr-5">
+                    <h6 class="text-muted">CURRENT BID: </h6>
+                    <h4 class="currentBid"></h4>
+                </div>
+                <div class="col-xl-4 col-sm-6 ml-5">
+                    <h6 class="text-muted">CURRENT WINNER: </h6>
+                    <div class="row d-flex ml-1">
+                        <i class="fa fa-trophy fa-lg mt-2 mr-2"></i>
+                        <h4 class="currentWinner"> </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5 ml-2 mb-4">
+                <div class="col-xl-3 col-sm-6 mr-5">
+                    <h6 class="text-muted">Buy Now: </h6>
+                    {{#if this.product.PriBuyNow}}
+                    <a class="btn btn-primary" id="PriBuyNow" rel="stylesheet" href="#" style="font-size: 19px;">
+                        <i class="fa fa-shopping-cart mr-1" ></i></a>
+                    {{else}}
+                    <h4>No Price</h4>
+                    {{/if}}
+                </div>
+                <div class="col-xl-4 col-sm-6 ml-5">
+                    <h6 class="text-muted">Bước Giá: </h6>
+                    <div class="row d-flex ml-1">
+                        <h4 id="PriceStep"></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5 ml-2">
+                <div class="col-xl-3 col-sm-6 mt-5">
+
+                    {{!-- -----------------------------Kiểm tra nhập số hay không --}}
+                    <form action="/user/product/PlaceBid/{{this.product.ProID}}" method="post"  name="frmPlaceBid" id="frmPlaceBid">
+                        <input id="PlaceBid" oninput="return formatNumber(this);" name="PlaceBid"
+                            onkeypress="return formatNumber(this);"
+                            class="form-control validate" placeholder="0 đ"/>
+                    </form>
+                </div>
+                <div class="col-xl-4 col-sm-6 mt-5">
+                   <a class="btn btn-danger" rel="stylesheet" href="javascript: PlaceBid();" style="font-size: 19px;">
+                        <i class="fa fa-gavel mr-1" ></i>Place Bid</a>
+                </div>
+            </div>
+             <div class="row mt-4 ml-4">
+                 <a class="btn btn-warning" rel="stylesheet" href="#" style="font-size: 19px;">
+                        <i class="fa fa-hand-pointer-o mr-1" ></i>Auto Place Bid</a>
+            </div>
         </div>
     </div>
-    
+    <h4 class="font-weight text-info mt-5"> Mô Tả Sản Phẩm</h4>
+    <div class="row">
+        <div class="col-xl-10 col-md-10 col-sm-12 shadow pt-5">
+            {{#each detailPro}}
+                {{{Description}}}
+            {{/each}}
+        </div>
+    </div>
+
     <hr>
     {{!-- <div class="row">
         <h3>Sản phẩm cùng chuyên mục</h3>
@@ -105,4 +143,152 @@
         </div>
     </div> --}}
 </div>
+{{!-- <ul id="lightSlider" class="gallery">
+    <li data-thumb="/Images/34/2e18cd80-2aeb-11ea-9260-fbe94b06d95a.png"> <a href="#">
+            <img src="/Images/34/2e18cd80-2aeb-11ea-9260-fbe94b06d95a.png" /></a></li>
+    <li data-thumb="Images/34/2e18cd80-2aeb-11ea-9260-fbe94b06d95a.png"> <a href="#">
+            <img src="/Images/34/2e18cd80-2aeb-11ea-9260-fbe94b06d95a.png" /></a></li>
+    <li data-thumb="/Images/34/2e18cd80-2aeb-11ea-9260-fbe94b06d95a.png"> <a href="#">
+            <img src="/Images/34/2e18cd80-2aeb-11ea-9260-fbe94b06d95a.png" /></a></li>
+</ul> --}}
 
+{{#section 'css'}}
+<style>
+</style>
+{{/section}}
+{{#section 'js'}}
+
+<script>
+    
+    $(document).ready(function () {
+
+        //Slider Image*******************/
+        var clickImg = function () {
+            document.getElementById("MainImg").src = this.getAttribute('src');
+        }
+        for (var i = 1, l = {{ countImg }}; i < l; i++) {
+        $('img')[i].addEventListener("click", clickImg);
+        }
+        var i = 2;
+        setInterval(() => {
+            $('img')[0].src = $('img')[i].src;
+            $("#MainImg").slideDown("slow");
+            i++;
+             if (i == {{ countImg }})
+            {
+                i = 1;
+            }
+        }, 1500);
+
+
+
+        //Expries Time*****************************/
+        //Lấy thời điểm kết thúc
+        var timeEnd="{{this.product.TimeEnd}}";
+        var countTimeExpire = setInterval(() => {
+            //Cần xét thêm sản phẩm đang được bán 
+            //Trước khi kết thúc 5 phút có người đấu giá
+            // Tự động gia hạn thêm 10'
+            if(moment().isAfter(moment(timeEnd))){
+                //Nếu có gia hạn
+                if({{this.product.AutoReset}} == 1)
+                {
+                    var addtime=moment("{{this.product.TimeEnd}}", "YYYY-MM-DD HH:mm:ss").add(10,'minutes');
+                    timeEnd=addtime.format('YYYY-MM-DD HH:mm:ss');
+
+                    //Thêm giá trị của input form
+                    frmTimeEnd.newTimeEnd.value = timeEnd;
+                    //Cập nhật lại timeEnd trong CSDL
+                    //$('#frmTimeEnd').submit();
+                }
+            }
+            var timer= moment(timeEnd, "YYYY-MM-DD HH:mm:ss").fromNow();
+            $('.timeExipre').html(timer + " ...");
+            console.log(timer);
+        }, 1000);
+
+        //Formart Number Load to label html
+        $('#PriBuyNow').html(numeral({{this.product.PriBuyNow}}).format('0,0') + ' đ');
+        $('#PriceStep').html(numeral({{this.product.PriceStep}}).format('0,0') + ' đ');
+
+        {{#if this.BestPricePrevious}}
+            $('.currentBid').html(numeral({{this.BestPricePrevious.PricePlaceBid}}).format('0,0')+ ' đ');
+            $('.currentWinner').html("{{this.BestPricePrevious.UsernameBidder}}");
+        {{else}}
+            $('.currentBid').html(numeral({{this.product.PriceBegin}}).format('0,0')+ ' đ');
+            $('.currentWinner').html('No One')
+        {{/if}}
+
+
+        /*Thông Báo cho người dùng biết khi đặt giá thấp hơn 
+        // trong trường hợp người này vào trang rồi commit giá sau khi có người khác đã commit*/
+        //Lấy giá đặt mới của Bidder
+        {{#if this.currentLoginIsWiner}}
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Lucky!',
+                text: 'Bạn đang là người ra giá cao nhất',
+            });
+        {{/if}}
+    });
+
+     //Formart Number
+    function formatNumber(el) {
+        console.log("el.value" + el.value);
+        var number = numeral(el.value);
+        
+        var strFormart = number.format('0,0');
+        console.log("strformat" + strFormart);
+
+        el.value = strFormart + ' đ';
+        return true;
+    };
+
+    //Place Bid
+    function PlaceBid(){
+        console.log("new Price");
+
+        //Lấy giá đặt mới của Bidder
+        var newPlaceBid = frmPlaceBid.PlaceBid.value;
+        newPlaceBid = numeral(newPlaceBid).value();
+        
+        //Lấy giá bắt đầu và bước giá
+        var PriceBegin= {{this.product.PriceBegin}};
+        var PriceStep = {{this.product.PriceStep}};
+
+        console.log(newPlaceBid);
+        console.log(PriceBegin);
+        console.log(PriceStep);
+        //So sánh với giá khởi điểm
+        if(newPlaceBid < (PriceBegin + PriceStep))
+        {
+            return (
+            Swal.fire({
+                icon: 'error',
+                title: 'Sorry',
+                text: 'Giá đặt phải cao hơn giá ban đầu + bước giá',
+            }));
+        }
+
+        //So sánh với giá người đang giữ giá cao nhất 
+        //Trong trường hợp người này commit sau một thời gian vào xem trang 
+        //Xử lý một phần để server đỡ phải xử lý 
+        {{#if this.BestPricePrevious}}
+            var BestPrice = {{this.BestPricePrevious.PricePlaceBid}};
+            if(newPlaceBid <= (BestPrice + PriceStep))
+            {
+                 return (
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'warning',
+                    title: 'Unlucky!',
+                    text: 'Giá của bạn chưa phải là giá cao nhất',
+                }));
+            }
+        {{/if}}
+        $('#frmPlaceBid').submit();
+    }
+    
+</script>
+{{/section}}

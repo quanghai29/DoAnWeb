@@ -10,6 +10,11 @@ module.exports = {
     }
     return true;
   },
+  
+  //Lấy một user
+  getUsername: id => db.load(`select f_Username from member where f_ID='${id}'`), 
+
+
 //   single: id => db.load(`select * from member where f_Id = ${id}`),
   singleByUsername: async username => {
     const rows = await db.load(`select * from member where f_Username = '${username}'`);
