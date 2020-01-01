@@ -178,12 +178,14 @@ DROP TABLE IF EXISTS `offerpro`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `offerpro` (
-  `ProID` int(11) NOT NULL,
-  `Buyer` int(11) DEFAULT NULL,
-  `Price` decimal(10,2) DEFAULT NULL,
-  `PriceStatus` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ProID`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ProID` int(11) DEFAULT NULL,
+  `Bidder` int(11) DEFAULT NULL,
+  `PricePlaceBid` double DEFAULT NULL,
+  `StatusWinner` int(11) DEFAULT NULL,
+  `TimePlace` datetime DEFAULT NULL,
+  PRIMARY KEY (`ID`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -192,6 +194,7 @@ CREATE TABLE `offerpro` (
 
 LOCK TABLES `offerpro` WRITE;
 /*!40000 ALTER TABLE `offerpro` DISABLE KEYS */;
+INSERT INTO `offerpro` VALUES (3,35,14,15000,0,'2020-01-01 09:10:49'),(4,35,14,12000,0,'2020-01-01 10:44:37'),(5,35,14,16000,0,'2020-01-01 10:45:26'),(12,35,14,1500000,0,'2020-01-01 11:25:50'),(13,35,14,0,0,'2020-01-01 21:24:11'),(14,35,14,1500000,0,'2020-01-01 21:27:49'),(15,35,14,11500000,0,'2020-01-02 01:55:05'),(16,35,14,12222255,0,'2020-01-02 02:23:44'),(17,35,16,13333333,0,'2020-01-02 02:25:59'),(18,35,14,12555555,0,'2020-01-02 02:26:16'),(19,35,16,15000000,0,'2020-01-02 02:37:28'),(20,35,14,14000000,0,'2020-01-02 02:37:37'),(21,35,16,18000000,0,'2020-01-02 02:42:16'),(22,35,14,16000000,0,'2020-01-02 02:43:31'),(23,35,14,19000000,0,'2020-01-02 03:27:00'),(24,35,14,20000000,0,'2020-01-02 03:28:31'),(25,35,16,25000000,1,'2020-01-02 03:52:01');
 /*!40000 ALTER TABLE `offerpro` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -216,7 +219,7 @@ CREATE TABLE `prodetails` (
 
 LOCK TABLES `prodetails` WRITE;
 /*!40000 ALTER TABLE `prodetails` DISABLE KEYS */;
-INSERT INTO `prodetails` VALUES (34,'<ul>\r\n<li>&nbsp;Name: `Laptop Dell Vostro V5481A P92G001(i5 8265U / 4GB RAM / 1TB HDD / MX130 2G / 14\" FHD/Win 10)`,</li>\r\n<li>&nbsp;Chipset: \"Bộ vi xử l&yacute; Intel Core&trade; i5 8265U (1.6Ghz, 6MB Cache)\"</li>\r\n<li>&nbsp;Rom: \"Bộ nhớ trong 4GB DDR4 2666MHz\"</li>\r\n<li>&nbsp;GraphicCard: \"VGA Nvidia Geforce MX130 2G DDR5\",</li>\r\n<li>HardDriver: \"Ổ cứng 1TB 5400rpm\",</li>\r\n<li>Screen: \"M&agrave;n h&igrave;nh 14.0&rdquo; FHD(1920 * 1080), LED backlight&nbsp;</li>\r\n</ul>\r\n<div id=\"eJOY__extension_root\" style=\"all: unset;\">&nbsp;</div>','2019-12-30 16:59:41');
+INSERT INTO `prodetails` VALUES (34,'<ul>\r\n<li>&nbsp;Name: `Laptop Dell Vostro V5481A P92G001(i5 8265U / 4GB RAM / 1TB HDD / MX130 2G / 14\" FHD/Win 10)`,</li>\r\n<li>&nbsp;Chipset: \"Bộ vi xử l&yacute; Intel Core&trade; i5 8265U (1.6Ghz, 6MB Cache)\"</li>\r\n<li>&nbsp;Rom: \"Bộ nhớ trong 4GB DDR4 2666MHz\"</li>\r\n<li>&nbsp;GraphicCard: \"VGA Nvidia Geforce MX130 2G DDR5\",</li>\r\n<li>HardDriver: \"Ổ cứng 1TB 5400rpm\",</li>\r\n<li>Screen: \"M&agrave;n h&igrave;nh 14.0&rdquo; FHD(1920 * 1080), LED backlight&nbsp;</li>\r\n</ul>\r\n<div id=\"eJOY__extension_root\" style=\"all: unset;\">&nbsp;</div>','2019-12-30 16:59:41'),(35,'<ul>\r\n<li><strong>Chipset:</strong>&nbsp; \"<span style=\"background-color: #ffffff; color: #e03e2d;\">Intel </span>Core i5-8265U (4 x 1.6GHz/6MB cache)\"</li>\r\n<li><strong>Rom</strong>: \"Bộ nhớ trong 4GB DDR4 2666MHz\",</li>\r\n<li><strong>GraphicCard</strong>: \"VGA Nvidia Geforce MX130 2G DDR5\",</li>\r\n<li><strong>HardDriver</strong>: \"Ổ cứng 1TB 5400rpm\",</li>\r\n<li><strong>Screen</strong>: \"M&agrave;n h&igrave;nh 14.0&rdquo; FHD(1920 * 1080), LED backlight\",</li>\r\n<li><strong>Security</strong>: \"Bảo mật, c&ocirc;ng nghệ <em>Finger Print</em>\"</li>\r\n</ul>\r\n<div id=\"eJOY__extension_root\" style=\"all: unset;\">&nbsp;</div>','2019-12-31 16:13:14'),(36,'<p>&nbsp;</p>\r\n<div id=\"eJOY__extension_root\" style=\"all: unset;\">&nbsp;</div>','2019-12-31 16:20:53'),(37,'<p>&nbsp;</p>\r\n<div id=\"eJOY__extension_root\" style=\"all: unset;\">&nbsp;</div>','2019-12-31 16:26:21');
 /*!40000 ALTER TABLE `prodetails` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -240,7 +243,7 @@ CREATE TABLE `products` (
   `StatusID` int(11) DEFAULT NULL,
   `AutoReset` int(11) DEFAULT NULL,
   PRIMARY KEY (`ProID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -249,7 +252,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (34,NULL,'Dell Vostro 3580',50000,50000,15000000,'2019-12-30 16:59:41','2020-01-02 21:00:00',14,NULL,1);
+INSERT INTO `products` VALUES (35,NULL,'Laptop Dell Vostro 3580 P75F010',50000,100000,15000000,'2019-12-31 16:13:14','2019-12-31 21:05:00',14,NULL,1),(36,NULL,'',1112,222,2222,'2019-12-31 16:20:53','2019-12-31 16:50:00',14,NULL,0),(37,NULL,'',NULL,NULL,NULL,'2019-12-31 16:26:21','2019-12-31 17:00:00',14,NULL,0);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -265,7 +268,7 @@ CREATE TABLE `proimage` (
   `ProID` int(11) DEFAULT NULL,
   `imgURL` text COLLATE utf8_bin,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -274,7 +277,7 @@ CREATE TABLE `proimage` (
 
 LOCK TABLES `proimage` WRITE;
 /*!40000 ALTER TABLE `proimage` DISABLE KEYS */;
-INSERT INTO `proimage` VALUES (13,34,'2e165c80-2aeb-11ea-9260-fbe94b06d95a.png'),(14,34,'2e185850-2aeb-11ea-9260-fbe94b06d95a.png'),(15,34,'2e18cd80-2aeb-11ea-9260-fbe94b06d95a.png');
+INSERT INTO `proimage` VALUES (13,34,'2e165c80-2aeb-11ea-9260-fbe94b06d95a.png'),(14,34,'2e185850-2aeb-11ea-9260-fbe94b06d95a.png'),(15,34,'2e18cd80-2aeb-11ea-9260-fbe94b06d95a.png'),(16,35,'f4c26aa0-2bad-11ea-aea5-6f1115f536b2.png'),(17,35,'f4d52f50-2bad-11ea-aea5-6f1115f536b2.png'),(18,35,'f4d55660-2bad-11ea-aea5-6f1115f536b2.png'),(19,35,'f4d7a050-2bad-11ea-aea5-6f1115f536b2.png'),(20,36,'4e58b910-2baf-11ea-b96c-0b8fcf566186.png'),(21,36,'4e5b7830-2baf-11ea-b96c-0b8fcf566186.png'),(22,36,'4e5bc650-2baf-11ea-b96c-0b8fcf566186.png'),(23,37,'9fa6a070-2baf-11ea-b96c-0b8fcf566186.png');
 /*!40000 ALTER TABLE `proimage` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -310,4 +313,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-30 17:03:16
+-- Dump completed on 2020-01-02  4:08:39
