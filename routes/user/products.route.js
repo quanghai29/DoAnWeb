@@ -166,13 +166,15 @@ router.post('/product/PlaceBid/:id',async (req, res) => {
             console.log(entityStatusWinner);
             const UpdateStatusWinner = await productModel.updateStatusWinner(entityStatusWinner);
         }
+        else{//Nếu Người đặt không có giá cao hơn người đang giữ thì không lưu vào csdl
+            res.redirect(`/categories/product/${req.params.id}`);
+        }
+    }
+    else{//Nếu chưa có người ra giá thì cập nhật trạng thái giữ giá của ngươi đang ra giá
+        StatusCurrentWinner=1;
     }
 
-    //Nếu Người đặt không có giá cao hơn người đang giữ thì không lưu vào csdl
-    if(StatusCurrentWinner === 0)
-    {
-        res.redirect(`/categories/product/${req.params.id}`);
-    }
+   
 
     //Nếu chưa có ai ra giá thì so sáng với giá khởi didemr  //xử lý ở client
 
