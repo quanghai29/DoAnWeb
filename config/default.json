@@ -9,5 +9,8 @@
     },
     "paginate": {
       "limit": 6
+    },
+    "IDTypeMember":{
+      "Seller": 2
     }
 }

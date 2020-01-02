@@ -35,6 +35,7 @@ router.post('/signup', async (req, res) => {
     entity.f_Password = hash;
     entity.f_DOB = dob;
     entity.f_GioiTinh = gioitinh;
+    entity.f_UpgradeWaitStatus = 0;
 
     delete entity.value_GioiTinh;
     delete entity.raw_password;
@@ -55,12 +56,12 @@ router.get('/login', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   const user = await userModel.singleByUsername(req.body.username);
-  var rs=false;
-  if(user!=null){
-    rs= bcrypt.compareSync(req.body.password, user.f_Password);
+  var rs = false;
+  if (user != null) {
+    rs = bcrypt.compareSync(req.body.password, user.f_Password);
   }
 
-  if (rs === false||user===null) {
+  if (rs === false || user === null) {
     return res.render('vwAccount/login', {
       layout: false,
       err_message: 'Login failed ',
