@@ -13,9 +13,12 @@ module.exports = {
     getPro: id => db.loadOnePro(`select * from products where ProID = ${id}`),
     getDetailPro: id => db.loadOnePro(`select * from prodetails where ProID = ${id}`),
     getImgPro: id => db.loadOnePro(`select * from proimage where ProID = ${id}`),
+    getProStatus: status=>db.load(`select ProID, ProName, TimeBegin, TimeEnd from products where StatusID=${status}`),
     //bidder đã đặt giá cao nhất trước đó
-    getBestPricePrevious: id => db.loadOnePro(`select o.Bidder,o.PricePlaceBid from offerpro as o where ProID =${id} and StatusWinner = 1`),
+    getBestPricePrevious: id => db.loadOnePro(`select o.Bidder,o.PricePlaceBid,o.MaxBid from offerpro as o where ProID =${id} and StatusWinner = 1`),
     getProductPrice: id => db.loadOnePro(`select p.PriceBegin,p.PriceStep from products as p where ProID =${id}`),
+    //Người đã đặt giá trước đó vào đặt giá tiếp
+    getOfferBidder: (id,Bidder) => db.loadOnePro(`select * from offerpro where ProID =${id} and Bidder = ${Bidder}`),
 
     //Xóa
     del: id => db.delete(`delete from products where ProID = ${id}`),

@@ -61,13 +61,33 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-5 ml-2">
+            {{!--Max Bid--}}
+            <div class="row mt-5 ml-4">
+                {{#if this.BestPricePrevious.MaxBid}}
+                <h6 class="text-muted mr-3 mt-1">MAX BID OF YOU: </h6>
+                <h4 id="MaxBidLabel"></h4>
+                {{/if}}
+                <form action="/user/product/autoPlaceBid/{{this.product.ProID}}" method="post" id="frmAutoPlaceBid"  name="frmAutoPlaceBid">
+                        <input id="MaxBidLabel" class="d-none" name="MaxBidLabel"/>
+                </form>
+            </div>
+            <div class="row ml-2">
                 <div class="col-xl-3 col-sm-6 mt-5">
 
-                    {{!-- -----------------------------Kiểm tra nhập số hay không --}}
+                    {{!--Nhập tay --}}
                     <form action="/user/product/PlaceBid/{{this.product.ProID}}" method="post"  name="frmPlaceBid" id="frmPlaceBid">
                         <input id="PlaceBid" oninput="return formatNumber(this);" name="PlaceBid"
                             onkeypress="return formatNumber(this);"
+                            class="form-control validate" placeholder="0 đ"/>
+                    </form>
+
+                    {{!--Hệ thống tự động nhập--}}
+                    <input id="autoPlaceBid" name="autoPlaceBid" readonly
+                        class="form-control validate" style="display: none;" placeholder="0 đ"/>
+
+                    {{!--Tắt hệ thống tự động --}}
+                    <form action="/user/product/offAutoPlaceBid/{{this.product.ProID}}" method="post"  name="frmOffAutoPlaceBid" id="frmOffAutoPlaceBid">
+                        <input id="offAutoPlaceBid"  name="offAutoPlaceBid" style="display: none;"
                             class="form-control validate" placeholder="0 đ"/>
                     </form>
                 </div>
@@ -77,8 +97,11 @@
                 </div>
             </div>
              <div class="row mt-4 ml-4">
-                 <a class="btn btn-warning" rel="stylesheet" href="#" style="font-size: 19px;">
+                 <a class="btn btn-warning" rel="stylesheet" href="javascript: AutoPlaceBid();" style="font-size: 19px;" id="autoPlacebtn">
                         <i class="fa fa-hand-pointer-o mr-1" ></i>Auto Place Bid</a>
+                {{!--Tắt hệ thống tự nhập--}}
+                 <a class="btn btn-info" rel="stylesheet" href="javascript: offAutoPlaceBid();" style="font-size: 19px;" id="offAutoPlacebtn">
+                        <i class="fa fa-hand-pointer-o mr-1" ></i>Off Auto Place</a>
             </div>
         </div>
     </div>
@@ -162,6 +185,7 @@
     
     $(document).ready(function () {
 
+        //=========================================================================================
         //Slider Image*******************/
         var clickImg = function () {
             document.getElementById("MainImg").src = this.getAttribute('src');
@@ -181,36 +205,19 @@
         }, 1500);
 
 
-
+        //=========================================================================================
         //Expries Time*****************************/
         //Lấy thời điểm kết thúc
         var timeEnd="{{this.product.TimeEnd}}";
         var countTimeExpire = setInterval(() => {
-            //Cần xét thêm sản phẩm đang được bán 
-            //Trước khi kết thúc 5 phút có người đấu giá
-            // Tự động gia hạn thêm 10'
-            if(moment().isAfter(moment(timeEnd))){
-                //Nếu có gia hạn
-                if({{this.product.AutoReset}} == 1)
-                {
-                    var addtime=moment("{{this.product.TimeEnd}}", "YYYY-MM-DD HH:mm:ss").add(10,'minutes');
-                    timeEnd=addtime.format('YYYY-MM-DD HH:mm:ss');
-
-                    //Thêm giá trị của input form
-                    frmTimeEnd.newTimeEnd.value = timeEnd;
-                    //Cập nhật lại timeEnd trong CSDL
-                    //$('#frmTimeEnd').submit();
-                }
-            }
             var timer= moment(timeEnd, "YYYY-MM-DD HH:mm:ss").fromNow();
             $('.timeExipre').html(timer + " ...");
             console.log(timer);
         }, 1000);
 
-        //Formart Number Load to label html
+        //======================Formart Number Load to label html===================================
         $('#PriBuyNow').html(numeral({{this.product.PriBuyNow}}).format('0,0') + ' đ');
         $('#PriceStep').html(numeral({{this.product.PriceStep}}).format('0,0') + ' đ');
-
         {{#if this.BestPricePrevious}}
             $('.currentBid').html(numeral({{this.BestPricePrevious.PricePlaceBid}}).format('0,0')+ ' đ');
             $('.currentWinner').html("{{this.BestPricePrevious.UsernameBidder}}");
@@ -220,33 +227,102 @@
         {{/if}}
 
 
-        /*Thông Báo cho người dùng biết khi đặt giá thấp hơn 
-        // trong trường hợp người này vào trang rồi commit giá sau khi có người khác đã commit*/
-        //Lấy giá đặt mới của Bidder
-        {{#if this.currentLoginIsWiner}}
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Lucky!',
-                text: 'Bạn đang là người ra giá cao nhất',
-            });
+        //==========================================================================================
+        /*Thông báo Nếu người đăng nhập hiện tại đang là người có giá cao nhất*/
+       
+        //ẩn button offautoplacebtn
+        $('#offAutoPlacebtn').hide();
+
+        //===========================================================================================
+        /*Nếu là đáu giá tự động thì gửi request liên tục tới trang */
+         //Kiểm tra time đã hết chưa
+        
+        {{#if this.historyOfferBidder}}
+        {{#if this.historyOfferBidder.MaxBid}}
+            var timeEnd="{{this.product.TimeEnd}}";
+            var timeMoment=moment().format("YYYY-MM-DD HH:mm:ss");
+            // Tự động gia hạn thêm 10'
+            var distance=moment(timeEnd,"YYYY-MM-DD HH:mm:ss").diff(moment(timeMoment,"YYYY-MM-DD HH:mm:ss"),'minutes');
+
+            if(distance >0)
+            {
+                 var maxBid= numeral({{this.historyOfferBidder.MaxBid}}).format('0,0')+ ' đ';
+                console.log(maxBid);
+                $('#MaxBidLabel').html(maxBid);
+
+                //Đổi thanh nhập tay thành thanh tự động 
+                $('#autoPlaceBid').val(maxBid);
+                $('#autoPlaceBid').show();
+                $('#PlaceBid').hide();
+
+                //Thay đổi button
+                $('#autoPlacebtn').hide();
+                $('#offAutoPlacebtn').show();
+
+                //Cập nhật giá trị vào thanh input MaxBid
+                frmAutoPlaceBid.MaxBidLabel.value={{this.historyOfferBidder.MaxBid}};
+                MaxBidInterval= setInterval(sendMaxBid,5000);
+            }
+
+           
+        {{/if}}
         {{/if}}
     });
 
      //Formart Number
     function formatNumber(el) {
-        console.log("el.value" + el.value);
         var number = numeral(el.value);
         
         var strFormart = number.format('0,0');
-        console.log("strformat" + strFormart);
 
         el.value = strFormart + ' đ';
-        return true;
+        return el.value;
     };
 
-    //Place Bid
+
+
+    //Gia hạn thời gian ========================================================================
+    function ExpriesTimes(){
+        var timeEnd="{{this.product.TimeEnd}}";
+        var timeMoment=moment().format("YYYY-MM-DD HH:mm:ss");
+            // Tự động gia hạn thêm 10'
+            var distance=moment(timeEnd,"YYYY-MM-DD HH:mm:ss").diff(moment(timeMoment,"YYYY-MM-DD HH:mm:ss"),'minutes');
+            console.log(distance);
+            //hết thời gian
+            if(distance < 0 )
+            {
+               return false;
+            }
+            
+            if(distance <= 5){
+                //Nếu có gia hạn
+                if({{this.product.AutoReset}} == 1)
+                {
+                    var addtime=moment("{{this.product.TimeEnd}}", "YYYY-MM-DD HH:mm:ss").add(10,'minutes');
+                    timeEnd=addtime.format('YYYY-MM-DD HH:mm:ss');
+                    console.log(timeEnd);
+                    //Thêm giá trị của input form
+                    frmTimeEnd.newTimeEnd.value = timeEnd;
+                    //Cập nhật lại timeEnd trong CSDL
+                    $('#frmTimeEnd').submit();
+                }
+            }
+            return true;
+    }
+
+    //Đấu Gía THông thường =========================================================================
     function PlaceBid(){
+        //Kiểm tra phiên đấu giá
+        var isExpries= ExpriesTimes();
+        if(isExpries === false)
+        {
+            return (
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Sorry',
+                    text: 'Phiên đấu giá đã kết thúc',
+                }));
+        }
         console.log("new Price");
 
         //Lấy giá đặt mới của Bidder
@@ -290,5 +366,60 @@
         $('#frmPlaceBid').submit();
     }
     
+
+    //Đấu Giá tự đông----------
+    function AutoPlaceBid(){
+        var isExpries= ExpriesTimes();
+        if(isExpries === false)
+        {
+            return (
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Sorry',
+                    text: 'Phiên đấu giá đã kết thúc',
+            }));
+        }
+        var MaxBidInterval;
+        //Người dùng nhập giá tối đa mình có thể trả
+        Swal.fire({
+            title: 'Nhập giá Max bạn có thể trả',
+            html:
+                `<input id="MaxBid" class="mr-2" oninput="return formatNumber(this);" name="MaxBid" >`,
+            confirmButtonText: 'Start',
+            showLoaderOnConfirm: true
+        }).then((result) => {
+               //Đổi thanh nhập tay thành thanh tự động 
+               $('#autoPlaceBid').val(MaxBid.value);
+               $('#autoPlaceBid').show();
+               $('#PlaceBid').hide();
+
+                //Thay đổi button
+                $('#autoPlacebtn').hide();
+                $('#offAutoPlacebtn').show();
+
+               //Cập nhật giá trị vào MaxBidLabel
+               $('#MaxBidLabel').html(MaxBid.value) ;
+                //Cập nhật giá trị vào thanh input MaxBid
+               frmAutoPlaceBid.MaxBidLabel.value=MaxBid.value;
+               console.log(frmAutoPlaceBid.MaxBidLabel.value);
+
+               //Gửi request lên server
+               $('#frmAutoPlaceBid').submit();
+               return  true;
+        })
+    }
+
+    //Tắt đấu giá tự động
+    function offAutoPlaceBid(){
+        var maxValue=null;
+        $('#autoPlacebtn').show();
+        $('#offAutoPlacebtn').hide();
+        $('#autoPlaceBid').val(maxValue);
+        $('#frmOffAutoPlaceBid').submit();
+    }
+    //Sen Request to Server
+    function sendMaxBid(){
+        $('#frmAutoPlaceBid').submit();
+    }
 </script>
 {{/section}}
