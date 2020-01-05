@@ -39,6 +39,9 @@
         display: none !important;
     }
 
+    tr:hover{
+        cursor: pointer;
+    }
 </style>
 {{/section}}
 <div class="row">
@@ -75,7 +78,7 @@
                     </thead>
                     <tbody>
                         {{#each this.ProductsSelling}}
-                        <tr>
+                        <tr onclick="goToDetail(this)" id="{{ProID}}">
                             <th scope="row" class="text-center w-25">{{ProName}}</th>
                             <td>{{TimeBegin}}</td>
                             <td>{{TimeEnd}}</td>
@@ -120,7 +123,7 @@
                     </thead>
                     <tbody>
                         {{#each this.ProductsSold}}
-                        <tr>
+                        <tr onclick="goToDetail(this)" id="{{ProID}}">
                             <th scope="row" class="text-center w-25">{{ProName}}</th>
                             <td>{{TimeBegin}}</td>
                             <td>{{TimeEnd}}</td>
@@ -165,7 +168,7 @@
                     </thead>
                     <tbody>
                         {{#each this.ProductsNoSold}}
-                        <tr>
+                        <tr onclick="goToDetail(this)" id="{{ProID}}">
                             <th scope="row" class="text-center w-25">{{ProName}}</th>
                             <td>{{TimeBegin}}</td>
                             <td>{{TimeEnd}}</td>
@@ -207,5 +210,10 @@
     }
     // Get the element with id="defaultOpen" and click on it
     document.getElementById("defaultOpen").click();
+
+    function goToDetail(e){
+        var id= +e.id;
+        window.location=`/categories/product/${id}`;
+    }
 </script>
 {{/section}}
