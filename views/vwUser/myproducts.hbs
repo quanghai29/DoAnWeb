@@ -10,7 +10,7 @@
         padding: 14px 16px;
         font-size: 20px;
         font-weight: bold;
-        width: 25%;
+        width: 33.333333%;
         border: 1px solid #b3cde0;
         border-bottom: none;
         color:#2a4d69 ;
@@ -38,19 +38,21 @@
     .view {
         display: none !important;
     }
+
 </style>
 {{/section}}
 <div class="row">
-    <div class="col-sm-2">
+    <div class="col-sm-1">
     </div>
     <div class="col-sm-10">
-        <button class="tablinkMyProduct btn" onclick="openCity('Selling', this, '#b3cde0')" id="defaultOpen">Product
-            Selling</button>
+        <button class="tablinkMyProduct btn" onclick="openCity('Selling', this, '#b3cde0')" id="defaultOpen">
+            Product Selling
+        </button>
         <button class="tablinkMyProduct btn" onclick="openCity('Sold', this, '#b3cde0')">Product Sold</button>
         <button class="tablinkMyProduct btn" onclick="openCity('NoSold', this, '#b3cde0')">Product No Sold</button>
         <div id="Selling" class="tabcontentMyProducts mt-5">
-            <div class="card shadow mb-2 w-75 mr-auto">
-                {{#if this.empty}}
+            <div class="card shadow mb-2 w-100 mr-auto">
+                {{#if this.emptySelling}}
                 <div class="card-body">
                     <p class="card-text">
                         Không có dữ liệu.
@@ -60,8 +62,9 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col" class="text-center">#</th>
-                            <th scope="col">Category</th>
+                            <th scope="col" class="text-center w-25">Product Name</th>
+                            <th scope="col" class="text-center">Time Begin</th>
+                            <th scope="col" class="text-center">Time End</th>
                             <th scope="col" class="text-right">
                                 <a class="btn btn-outline-success" href="/user//add_product" role="button">
                                     <i class="fa fa-plus" aria-hidden="true"></i>
@@ -71,10 +74,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{#each this.categories}}
+                        {{#each this.ProductsSelling}}
                         <tr>
-                            <th scope="row" class="text-center">{{CatID}}</th>
-                            <td>{{CatName}}</td>
+                            <th scope="row" class="text-center w-25">{{ProName}}</th>
+                            <td>{{TimeBegin}}</td>
+                            <td>{{TimeEnd}}</td>
                             <td class="text-right">
                                 <a class="btn btn-sm btn-primary" href="/admin/categories/edit/{{CatID}}" role="button">
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -92,12 +96,8 @@
         </div>
 
         <div id="Sold" class="tabcontentMyProducts mt-5">
-            <div class="card shadow mb-2 w-75 mr-auto">
-                <h4 class="card-header">
-                    Categories
-                </h4>
-
-                {{#if this.empty}}
+            <div class="card shadow mb-2 w-100 mr-auto">
+                {{#if this.emptySold}}
                 <div class="card-body">
                     <p class="card-text">
                         Không có dữ liệu.
@@ -107,10 +107,11 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col" class="text-center">#</th>
-                            <th scope="col">Category</th>
+                            <th scope="col" class="text-center w-25">Product Name</th>
+                            <th scope="col">Time Begin</th>
+                            <th scope="col">Time End</th>
                             <th scope="col" class="text-right">
-                                <a class="btn btn-outline-success" href="/admin/categories/add" role="button">
+                                <a class="btn btn-outline-success" href="/user//add_product" role="button">
                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                     Add Category
                                 </a>
@@ -118,10 +119,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{#each this.categories}}
+                        {{#each this.ProductsSold}}
                         <tr>
-                            <th scope="row" class="text-center">{{CatID}}</th>
-                            <td>{{CatName}}</td>
+                            <th scope="row" class="text-center w-25">{{ProName}}</th>
+                            <td>{{TimeBegin}}</td>
+                            <td>{{TimeEnd}}</td>
                             <td class="text-right">
                                 <a class="btn btn-sm btn-primary" href="/admin/categories/edit/{{CatID}}" role="button">
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -139,11 +141,8 @@
         </div>
 
         <div id="NoSold" class="tabcontentMyProducts mt-5">
-            <div class="card shadow mb-2 w-75 mr-auto">
-                <h4 class="card-header">
-                    Categories
-                </h4>
-                {{#if this.empty}}
+            <div class="card shadow mb-2 w-100 mr-auto">
+                {{#if this.emptyNoSold}}
                 <div class="card-body">
                     <p class="card-text">
                         Không có dữ liệu.
@@ -153,10 +152,11 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col" class="text-center">#</th>
-                            <th scope="col">Category</th>
+                            <th scope="col" class="text-center w-25">Product Name</th>
+                            <th scope="col">Time Begin</th>
+                            <th scope="col">Time End</th>
                             <th scope="col" class="text-right">
-                                <a class="btn btn-outline-success" href="/admin/categories/add" role="button">
+                                <a class="btn btn-outline-success" href="/user//add_product" role="button">
                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                     Add Category
                                 </a>
@@ -164,10 +164,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{#each this.categories}}
+                        {{#each this.ProductsNoSold}}
                         <tr>
-                            <th scope="row" class="text-center">{{CatID}}</th>
-                            <td>{{CatName}}</td>
+                            <th scope="row" class="text-center w-25">{{ProName}}</th>
+                            <td>{{TimeBegin}}</td>
+                            <td>{{TimeEnd}}</td>
                             <td class="text-right">
                                 <a class="btn btn-sm btn-primary" href="/admin/categories/edit/{{CatID}}" role="button">
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
