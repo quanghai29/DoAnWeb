@@ -16,57 +16,67 @@ router.get('/', async (req, res) => {
 
 //Chi tiết sản phẩm
 router.get('/product/:id',async (req, res) => {
-    //Dữ liệu từ product 
+    //Dữ liệu từ product =====================================================
     const product = await productModel.getPro(req.params.id);
     if (product.length === 0) {
         throw new Error('Invalid product id');
     }
-    //Dũ liệu từ detail product
+    //Dũ liệu từ detail product =============================================
     const detailPro = await productModel.getDetailPro(req.params.id);
     if (detailPro.length === 0) {
         throw new Error('Invalid product id');
     }
 
-    //Dữ liệu từ pro image
+    //Dữ liệu từ pro image ===================================================
     const imgPro = await productModel.getImgPro(req.params.id);
     var countImg=imgPro.length;
     if (countImg === 0) {
         throw new Error('Invalid product id');
     }
-
+    console.log(product);
+    //Dữ liệu của người đang giữ giá trước đó ================================
     var BestPricePrevious = null;
-    var currentLoginIsWiner = false;
     const rowsBestPrice = await productModel.getBestPricePrevious(req.params.id);
     if(rowsBestPrice.length !== 0)
     {
         BestPricePrevious = rowsBestPrice[0];
         const rowUserName = await userModel.getUsername(BestPricePrevious.Bidder);
 
-        console.log(rowUserName);
+        //console.log(rowUserName);
         BestPricePrevious.UsernameBidder = rowUserName[0].f_Username;
-
-        if(BestPricePrevious.Bidder == req.session.authUser.f_ID)
-        {
-            currentLoginIsWiner= true;
-        }
     }
 
-    //Xử lý thời gian
+   
+    //Dữ liệu đấu giá của chính bidder đang đăng nhập (nếu có)===============================
+    var historyOfferBidder=null;
+    var rowhisOfferBidder = null;
+    if(req.session.isAuthenticated === true)
+    {
+        rowhisOfferBidder = await productModel.getOfferBidder(req.params.id, req.session.authUser.f_ID);
+        if(rowhisOfferBidder !==0)
+        {
+            historyOfferBidder = rowhisOfferBidder[0];
+        }
+       
+    }
+
+
+    //Xử lý thời gian ====================
     product[0].TimeEnd = moment(product[0].TimeEnd,'YYYY-MM-DDTHH:mm:ss.SSSZ').format('YYYY-MM-DD HH:mm:ss');
 
-    console.log(product);
-    console.log(detailPro);
-    console.log(imgPro);
+    //console.log(product);
+    //console.log(detailPro);
+    //console.log(imgPro);
 
     res.render('vwDetailProduct/detail.hbs', {
         title: 'Detail Product',
         product: product[0],
         BestPricePrevious,
+        historyOfferBidder,
         detailPro,
         mainImgPro: imgPro[0],
         imgPro: imgPro,
         countImg,
-        currentLoginIsWiner
     });
 });
 

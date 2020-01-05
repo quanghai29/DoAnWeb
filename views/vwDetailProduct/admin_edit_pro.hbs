@@ -1,0 +1,49 @@
+{{#section 'js'}}
+
+{{/section}}
+
+<div class="card shadow mb-4">
+  <h4 class="card-header">
+    Request edit products from sellers
+  </h4>
+
+  {{#if this.empty}}
+  <div class="card-body">
+    <p class="card-text">
+      Không có dữ liệu.
+    </p>
+  </div>
+  {{else}}
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col" class="text-center">IDPro</th>
+        <th scope="col">Seller</th>
+        <th scope="col">Name Product</th>
+        <th scope="col" class="text-center">ID Modify</th>
+        <th scope="col" class="text-right">
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each this.products}}
+      <tr>
+        <th scope="row" class="text-center">{{ProID}}</th>
+        <td>{{f_Username}}</td>
+        <td>{{ProName}}</td>
+        <td class="text-center">{{ProDeID}}</td>
+        <td class="text-right">
+            <a class="btn btn-sm btn-primary" href="/admin/products/edit/{{ProID}}/{{ProDeID}}" role="button">
+            <i class="fa fa-eye" aria-hidden="true"></i> Detail
+          </a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{/if}}
+
+  <div class="card-footer text-muted">
+    Footer
+  </div>
+</div>
