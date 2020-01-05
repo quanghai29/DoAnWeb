@@ -14,6 +14,7 @@ router.get('/', async (req, res) => {
     });
 })
 
+
 router.get('/sensorup', async (req, res) => {
     const rows = await userModel.requestOfUsers();
     res.render('vwUser/sensorupgrade', {

@@ -1,0 +1,162 @@
+<div class="container tm-mt-big tm-mb-big">
+    <div class="row">
+        <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+            <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+                <div class="row tm-edit-product-row mt-3" style="font-size:20px;">
+                    <div class="col-xl-12 col-lg-12 col-md-12 font-weight-bolder">
+                        <form method="POST" novalidate id="frmLogin" name="frmLogin">
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <h4>ID sản phẩm: </h4>
+                                    <input id="ProID" name="ProID" class="form-control validate"
+                                        value="{{this.product.ProID}}" readonly />
+                                </div>
+                                <div class="col-sm-7">
+                                    <h4>ID Modify: </h4>
+                                    <input id="ModID" name="ProDeID" class="form-control validate"
+                                        value="{{this.Modify.ProDeID}}" readonly />
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="ProName">Tên sản phẩm
+                                </label>
+                                <input id="ProName" name="ProName" class="form-control validate"
+                                    value="{{this.product.ProName}} " readonly />
+                            </div>
+                            <div class="row">
+                                <div class="form-group mb-3 col-xs-12 col-sm-6">
+                                    <div class="form-label-group fg d-flex">
+                                        <label for="PriceBegin">Giá Khởi Điểm
+                                        </label>
+                                    </div>
+                                    <input id="PriceBegin" oninput="formatNumber(this,warnPriceBegin)" name="PriceBegin"
+                                        class="form-control" value="{{this.product.PriceBegin}} " readonly />
+                                </div>
+                                <div class="form-group mb-3 col-xs-12 col-sm-6">
+                                    <div class="form-label-group fg d-flex">
+                                        <label for="PriceStep">Bước Giá
+                                        </label>
+                                    </div>
+                                    <input id="PriceStep" oninput="formatNumber(this,warnPriceStep)" name="PriceStep"
+                                        class="form-control" value="{{this.product.PriceStep}} " readonly />
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <div class="form-label-group fg d-flex">
+                                    <label for="PriBuyNow">Giá mua ngay
+                                    </label>
+                                </div>
+                                <input id="PriBuyNow" oninput="formatNumber(this,warnPriBuy)" name="PriBuyNow"
+                                    class="form-control" value="{{this.product.PriBuyNow}} " readonly />
+                            </div>
+                            <div class="row mb-4">
+                                <div class="form-group mb-3 col-xs-12 col-sm-6">
+                                    <label for="DOE">Ngày Hết Hạn</label>
+                                    <input id="DOE" name="DOE" class="form-control" value="{{this.product.TimeEnd}}"
+                                        readonly>
+                                </div>
+                                <div class="form-group mb-3 col-xs-12 col-sm-6 mt-1">
+                                    <label for="category">Gia Hạn Tự Động</label>
+                                    <select class="custom-select tm-select-accounts" id="category" name="AutoReset">
+                                        <option value="0" selected>Không</option>
+                                        <option value="1">Có</option>
+                                    </select>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="row tm-edit-product-row mt-2 mb-4">
+                    <div class="col-xl-12 col-lg-12 col-md-12 mb-4">
+                        <div class="card shadow h-100">
+                            <h4 class="card-header">
+                                Mô Tả Sản Phẩm
+                            </h4>
+                            <div class="card-body">
+                                {{#each details}}
+                                <p>{{DateWrite}}</p>
+                                {{{Description}}}
+                                {{/each}}
+                                <div id="modify">
+                                    <p>{{this.Modify.DateWrite}}</p>
+                                    {{{this.Modify.Description}}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row tm-edit-product-row mb-5 ">
+                    <button type="submit" class="btn btn-outline-primary" formaction="/admin/products/acceptedit">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        Accept
+                    </button>
+                    <button type="submit" class="btn btn-outline-danger" formaction="/admin/products/canceledit">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        Cancel
+                    </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{#section 'css'}}
+    {{!-- <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css"> --}}
+    <style>
+        #modify{
+            background-color: #7FDBFF;
+        }
+    </style>
+    {{/section}}
+    {{#section 'js'}}
+    {{!-- <script
+    src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=ezd73nxbzc7bu6e86g2l82jbbffke0mwevwrnyvc5q8h89j6"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+<script>
+    tinymce.init({
+        selector: '#Description',
+        height: 400,
+        plugins: 'paste image link autolink lists table media',
+        menubar: false,
+        toolbar: [
+            'undo redo | bold italic underline strikethrough | numlist bullist | alignleft aligncenter alignright',
+            'forecolor backcolor',
+            'table link image media',
+        ],
+    });
+    //Formart Number
+    function formatNumber(el, idEL) {
+        console.log("el.value" + el.value);
+        var number = numeral(el.value);
+
+        var strFormart = number.format('0,0');
+        console.log("strformat" + strFormart);
+
+        el.value = strFormart + ' đ';
+        return true;
+    };
+
+    //Date expries
+    $('#DOE').datetimepicker({
+        format: 'd/m/Y H:i',
+        //format: 'd/m/Y',
+        timepicker: true,
+        mask: true,
+    });
+
+    //$('#DOE').datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+
+    //Form Submit
+    function validate() {
+
+        /****************************/
+        // Check form add product
+        // check bắt buộc nhập : ten sản phẩm , giá khởi điểm , bước giá, thời gian kết thúc
+        // thông báo khi ng dùng nhập chữ trong khung nhập số
+        // check thời gian kết thúc phải lớn hơn thời gian đăng hiện tại (tham khảo package moment cho js)
+
+        return true;
+    }
+</script> --}}
+    {{/section}}

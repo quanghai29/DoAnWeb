@@ -38,6 +38,7 @@ router.post('/add_product', async (req, res) => {
     entity.PriBuyNow = numeral(entity.PriBuyNow).value();
     entity.TimeBegin = moment().format('YYYY-MM-DD HH:mm:ss');
     entity.SellerID= req.session.authUser.f_ID;//ID của seller đang đăng nhập
+    entity.StatusAcceptFromAdmin = 1; //default là chưa được admin accept
 
     console.log(entity.SellerID);
     console.log('time begin: ' + entity.TimeBegin);
@@ -53,7 +54,8 @@ router.post('/add_product', async (req, res) => {
     var entityDetail= {
         ProID : results.insertId,
         Description: des,
-        DateWrite : entity.TimeBegin
+        DateWrite : entity.TimeBegin,
+        Modify: 0 //default là được admin accept
     };
 
     //thêm vào detail product

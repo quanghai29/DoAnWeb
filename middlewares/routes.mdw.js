@@ -13,4 +13,5 @@ module.exports = function (app) {
   //app.use('/admin/categories', restrict, require('../routes/admin/category.route'));
   app.use('/admin/categories', require('../routes/admin/category.route'));
   app.use('/admin/users',require('../routes/admin/user.route'));
+  app.use('/admin/products',require('../routes/admin/products.route'));
 };
