@@ -33,7 +33,7 @@ router.get('/product/:id',async (req, res) => {
     if (countImg === 0) {
         throw new Error('Invalid product id');
     }
-
+    console.log(product);
     //Dữ liệu của người đang giữ giá trước đó ================================
     var BestPricePrevious = null;
     const rowsBestPrice = await productModel.getBestPricePrevious(req.params.id);
@@ -44,20 +44,20 @@ router.get('/product/:id',async (req, res) => {
 
         //console.log(rowUserName);
         BestPricePrevious.UsernameBidder = rowUserName[0].f_Username;
-
-        // if(BestPricePrevious.Bidder == req.session.authUser.f_ID)
-        // {
-        //     currentLoginIsWiner= true;
-        // }
     }
 
    
     //Dữ liệu đấu giá của chính bidder đang đăng nhập (nếu có)===============================
-    var historyOfferBidder = null;
+    var historyOfferBidder=null;
+    var rowhisOfferBidder = null;
     if(req.session.isAuthenticated === true)
     {
-        historyOfferBidder = await productModel.getOfferBidder(req.params.id, req.session.authUser.f_ID);
-        console.log(historyOfferBidder);
+        rowhisOfferBidder = await productModel.getOfferBidder(req.params.id, req.session.authUser.f_ID);
+        if(rowhisOfferBidder !==0)
+        {
+            historyOfferBidder = rowhisOfferBidder[0];
+        }
+       
     }
 
 
@@ -72,7 +72,7 @@ router.get('/product/:id',async (req, res) => {
         title: 'Detail Product',
         product: product[0],
         BestPricePrevious,
-        historyOfferBidder: historyOfferBidder[0],
+        historyOfferBidder,
         detailPro,
         mainImgPro: imgPro[0],
         imgPro: imgPro,
