@@ -5,7 +5,6 @@ const express_handlebars_sections = require('express-handlebars-sections');
 const session = require('express-session');
 const numeral = require('numeral');
 const path = require('path');
-const categoryModel = require('../../models/category.model');
 require('express-async-errors');
 
 var app = express();
@@ -48,11 +47,8 @@ require('./middlewares/routes.mdw')(app);
 app.set('view engine', 'hbs');
 //Set cho từng trang
 app.get('/', (req, res) => {
-    const rows = await categoryModel.all();
     res.render('home.hbs', {
-        title: 'Home-auction',
-        categories: rows,
-        empty: rows.length === 0
+        title: 'Home-auction'
     });
 })
 
