@@ -167,7 +167,7 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT INTO `member` VALUES ('hai','$2a$10$uDNJy6Imn1jpNd/vfjXt4OhI2G.GPWGyfC4S0MHNrMRSVEvNdPzTy',14,'LÊ QUANG HẢI','lequanghai540@gmail.com',NULL,2,NULL,'Nam','2019-12-01','ktx khu B Đại Học Quốc Gia tp Hồ Chí Minh, linh trung, Thủ Đức',0),('trinh','$2a$10$Bim57fLr9u3suuQFkrQ4..JDHmnjJktvWneSRtYKJ7bErI42w8./y',16,'Phạm nguyễn tuyết trinh','lequanghai540@gmail.com',NULL,1,NULL,'Nữ','2019-12-16','ktx khu B Đại Học Quốc Gia tp Hồ Chí Minh, linh trung, Thủ Đức',0),('Dũng','$2a$10$PrjLSdHRGsRHNDTEjMgSQO.rdi.a3Noo3czlLEm1df6pBB0lsFUZW',17,'Tiến Dũng','Conga@gmail.com',NULL,3,NULL,'Nam','1999-02-14','dường trục',0),('DongGay','$2a$10$JBgc/0dmhU6AhqnxUznt8u5SX7.d6H17b68anhg7Acdedh4.UipUW',18,'Linh Đồng','gaylison@gmail.com',5,1,NULL,'Nữ','2000-02-29','Lí Sơn',1);
+INSERT INTO `member` VALUES ('hai','$2a$10$uDNJy6Imn1jpNd/vfjXt4OhI2G.GPWGyfC4S0MHNrMRSVEvNdPzTy',14,'LÊ QUANG HẢI','lequanghai540@gmail.com',NULL,2,NULL,'Nam','2019-12-01','ktx khu B Đại Học Quốc Gia tp Hồ Chí Minh, linh trung, Thủ Đức',0),('trinh','$2a$10$Bim57fLr9u3suuQFkrQ4..JDHmnjJktvWneSRtYKJ7bErI42w8./y',16,'Phạm nguyễn tuyết trinh','lequanghai540@gmail.com',NULL,3,NULL,'Nữ','2019-12-16','ktx khu B Đại Học Quốc Gia tp Hồ Chí Minh, linh trung, Thủ Đức',0),('Dũng','$2a$10$PrjLSdHRGsRHNDTEjMgSQO.rdi.a3Noo3czlLEm1df6pBB0lsFUZW',17,'Tiến Dũng','Conga@gmail.com',NULL,3,NULL,'Nam','1999-02-14','dường trục',0),('DongGay','$2a$10$JBgc/0dmhU6AhqnxUznt8u5SX7.d6H17b68anhg7Acdedh4.UipUW',18,'Linh Đồng','gaylison@gmail.com',5,1,NULL,'Nữ','2000-02-29','Lí Sơn',1);
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -214,7 +214,7 @@ CREATE TABLE `prodetails` (
   `DateWrite` datetime DEFAULT NULL,
   `Modified` int(11) DEFAULT '1',
   PRIMARY KEY (`ProDeID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -223,7 +223,7 @@ CREATE TABLE `prodetails` (
 
 LOCK TABLES `prodetails` WRITE;
 /*!40000 ALTER TABLE `prodetails` DISABLE KEYS */;
-INSERT INTO `prodetails` VALUES (1,34,'<ul>\r\n<li>&nbsp;Name: `Laptop Dell Vostro V5481A P92G001(i5 8265U / 4GB RAM / 1TB HDD / MX130 2G / 14\" FHD/Win 10)`,</li>\r\n<li>&nbsp;Chipset: \"Bộ vi xử l&yacute; Intel Core&trade; i5 8265U (1.6Ghz, 6MB Cache)\"</li>\r\n<li>&nbsp;Rom: \"Bộ nhớ trong 4GB DDR4 2666MHz\"</li>\r\n<li>&nbsp;GraphicCard: \"VGA Nvidia Geforce MX130 2G DDR5\",</li>\r\n<li>HardDriver: \"Ổ cứng 1TB 5400rpm\",</li>\r\n<li>Screen: \"M&agrave;n h&igrave;nh 14.0&rdquo; FHD(1920 * 1080), LED backlight&nbsp;</li>\r\n</ul>\r\n<div id=\"eJOY__extension_root\" style=\"all: unset;\">&nbsp;</div>','2019-12-30 16:59:41',1),(2,34,'fff',NULL,1),(3,34,'<p>dddd</p>','2020-01-06 14:15:58',1);
+INSERT INTO `prodetails` VALUES (1,34,'<ul>\r\n<li>&nbsp;Name: `Laptop Dell Vostro V5481A P92G001(i5 8265U / 4GB RAM / 1TB HDD / MX130 2G / 14\" FHD/Win 10)`,</li>\r\n<li>&nbsp;Chipset: \"Bộ vi xử l&yacute; Intel Core&trade; i5 8265U (1.6Ghz, 6MB Cache)\"</li>\r\n<li>&nbsp;Rom: \"Bộ nhớ trong 4GB DDR4 2666MHz\"</li>\r\n<li>&nbsp;GraphicCard: \"VGA Nvidia Geforce MX130 2G DDR5\",</li>\r\n<li>HardDriver: \"Ổ cứng 1TB 5400rpm\",</li>\r\n<li>Screen: \"M&agrave;n h&igrave;nh 14.0&rdquo; FHD(1920 * 1080), LED backlight&nbsp;</li>\r\n</ul>\r\n<div id=\"eJOY__extension_root\" style=\"all: unset;\">&nbsp;</div>','2019-12-30 16:59:41',1);
 /*!40000 ALTER TABLE `prodetails` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -235,7 +235,7 @@ DROP TABLE IF EXISTS `products`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `products` (
-  `ProID` int(10) unsigned NOT NULL,
+  `ProID` int(10) NOT NULL AUTO_INCREMENT,
   `Item` int(11) DEFAULT NULL,
   `ProName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `PriceBegin` double DEFAULT NULL,
@@ -248,7 +248,7 @@ CREATE TABLE `products` (
   `AutoReset` int(11) DEFAULT '0',
   `StatusAcceptFromAdmin` int(11) DEFAULT '1',
   PRIMARY KEY (`ProID`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -318,4 +318,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-06 19:00:32
+-- Dump completed on 2020-01-06 22:57:59

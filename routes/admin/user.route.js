@@ -1,10 +1,10 @@
 const express = require('express');
 const userModel = require('../../models/user.model');
 const config = require('../../config/default.json');
-
+const roleAdmin = require('../../middlewares/authAdmin.mdw');
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get('/',roleAdmin, async (req, res) => {
     const rows = await userModel.allUser();
     res.render('vwUser/index', {
         layout: 'admin.hbs',
@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 })
 
 
-router.get('/sensorup', async (req, res) => {
+router.get('/sensorup',roleAdmin, async (req, res) => {
     const rows = await userModel.requestOfUsers();
     res.render('vwUser/sensorupgrade', {
         layout: 'admin.hbs',
@@ -25,7 +25,7 @@ router.get('/sensorup', async (req, res) => {
     });
 })
 
-router.post('/acceptupgrade/:id', async (req, res) => {
+router.post('/acceptupgrade/:id',roleAdmin, async (req, res) => {
     const rows = await userModel.acceptUp(req.params.id);
     res.redirect('/admin/users/sensorup');
 })

@@ -1,10 +1,10 @@
 const express = require('express');
 const productModel = require('../../models/product.model');
 const config = require('../../config/default.json');
-
+const roleAdmin = require('../../middlewares/authAdmin.mdw');
 const router = express.Router();
 
-router.get('/editproducts', async (req, res) => {
+router.get('/editproducts',roleAdmin, async (req, res) => {
     const rows = await productModel.getProEdit();
     res.render('vwDetailProduct/admin_edit_pro', {
         layout: 'admin.hbs',
@@ -14,7 +14,7 @@ router.get('/editproducts', async (req, res) => {
     });
 })
 
-router.get('/edit/:id/:modi', async (req, res) => {
+router.get('/edit/:id/:modi',roleAdmin, async (req, res) => {
     const rows = await productModel.getProByID(req.params.id);
     const details= await productModel.getDetailByID(req.params.id);
     const changes=await productModel.getModifyByID(req.params.modi);
@@ -33,17 +33,17 @@ router.get('/edit/:id/:modi', async (req, res) => {
     });
 })
 
-router.post('/acceptedit', async (req, res) => {
+router.post('/acceptedit',roleAdmin, async (req, res) => {
     const results = await productModel.acceptEditPro(req.body.ProDeID);
     res.redirect('/admin/products/editproducts');
 })
 
-router.post('/canceledit', async (req, res) => {
+router.post('/canceledit',roleAdmin, async (req, res) => {
     const results = await productModel.NotAcceptEditPro(req.body.ProDeID);
     res.redirect('/admin/products/editproducts');
 })
 
-router.get('/addproducts', async (req, res) => {
+router.get('/addproducts',roleAdmin, async (req, res) => {
     const rows = await productModel.acceptPro();
     res.render('vwDetailProduct/admin_add_pro', {
         layout: 'admin.hbs',
@@ -53,7 +53,7 @@ router.get('/addproducts', async (req, res) => {
     });
 })
 
-router.get('/add/:id', async (req, res) => {
+router.get('/add/:id',roleAdmin, async (req, res) => {
     const rows = await productModel.getProByID(req.params.id);
     const details= await productModel.getDetailByID(req.params.id);
     var auto = 'Không';
@@ -70,13 +70,13 @@ router.get('/add/:id', async (req, res) => {
     });
 })
 
-router.post('/add', async (req, res) => {
+router.post('/add',roleAdmin, async (req, res) => {
     const results = await productModel.acceptAddPro(req.body.ProID);
     console.log(req.body.ProID);
     res.redirect('/admin/products/addproducts');
 })
 
-router.post('/delete', async (req, res) => {
+router.post('/delete',roleAdmin, async (req, res) => {
     const results = await productModel.NotAcceptAddPro(req.body.ProID);
     res.redirect('/admin/products/addproducts');
 })

@@ -79,8 +79,15 @@ router.post('/login', async (req, res) => {
   req.session.authUser = user;
   req.session.role = user.ID_loai_member;
 
-  const url = req.query.retUrl || '/';
-  res.redirect(url);
+  if(req.session.role === 3 )
+  {
+    res.redirect('/admin/categories/');
+  }
+  else{
+    const url = req.query.retUrl || '/';
+    res.redirect(url);
+  }
+  
 })
 
 router.post('/logout', (req, res) => {
