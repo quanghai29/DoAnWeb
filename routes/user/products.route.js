@@ -10,19 +10,16 @@ const uuidv1 = require('uuid/v1');// phát sinh bộ tên unique
 const moment = require('moment');//formart thời gian
 var fs = require('fs');//tạo thư mục
 
-//Chưa có view myproducts hiện ra list sản phẩm của seller đó
+//Hiển thị sản phẩm trong mục My Products
 router.get('/products', async(req, res) => {
     const rowsSelling=await productModel.getProStatus(0);
     const rowsSold=await productModel.getProStatus(1);
-    const rowsNoSold=await productModel.getProStatus(-1);
     res.render('vwUser/myproducts.hbs', {
         title: 'Your Products',
         emptySelling: rowsSelling.length===0,
         emptySold: rowsSold.length===0,
-        emptyNoSold: rowsNoSold.length===0,
         ProductsSelling: rowsSelling,
         ProductsSold: rowsSold,
-        ProductsNoSold: rowsNoSold,
     });
 })
 
