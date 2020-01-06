@@ -325,6 +325,19 @@ router.post('/product/offAutoPlaceBid/:id',async (req, res) => {
     console.log(entity);
     const resultsUpdate = await productModel.updateStatusWinner(entity);
 })
+
+//cập nhật description
+router.post('/product/addDescription/:id',async (req, res) => {
+    const entity={
+        ProID:req.params.id,
+        Description: req.body.Description,
+        DateWrite: moment().format('YYYY-MM-DD HH:mm:ss')
+    }
+    console.log(entity);
+    const resultsDetail = await productModel.addDetailProduct(entity);
+    res.redirect(`/categories/product/${req.params.id}`);
+})
+
 // //edit dữ liệu của database
 // router.get('/edit/:id', async (req, res) => {
 //     const rows = await productModel.getPro(req.params.id);
