@@ -10,8 +10,13 @@
           autofocus>
       </div>
       <div class="form-group">
-        <label for="txtListID">List (1: dien thoai ; 2: may tinh)</label>
-        <input type="text" class="form-control" id="txtListID" name="List" placeholder="Enter list id">
+        {{!-- <label for="txtListID">List (1: dien thoai ; 2: may tinh)</label>
+        <input type="text" class="form-control" id="txtListID" name="List" placeholder="Enter list id"> --}}
+        <label>List</label>
+        <select class="custom-select" name="List" id="txtListID">
+          <option value="1" selected>Mobile</option>
+          <option value="2">Laptop</option>
+        </select>
       </div>
       <a class="btn btn-outline-primary" href="/admin/categories" role="button">
         <i class="fa fa-backward" aria-hidden="true"></i>

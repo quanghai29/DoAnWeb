@@ -31,4 +31,13 @@ module.exports = {
     const entity = { f_UpgradeWaitStatus: 0, ID_loai_member: config.IDTypeMember.Seller }
     return db.patch('member', entity, condition);
   },
+  numUserUpgrade: _ => db.load('SELECT COUNT(f_ID) as num_user_need_upgrade FROM member WHERE f_UpgradeWaitStatus=1'),
+  getProfileByID: id => db.load(`SELECT m.* FROM member m WHERE m.f_ID=${id}`),
+  getEvaluateByID: id => db.load(`SELECT e.* FROM evaluate e WHERE e.UserID=${id}`),
+  patch: entity => {
+    const condition = { f_ID: entity.f_ID };
+    delete entity.f_ID;
+    console.log(condition, entity);
+    return db.patch('member',entity,condition);
+},
 };
