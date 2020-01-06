@@ -15,15 +15,12 @@ var fs = require('fs');//tạo thư mục
 router.get('/products',roleSeller, async(req, res) => {
     const rowsSelling=await productModel.getProStatus(0);
     const rowsSold=await productModel.getProStatus(1);
-    const rowsNoSold=await productModel.getProStatus(-1);
     res.render('vwUser/myproducts.hbs', {
         title: 'Your Products',
         emptySelling: rowsSelling.length===0,
         emptySold: rowsSold.length===0,
-        emptyNoSold: rowsNoSold.length===0,
         ProductsSelling: rowsSelling,
         ProductsSold: rowsSold,
-        ProductsNoSold: rowsNoSold,
     });
 })
 

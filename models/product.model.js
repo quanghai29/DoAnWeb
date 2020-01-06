@@ -9,17 +9,17 @@ module.exports = {
     addOfferProduct: entity => db.add('offerpro', entity),
 
     //load 
-    getListItem: id=>db.load(`select distinct p.ProID,p.TimeEnd,min(pi.ID),pi.imgURL from products as p right join proimage as pi on p.ProID = pi.ProID  where Item = ${id}`),
+    getListItem: id => db.load(`select distinct p.ProID,p.TimeEnd,min(pi.ID),pi.imgURL from products as p right join proimage as pi on p.ProID = pi.ProID  where Item = ${id}`),
     all: id => db.load(`select * from products where Item = ${id}`),
     getPro: id => db.loadOnePro(`select * from products where ProID = ${id}`),
     getAceptedDetailPro: id => db.loadOnePro(`select * from prodetails where ProID = ${id} and Modified=0`),
     getImgPro: id => db.loadOnePro(`select * from proimage where ProID = ${id}`),
-    getProStatus: status=>db.load(`select ProID, ProName, TimeBegin, TimeEnd from products where StatusID=${status}`),
+    getProStatus: status => db.load(`select ProID, ProName, TimeBegin, TimeEnd from products where StatusID=${status}`),
     //bidder đã đặt giá cao nhất trước đó
     getBestPricePrevious: id => db.loadOnePro(`select o.Bidder,o.PricePlaceBid,o.MaxBid from offerpro as o where ProID =${id} and StatusWinner = 1`),
     getProductPrice: id => db.loadOnePro(`select p.PriceBegin,p.PriceStep from products as p where ProID =${id}`),
     //Người đã đặt giá trước đó vào đặt giá tiếp
-    getOfferBidder: (id,Bidder) => db.loadOnePro(`select * from offerpro where ProID =${id} and Bidder = ${Bidder}`),
+    getOfferBidder: (id, Bidder) => db.loadOnePro(`select * from offerpro where ProID =${id} and Bidder = ${Bidder}`),
     //sản phẩm đang sell
     getSellingProduct: () => db.load(`select * from products where StatusID = 0 and StatusAcceptFromAdmin= 0`),
     //lịch sử ddasus giá
@@ -47,13 +47,13 @@ module.exports = {
         delete entity.ProID;
         return db.patch('products', entity, condition);
     },
-    
+
     //Đếm
     countByCat: async Item => {
         const rows = await db.load(`select count(*) as total from products where Item = ${Item}`);
         return rows[0].total;
     },
-    pageByCat: (Item, offset) => db.load(`select * from products where Item = ${Item} limit ${config.paginate.limit} offset ${offset}`),
+    pageByCat: (Item, offset) => db.load(`select distinct p.*,min(pi.ID),pi.imgURL from products as p right join proimage as pi on p.ProID = pi.ProID  where Item = ${Item} limit ${config.paginate.limit} offset ${offset}`),
     //     console.log(condition, entity);
     //     return db.patch('products',entity,condition);
     // },

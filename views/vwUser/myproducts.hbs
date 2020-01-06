@@ -2,7 +2,7 @@
 <style>
     /* css của MyProfile */
     .tablinkMyProduct {
-        background-color: #4b86b4 ;
+        background-color: #4b86b4;
         float: left;
         border: none;
         outline: none;
@@ -10,15 +10,15 @@
         padding: 14px 16px;
         font-size: 20px;
         font-weight: bold;
-        width: 33.333333%;
+        width: 50%;
         border: 1px solid #b3cde0;
         border-bottom: none;
-        color:#2a4d69 ;
+        color: #2a4d69;
     }
 
     .tablinkMyProduct:hover {
         background-color: #005b96;
-        
+
     }
 
     /* Style the tab content */
@@ -39,7 +39,7 @@
         display: none !important;
     }
 
-    tr:hover{
+    tr:hover {
         cursor: pointer;
     }
 </style>
@@ -52,7 +52,6 @@
             Product Selling
         </button>
         <button class="tablinkMyProduct btn" onclick="openCity('Sold', this, '#b3cde0')">Product Sold</button>
-        <button class="tablinkMyProduct btn" onclick="openCity('NoSold', this, '#b3cde0')">Product No Sold</button>
         <div id="Selling" class="tabcontentMyProducts mt-5">
             <div class="card shadow mb-2 w-100 mr-auto">
                 {{#if this.emptySelling}}
@@ -71,7 +70,7 @@
                             <th scope="col" class="text-right">
                                 <a class="btn btn-outline-success" href="/user/add_product" role="button">
                                     <i class="fa fa-plus" aria-hidden="true"></i>
-                                    Add Category
+                                    Add Product
                                 </a>
                             </th>
                         </tr>
@@ -82,14 +81,6 @@
                             <th scope="row" class="text-center w-25">{{ProName}}</th>
                             <td>{{TimeBegin}}</td>
                             <td>{{TimeEnd}}</td>
-                            <td class="text-right">
-                                <a class="btn btn-sm btn-primary" href="/admin/categories/edit/{{CatID}}" role="button">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                                </a>
-                                <a name="" id="" class="btn btn-sm btn-danger" href="#" role="button">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                </a>
-                            </td>
                         </tr>
                         {{/each}}
                     </tbody>
@@ -116,7 +107,7 @@
                             <th scope="col" class="text-right">
                                 <a class="btn btn-outline-success" href="/user/add_product" role="button">
                                     <i class="fa fa-plus" aria-hidden="true"></i>
-                                    Add Category
+                                    Add Product
                                 </a>
                             </th>
                         </tr>
@@ -127,59 +118,6 @@
                             <th scope="row" class="text-center w-25">{{ProName}}</th>
                             <td>{{TimeBegin}}</td>
                             <td>{{TimeEnd}}</td>
-                            <td class="text-right">
-                                <a class="btn btn-sm btn-primary" href="/admin/categories/edit/{{CatID}}" role="button">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                                </a>
-                                <a name="" id="" class="btn btn-sm btn-danger" href="#" role="button">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        {{/each}}
-                    </tbody>
-                </table>
-                {{/if}}
-            </div>
-        </div>
-
-        <div id="NoSold" class="tabcontentMyProducts mt-5">
-            <div class="card shadow mb-2 w-100 mr-auto">
-                {{#if this.emptyNoSold}}
-                <div class="card-body">
-                    <p class="card-text">
-                        Không có dữ liệu.
-                    </p>
-                </div>
-                {{else}}
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="text-center w-25">Product Name</th>
-                            <th scope="col">Time Begin</th>
-                            <th scope="col">Time End</th>
-                            <th scope="col" class="text-right">
-                                <a class="btn btn-outline-success" href="/user//add_product" role="button">
-                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                    Add Category
-                                </a>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{#each this.ProductsNoSold}}
-                        <tr onclick="goToDetail(this)" id="{{ProID}}">
-                            <th scope="row" class="text-center w-25">{{ProName}}</th>
-                            <td>{{TimeBegin}}</td>
-                            <td>{{TimeEnd}}</td>
-                            <td class="text-right">
-                                <a class="btn btn-sm btn-primary" href="/admin/categories/edit/{{CatID}}" role="button">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                                </a>
-                                <a name="" id="" class="btn btn-sm btn-danger" href="#" role="button">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                </a>
-                            </td>
                         </tr>
                         {{/each}}
                     </tbody>
@@ -188,8 +126,9 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-2">
-    </div>
+</div>
+<div class="col-sm-2">
+</div>
 </div>
 
 {{#section 'js'}}
@@ -211,9 +150,9 @@
     // Get the element with id="defaultOpen" and click on it
     document.getElementById("defaultOpen").click();
 
-    function goToDetail(e){
-        var id= +e.id;
-        window.location=`/categories/product/${id}`;
+    function goToDetail(e) {
+        var id = +e.id;
+        window.location = `/categories/product/${id}`;
     }
 </script>
 {{/section}}

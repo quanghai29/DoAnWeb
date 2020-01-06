@@ -5,6 +5,7 @@ const userModel= require('../models/user.model');
 const router = express.Router();
 const moment = require('moment');//formart thời gian
 const numeral = require('numeral');
+const config = require('../config/default.json');
 var cron = require('node-cron');//Hệ thống kiểm tra định kỳ 
 
 router.get('/', async (req, res) => {
@@ -136,16 +137,59 @@ router.post('/product/updateTimeEnd/:id',async (req, res) => {
     res.redirect(`/categories/product/${req.params.id}`);
 })
 
-
-
-
 router.get('/:id/products', async (req, res) => {
-    const list = await productModel.all(req.params.id);
-    console.log(list);
-    const namelist = "Products";
+
+    for (const c of res.locals.lcCategories) {
+        if (c.ItemID === +req.params.id) {
+            c.isActive = true;
+        }
+    }
+
+    const limit = config.paginate.limit;
+    const itemId = req.params.id;
+    const page = req.query.page || 1;
+    if (page < 1) page = 1;
+    const offset = (page - 1) * limit;
+
+    const [total, rows] = await Promise.all([
+        productModel.countByCat(itemId),
+        productModel.pageByCat(itemId, offset)
+    ])
+
+    let nPages = Math.floor(total / limit);
+    if (total % limit > 0) nPages++;
+    const page_numbers = [];
+    for (i = 1; i <= nPages; i++) {
+        page_numbers.push({
+            value: i,
+            isCurrentPage: i === +page
+        })
+    }
+
+    for(var i=0;i<rows.length;i++)
+    {
+        rows[i].TimeEnd=moment(rows[i].TimeEnd,'YYYY-MM-DDTHH:mm:ss.SSSZ').format('YYYY-MM-DD HH:mm:ss');
+    }
+    const prev_value = page == 1 ? 1 : +page - 1;
+    const next_value = page == nPages ? nPages : +page + 1;
+    console.log(rows);
     res.render('prototype/listprototype.hbs', {
-        title: 'List Product',
-        list, namelist
+        products: rows,
+        empty: rows.length === 0,
+        page_numbers,
+        prev_value, next_value
     });
 })
+
+
+// router.get('/:id/products', async (req, res) => {
+//     const list = await productModel.all(req.params.id);
+//     console.log(list);
+//     const namelist = "Products";
+//     res.render('prototype/listprototype.hbs', {
+//         title: 'List Product',
+//         list, namelist
+//     });
+// })
+
 module.exports = router;
