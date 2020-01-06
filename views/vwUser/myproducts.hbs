@@ -54,13 +54,6 @@
         <button class="tablinkMyProduct btn" onclick="openCity('Sold', this, '#b3cde0')">Product Sold</button>
         <div id="Selling" class="tabcontentMyProducts mt-5">
             <div class="card shadow mb-2 w-100 mr-auto">
-                {{#if this.emptySelling}}
-                <div class="card-body">
-                    <p class="card-text">
-                        Không có dữ liệu.
-                    </p>
-                </div>
-                {{else}}
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -75,6 +68,15 @@
                             </th>
                         </tr>
                     </thead>
+                    {{#if this.emptySelling}}
+                    <tbody>
+                        <tr >
+                            <th></th>
+                            <th></th>
+                            <th scope="row">Không có dữ liệu</th>
+                        </tr>
+                    </tbody>
+                    {{else}}
                     <tbody>
                         {{#each this.ProductsSelling}}
                         <tr onclick="goToDetail(this)" id="{{ProID}}">
@@ -84,20 +86,13 @@
                         </tr>
                         {{/each}}
                     </tbody>
+                    {{/if}}
                 </table>
-                {{/if}}
             </div>
         </div>
 
         <div id="Sold" class="tabcontentMyProducts mt-5">
             <div class="card shadow mb-2 w-100 mr-auto">
-                {{#if this.emptySold}}
-                <div class="card-body">
-                    <p class="card-text">
-                        Không có dữ liệu.
-                    </p>
-                </div>
-                {{else}}
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -112,6 +107,15 @@
                             </th>
                         </tr>
                     </thead>
+                    {{#if this.emptySold}}
+                    <tbody>
+                        <tr >
+                            <th></th>
+                            <th></th>
+                            <th scope="row">Không có dữ liệu</th>
+                        </tr>
+                    </tbody>
+                    {{else}}
                     <tbody>
                         {{#each this.ProductsSold}}
                         <tr onclick="goToDetail(this)" id="{{ProID}}">
@@ -121,8 +125,8 @@
                         </tr>
                         {{/each}}
                     </tbody>
+                     {{/if}}
                 </table>
-                {{/if}}
             </div>
         </div>
     </div>
