@@ -5,7 +5,7 @@ module.exports = {
   all: () => db.load("select * from member"),
   allUser: () => db.load("SELECT m.f_ID, m.f_Username, l.ten_loai FROM member m,loai_member l WHERE m.ID_loai_member!=3 AND m.ID_loai_member=l.id"),
   requestOfUsers: () => db.load("SELECT * FROM member WHERE f_UpgradeWaitStatus = 1"),
-  allUserNames: async username => {
+  checkUserNames: async username => {
     const rows = await db.load(`select f_Username from member where f_Username='${username}'`);
     if (rows.length === 0) {
       return false;
@@ -13,6 +13,13 @@ module.exports = {
     return true;
   },
   
+  checkMail: async email => {
+    const rows = await db.load(`select f_Email from member where f_Email='${email}'`);
+    if (rows.length === 0) {
+      return false;
+    }
+    return true;
+  },
   //Lấy một user
   getUsername: id => db.load(`select f_Username from member where f_ID='${id}'`), 
 
