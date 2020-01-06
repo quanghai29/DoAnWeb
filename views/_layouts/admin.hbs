@@ -61,27 +61,12 @@
       <form action="/account/logout" method="post" id="frmLogout"></form>
       <form class="form-inline ml-auto">
         {{#if isAuthenticated}}
-        <a rel="stylesheet" href="/admin/cart">
-          <i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i></a>
         <div class="dropdown ml-5 mr-5">
           <a class="btn dropdown-toggle btn-outline-info" href="#" role="button" id="dropdownMenuLink"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <b>{{authUser.f_Username}}</b>
           </a>
-
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="/user/myprofile"><i class="fa fa-user" aria-hidden="true"></i>
-              My
-              Profile</a>
-            <a class="dropdown-item" href="/user/myorders"><i class="fa fa-check" aria-hidden="true"></i>
-              My
-              Orders</a>
-            <a class="dropdown-item" href="/user/products"><i class="fa fa-product-hunt" aria-hidden="true"></i>
-              My
-              Products</a>
-            <a class="dropdown-item" href="/user/upgrade"><i class="fa fa-user-plus" aria-hidden="true"></i>
-              Upgrade Account
-            </a>
             <a class="dropdown-item" href="javascript: $('#frmLogout').submit();">
               <i class="fa fa-unlock" aria-hidden="true"></i> Log Out</a>
           </div>
