@@ -3,6 +3,7 @@ const express = require('express');
 const productModel=require('../../models/product.model');
 //const userModel = require('../../models/user.model');
 const roleSeller=require('../../middlewares/authSeller.mdw');
+const roleBidder=require('../../middlewares/authBidder.mdw')
 const router = express.Router();
 const numeral = require('numeral');//formart number
 const multer = require('multer');//store ảnh
@@ -11,7 +12,7 @@ const moment = require('moment');//formart thời gian
 var fs = require('fs');//tạo thư mục
 
 //Chưa có view myproducts hiện ra list sản phẩm của seller đó
-router.get('/products', async(req, res) => {
+router.get('/products',roleSeller, async(req, res) => {
     const rowsSelling=await productModel.getProStatus(0);
     const rowsSold=await productModel.getProStatus(1);
     const rowsNoSold=await productModel.getProStatus(-1);
@@ -27,14 +28,14 @@ router.get('/products', async(req, res) => {
 })
 
 //add product
-router.get('/add_product', (req, res) => {
+router.get('/add_product',roleSeller, (req, res) => {
     res.render('vwUser/add-product.hbs', {
         title: 'Your Products',
     });
 })
 
 //Nhận dữ liệu thêm từ user
-router.post('/add_product', async (req, res) => {
+router.post('/add_product',roleSeller, async (req, res) => {
 
     const doe = moment(req.body.DOE,'DD-MM-YYYY HH:mm').format('YYYY-MM-DD HH:mm');
     console.log("DOE : "+ doe);
@@ -75,7 +76,7 @@ router.post('/add_product', async (req, res) => {
 })
 
 //Upload image
-router.get('/upload_image/:id',(req, res) => {
+router.get('/upload_image/:id',roleSeller,(req, res) => {
 
     /*CHƯA TEST ĐIỀU KIỆN  --------------------------------------------------*/
 
@@ -120,7 +121,7 @@ const storage =  multer.diskStorage({
   });
 const upload = multer({ storage });
 
-router.post('/upload_image/:id', function (req, res) {
+router.post('/upload_image/:id',roleSeller, function (req, res) {
 
     /************************* -****************/
     //Check id có tồn tại hay không
@@ -135,7 +136,7 @@ router.post('/upload_image/:id', function (req, res) {
 })
 
 //---Đấu Giá Bằng Tay
-router.post('/product/PlaceBid/:id',async (req, res) => {
+router.post('/product/PlaceBid/:id',roleBidder,async (req, res) => {
 
     //Nếu đã có dữ liệu đấu giá rồi thì load lên lịch sử đấu giá của người đang đăng nhập
     var hisOfferBidder = await productModel.getOfferBidder(req.params.id,req.session.authUser.f_ID);
@@ -220,7 +221,7 @@ router.post('/product/PlaceBid/:id',async (req, res) => {
 
 
 //Đấu Gía tự động
-router.post('/product/autoPlaceBid/:id',async (req, res) => {
+router.post('/product/autoPlaceBid/:id',roleBidder,async (req, res) => {
 
      //Nếu đã có dữ liệu đấu giá rồi thì load lên lịch sử đấu giá của người đang đăng nhập
     var hisOfferBidder = await productModel.getOfferBidder(req.params.id,req.session.authUser.f_ID);
@@ -318,7 +319,8 @@ router.post('/product/autoPlaceBid/:id',async (req, res) => {
     res.redirect(`/categories/product/${req.params.id}`);
 })
 
-router.post('/product/offAutoPlaceBid/:id',async (req, res) => {
+//Tắt đấu giá tự động
+router.post('/product/offAutoPlaceBid/:id',roleBidder,async (req, res) => {
     var entity={
         ProID: req.params.id,
         Bidder: req.session.authUser.f_ID,
@@ -330,7 +332,7 @@ router.post('/product/offAutoPlaceBid/:id',async (req, res) => {
 })
 
 //cập nhật description
-router.post('/product/addDescription/:id',async (req, res) => {
+router.post('/product/addDescription/:id',roleSeller,async (req, res) => {
     const entity={
         ProID:req.params.id,
         Description: req.body.Description,
@@ -340,37 +342,6 @@ router.post('/product/addDescription/:id',async (req, res) => {
     const resultsDetail = await productModel.addDetailProduct(entity);
     res.redirect(`/categories/product/${req.params.id}`);
 })
-
-// //edit dữ liệu của database
-// router.get('/edit/:id', async (req, res) => {
-//     const rows = await productModel.getPro(req.params.id);
-//     if (rows.length === 0) {
-//         throw new Error('Invalid product id');
-
-//     }
-//     console.log(req.params.id);
-//     res.render('vwUser/edit.hbs', {
-//         product: rows[0]
-//     });
-// })
-// router.post('/patch', async (req, res) => {
-//     const entity = req.body;
-//     const results = await productModel.patch(entity);
-//     console.log(results);
-//     res.redirect('/');
-// })
-// router.post('/delete', async (req, res) => {
-//     const results = await productModel.del(req.body.ProID);
-//     console.log(results.affectedRows);
-//     res.redirect('/');
-// })
-
-
-// router.get('/cart', (req, res) => {
-//     res.render('vwadmin/cart.hbs', {
-//         title: 'cart-admin',
-//     });
-// })
 
 router.get('/err', (req, res) => {
     throw new Error('error occured');

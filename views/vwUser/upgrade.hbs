@@ -31,9 +31,11 @@
                     <li>Buy product</li>
                     <li>Sell product</li>
                 </ul>
+                <form action="/user/upgrade/{{authUser.f_ID}}" id="frmUpgrade">
+                </form>
                 {{#if bidder}}
-                <button type="button" class="btn btn-lg btn-block btn-primary" id="UpgradeSeller">
-                    Get started</button>
+                <a href="javascript: upgrade();" type="button" class="btn btn-lg btn-block btn-primary" id="UpgradeSeller">
+                    Get started</a>
                 {{else}}
                 <button type="button" class="btn btn-lg btn-block btn-primary">
                     <i class="fa fa-check fa-10x">Already</i></button>
@@ -42,3 +44,20 @@
         </div>
     </div>
 </div>
+{{#section 'js'}}
+<script>
+    $(document).ready(function () {
+        {{#if waitUpgrade}}
+            Swal.fire({
+                icon: 'info',
+                title: 'Wait',
+                text: 'Đang chờ để upgrade'
+            })
+        {{/if}}
+    })
+    function upgrade(){
+        $('#frmUpgrade').submit();
+    }
+</script>
+   
+{{/section}}
