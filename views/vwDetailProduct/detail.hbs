@@ -265,13 +265,12 @@
                 frmAutoPlaceBid.MaxBidLabel.value={{this.historyOfferBidder.MaxBid}};
                 MaxBidInterval= setInterval(sendMaxBid,5000);
             }
-
         {{/if}}
         {{/if}}
 
         //Sản phẩm liên quan
         {{#each relaveProduct}}
-          setTimeEnd(timeEnd,'#{{ProID}}');
+          setTimeEnd("{{TimeEnd}}",'#{{ProID}}');
         {{/each}}
     });
 

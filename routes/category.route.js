@@ -166,6 +166,10 @@ router.get('/:id/products', async (req, res) => {
         })
     }
 
+    for(var i=0;i<rows.length;i++)
+    {
+        rows[i].TimeEnd=moment(rows[i].TimeEnd,'YYYY-MM-DDTHH:mm:ss.SSSZ').format('YYYY-MM-DD HH:mm:ss');
+    }
     const prev_value = page == 1 ? 1 : +page - 1;
     const next_value = page == nPages ? nPages : +page + 1;
     console.log(rows);

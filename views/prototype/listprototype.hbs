@@ -63,10 +63,10 @@
 <script>
     $(document).ready(function () {
     //Sản phẩm liên quan
-        {{#each this.products}}
-          setTimeEnd(timeEnd,'#{{ProID}}');
+        {{#each products}}
+          setTimeEnd("{{TimeEnd}}",'#{{ProID}}');
         {{/each}}
-    }
+    })
         //Set time End
     function setTimeEnd(timeEnd,el)
     {
