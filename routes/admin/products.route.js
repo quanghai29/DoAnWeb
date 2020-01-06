@@ -18,12 +18,17 @@ router.get('/edit/:id/:modi', async (req, res) => {
     const rows = await productModel.getProByID(req.params.id);
     const details= await productModel.getDetailByID(req.params.id);
     const changes=await productModel.getModifyByID(req.params.modi);
+    var auto = 'Không';
+    if(rows[0].AutoReset == 1){
+        auto='Có';
+    }
     res.render('vwDetailProduct/accept_edit_pro', {
         layout: 'admin.hbs',
         title: 'Accept products of Users',
         product: rows[0],
         Modify: changes[0],
         details,
+        auto,
         empty: rows.length === 0
     });
 })
@@ -51,11 +56,16 @@ router.get('/addproducts', async (req, res) => {
 router.get('/add/:id', async (req, res) => {
     const rows = await productModel.getProByID(req.params.id);
     const details= await productModel.getDetailByID(req.params.id);
+    var auto = 'Không';
+    if(rows[0].AutoReset == 1){
+        auto='Có';
+    }
     res.render('vwDetailProduct/accept_pro', {
         layout: 'admin.hbs',
         title: 'Accept products of Users',
         product: rows[0],
         details,
+        auto,
         empty: rows.length === 0
     });
 })

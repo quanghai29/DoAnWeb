@@ -18,6 +18,18 @@
                                 <input id="ProName" name="ProName" class="form-control validate"
                                     value="{{this.product.ProName}} " readonly />
                             </div>
+                            <div class="form-group mb-3">
+                                <label for="txtItemID">Loại sản phẩm</label>
+                                <select class="custom-select" name="Item" id="txtItemID">
+                                    <option value="1" selected>SamSung</option>
+                                    <option value="2">Nokia</option>
+                                    <option value="3">Xiaomi</option>
+                                    <option value="4">Dell</option>
+                                    <option value="5">Asua</option>
+                                    <option value="6">Apple</option>
+                                    <option value="7">Lenovo</option>
+                                </select>
+                            </div>
                             <div class="row">
                                 <div class="form-group mb-3 col-xs-12 col-sm-6">
                                     <div class="form-label-group fg d-flex">
@@ -52,10 +64,7 @@
                                 </div>
                                 <div class="form-group mb-3 col-xs-12 col-sm-6 mt-1">
                                     <label for="category">Gia Hạn Tự Động</label>
-                                    <select class="custom-select tm-select-accounts" id="category" name="AutoReset">
-                                        <option value="0" selected>Không</option>
-                                        <option value="1">Có</option>
-                                    </select>
+                                    <span class="form-control">{{this.auto}}</span>
                                 </div>
                             </div>
                     </div>

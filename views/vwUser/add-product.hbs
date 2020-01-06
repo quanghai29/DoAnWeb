@@ -16,6 +16,18 @@
                                 </label>
                                 <input id="ProName" name="ProName" class="form-control validate" />
                             </div>
+                            <div class="form-group mb-3">
+                                <label for="txtItemID">Loại sản phẩm</label>
+                                <select class="custom-select" name="Item" id="txtItemID">
+                                    <option value="1" selected>SamSung</option>
+                                    <option value="2">Nokia</option>
+                                    <option value="3">Xiaomi</option>
+                                    <option value="4">Dell</option>
+                                    <option value="5">Asua</option>
+                                    <option value="6">Apple</option>
+                                    <option value="7">Lenovo</option>
+                                </select>
+                            </div>
                             <div class="row">
                                 <div class="form-group mb-3 col-xs-12 col-sm-6">
                                     <div class="form-label-group fg d-flex">
@@ -126,7 +138,7 @@
     function formatNumber(el, idEL) {
         console.log("el.value" + el.value);
         var number = numeral(el.value);
-        
+
         var strFormart = number.format('0,0');
         console.log("strformat" + strFormart);
 
@@ -152,7 +164,7 @@
         // check bắt buộc nhập : ten sản phẩm , giá khởi điểm , bước giá, thời gian kết thúc
         // thông báo khi ng dùng nhập chữ trong khung nhập số
         // check thời gian kết thúc phải lớn hơn thời gian đăng hiện tại (tham khảo package moment cho js)
-        
+
         return true;
     }
 </script>
