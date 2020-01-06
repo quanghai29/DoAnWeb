@@ -38,7 +38,7 @@
             </div>
             <div class="form-label-group mb-4 fg">
                 <label for="inputUsername">User Name</label>
-                {{#if this.check}}
+                {{#if this.checkName}}
                 <label id="warningUsername">The name is existed! Please choose a another name</label>
                 {{/if}}
                  <label id="lengthName"></label>
@@ -75,6 +75,9 @@
             <div class="form-label-group mb-4 fg">
                 <label for="inputEmail">Email address</label>
                 <label id="warningEmail"></label>
+                {{#if this.checkMail}}
+                <label id="existedEmail" class="float-right font-weight-bold text-danger">The email is existed! Please enter a another email</label>
+                {{/if}}
                 <input oninput="checkEmail()" onchange="checkEmail()" type="text" id="txtEmail" name="f_Email"
                     class="form-control" placeholder="QH@micro.com" required>
             </div>

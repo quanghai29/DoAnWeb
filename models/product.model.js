@@ -82,4 +82,6 @@ module.exports = {
         return db.patch('prodetails', entity, condition);
     },
     NotAcceptEditPro: id => db.del('prodetails', { ProDeID: id }),
+    numProAdd: _ => db.load('SELECT COUNT(ProID) as num_pro_need_add FROM products WHERE StatusAcceptFromAdmin=1'),
+    numModifieds: _ => db.load('SELECT COUNT(d.ProDeID) as num_pro_modified FROM prodetails d, products p WHERE d.Modified=1 AND d.ProID=p.ProID'),
 };

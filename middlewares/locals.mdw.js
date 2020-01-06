@@ -1,4 +1,6 @@
 const categoryModel = require('../models/category.model');
+const productModel = require('../models/product.model');
+const userModel = require('../models/user.model');
 
 module.exports = function (app) {
   app.use(async (req, res, next) => {
@@ -34,6 +36,24 @@ module.exports = function (app) {
   app.use(async (req, res, next) => {
     const rows = await categoryModel.allWithDetail();
     res.locals.lcCategories = rows;
+    next();
+  })
+
+  app.use(async (req, res, next) => {
+    const rows = await userModel.numUserUpgrade();
+    res.locals.lcUpgrades = rows[0];
+    next();
+  })
+
+  app.use(async (req, res, next) => {
+    const rows = await productModel.numProAdd();
+    res.locals.lcProAdd = rows[0];
+    next();
+  })
+
+  app.use(async (req, res, next) => {
+    const rows = await productModel.numModifieds();
+    res.locals.lcModify = rows[0];
     next();
   })
 };
