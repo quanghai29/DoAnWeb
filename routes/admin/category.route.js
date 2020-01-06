@@ -80,7 +80,7 @@ router.get('/:id/products',roleAdmin, async (req, res) => {
 
     const prev_value = page == 1 ? 1 : +page - 1;
     const next_value = page == nPages ? nPages : +page + 1;
-    res.render('prototype/listprototypeAdmin.hbs', {
+    res.render('prototype/listprototype.hbs', {
         layout: 'admin.hbs',
         products: rows,
         empty: rows.length === 0,

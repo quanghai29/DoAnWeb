@@ -62,7 +62,7 @@ router.post('/add_product',roleSeller, async (req, res) => {
         ProID : results.insertId,
         Description: des,
         DateWrite : entity.TimeBegin,
-        Modify: 0 //default là được admin accept
+        Modified: 0 //default là được admin accept
     };
 
     //thêm vào detail product
