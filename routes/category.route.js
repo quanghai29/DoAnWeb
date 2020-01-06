@@ -5,27 +5,53 @@ const userModel= require('../models/user.model');
 const router = express.Router();
 const moment = require('moment');//formart thời gian
 const numeral = require('numeral');
+var cron = require('node-cron');//Hệ thống kiểm tra định kỳ 
+
 router.get('/', async (req, res) => {
     //const categoryMobile = await categoryModel.allByList(1);
     //const categoryLaptop = await categoryModel.allByList(2);
-    res.render('home',
-        {
-            categoryMobile, categoryLaptop,
-        })
+    res.render('home',{
+        categoryMobile, categoryLaptop,
+    })
 })
+
+
+
+//Cập nhật lại trạng thái sản phẩm 
+cron.schedule('*/30 * * * * *', async () => {
+    //Tìm những sản phẩm đang sell và đã được chấp nhận sell từ admin
+    const rowsProduct = await productModel.getSellingProduct();
+    const count =rowsProduct.length;
+
+    for(var i=0 ; i < count ;i++)
+    {
+        //kiểm tra hết hạn chưa
+        var timeEnd = rowsProduct[i].TimeEnd;
+        if(moment().isAfter(timeEnd)===true)
+        {
+            const entity=
+            {
+                ProID: rowsProduct[i].ProID,
+                StatusID: 1
+            }
+            //cập nhật lại trạng thái sản phẩm
+            const rowsUpdate= productModel.updateStatusPro(entity);
+        }
+    }
+});
 
 //Chi tiết sản phẩm
 router.get('/product/:id',async (req, res) => {
+    
     //Dữ liệu từ product =====================================================
     const product = await productModel.getPro(req.params.id);
     if (product.length === 0) {
         throw new Error('Invalid product id');
     }
+
     //Dũ liệu từ detail product =============================================
-    const detailPro = await productModel.getDetailPro(req.params.id);
-    if (detailPro.length === 0) {
-        throw new Error('Invalid product id');
-    }
+    const detailPro = await productModel.getAceptedDetailPro(req.params.id);
+    console.log(detailPro);
 
     //Dữ liệu từ pro image ===================================================
     const imgPro = await productModel.getImgPro(req.params.id);
@@ -33,7 +59,9 @@ router.get('/product/:id',async (req, res) => {
     if (countImg === 0) {
         throw new Error('Invalid product id');
     }
+    
     console.log(product);
+
     //Dữ liệu của người đang giữ giá trước đó ================================
     var BestPricePrevious = null;
     const rowsBestPrice = await productModel.getBestPricePrevious(req.params.id);
@@ -60,10 +88,22 @@ router.get('/product/:id',async (req, res) => {
        
     }
 
+    //Lịch sử đấu giá
+    var historyOffer= await productModel.getHisProduct(req.params.id);
 
     //Xử lý thời gian ====================
-    product[0].TimeEnd = moment(product[0].TimeEnd,'YYYY-MM-DDTHH:mm:ss.SSSZ').format('YYYY-MM-DD HH:mm:ss');
 
+    product[0].TimeEnd = moment(product[0].TimeEnd,'YYYY-MM-DDTHH:mm:ss.SSSZ').format('YYYY-MM-DD HH:mm:ss');
+    console.log(product);
+
+    // Những sản phẩm liên quan
+    var relaveProduct = await productModel.getListItem(product[0].Item);
+    for(var i=0;i<relaveProduct.length;i++)
+    {
+        relaveProduct[i].TimeEnd=moment(relaveProduct[i].TimeEnd,'YYYY-MM-DDTHH:mm:ss.SSSZ').format('YYYY-MM-DD HH:mm:ss');
+    }
+
+    console.log(relaveProduct);
     //console.log(product);
     //console.log(detailPro);
     //console.log(imgPro);
@@ -73,10 +113,12 @@ router.get('/product/:id',async (req, res) => {
         product: product[0],
         BestPricePrevious,
         historyOfferBidder,
+        historyOffer,
         detailPro,
         mainImgPro: imgPro[0],
         imgPro: imgPro,
         countImg,
+        relaveProduct
     });
 });
 

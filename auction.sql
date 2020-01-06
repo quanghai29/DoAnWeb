@@ -187,7 +187,7 @@ CREATE TABLE `offerpro` (
   `StatusWinner` int(11) DEFAULT NULL,
   `TimePlace` datetime DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -196,6 +196,7 @@ CREATE TABLE `offerpro` (
 
 LOCK TABLES `offerpro` WRITE;
 /*!40000 ALTER TABLE `offerpro` DISABLE KEYS */;
+INSERT INTO `offerpro` VALUES (84,34,14,150000,NULL,1,'2020-01-06 11:32:59');
 /*!40000 ALTER TABLE `offerpro` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -213,7 +214,7 @@ CREATE TABLE `prodetails` (
   `DateWrite` datetime DEFAULT NULL,
   `Modified` int(11) DEFAULT '1',
   PRIMARY KEY (`ProDeID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -222,7 +223,7 @@ CREATE TABLE `prodetails` (
 
 LOCK TABLES `prodetails` WRITE;
 /*!40000 ALTER TABLE `prodetails` DISABLE KEYS */;
-INSERT INTO `prodetails` VALUES (1,34,'<ul>\r\n<li>&nbsp;Name: `Laptop Dell Vostro V5481A P92G001(i5 8265U / 4GB RAM / 1TB HDD / MX130 2G / 14\" FHD/Win 10)`,</li>\r\n<li>&nbsp;Chipset: \"Bộ vi xử l&yacute; Intel Core&trade; i5 8265U (1.6Ghz, 6MB Cache)\"</li>\r\n<li>&nbsp;Rom: \"Bộ nhớ trong 4GB DDR4 2666MHz\"</li>\r\n<li>&nbsp;GraphicCard: \"VGA Nvidia Geforce MX130 2G DDR5\",</li>\r\n<li>HardDriver: \"Ổ cứng 1TB 5400rpm\",</li>\r\n<li>Screen: \"M&agrave;n h&igrave;nh 14.0&rdquo; FHD(1920 * 1080), LED backlight&nbsp;</li>\r\n</ul>\r\n<div id=\"eJOY__extension_root\" style=\"all: unset;\">&nbsp;</div>','2019-12-30 16:59:41',1);
+INSERT INTO `prodetails` VALUES (1,34,'<ul>\r\n<li>&nbsp;Name: `Laptop Dell Vostro V5481A P92G001(i5 8265U / 4GB RAM / 1TB HDD / MX130 2G / 14\" FHD/Win 10)`,</li>\r\n<li>&nbsp;Chipset: \"Bộ vi xử l&yacute; Intel Core&trade; i5 8265U (1.6Ghz, 6MB Cache)\"</li>\r\n<li>&nbsp;Rom: \"Bộ nhớ trong 4GB DDR4 2666MHz\"</li>\r\n<li>&nbsp;GraphicCard: \"VGA Nvidia Geforce MX130 2G DDR5\",</li>\r\n<li>HardDriver: \"Ổ cứng 1TB 5400rpm\",</li>\r\n<li>Screen: \"M&agrave;n h&igrave;nh 14.0&rdquo; FHD(1920 * 1080), LED backlight&nbsp;</li>\r\n</ul>\r\n<div id=\"eJOY__extension_root\" style=\"all: unset;\">&nbsp;</div>','2019-12-30 16:59:41',1),(2,34,'fff',NULL,1),(3,34,'<p>dddd</p>','2020-01-06 14:15:58',1);
 /*!40000 ALTER TABLE `prodetails` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -234,7 +235,7 @@ DROP TABLE IF EXISTS `products`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `products` (
-  `ProID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `ProID` int(10) unsigned NOT NULL,
   `Item` int(11) DEFAULT NULL,
   `ProName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `PriceBegin` double DEFAULT NULL,
@@ -243,12 +244,11 @@ CREATE TABLE `products` (
   `TimeBegin` datetime DEFAULT NULL,
   `TimeEnd` datetime DEFAULT NULL,
   `SellerID` int(11) DEFAULT NULL,
-  `StatusID` int(11) DEFAULT NULL,
-  `AutoReset` int(11) DEFAULT NULL,
+  `StatusID` int(11) DEFAULT '0',
+  `AutoReset` int(11) DEFAULT '0',
   `StatusAcceptFromAdmin` int(11) DEFAULT '1',
-  `productscol` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`ProID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -257,7 +257,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (34,NULL,'Dell Vostro 3580',50000,50000,15000000,'2019-12-30 16:59:41','2020-01-05 20:35:00',14,NULL,1,1,NULL);
+INSERT INTO `products` VALUES (34,4,'Dell Vostro 3580',50000,50000,15000000,'2019-12-30 16:59:41','2020-01-06 12:40:00',14,1,1,0);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -318,4 +318,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-06  9:58:42
+-- Dump completed on 2020-01-06 19:00:32

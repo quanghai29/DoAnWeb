@@ -26,6 +26,22 @@
         </ul>
       </div>
     </div>
+    <div class="card shadow">
+      <h4 class="card-header">
+        Categories
+      </h4>
+      <div class="list-group list-group-flush">
+        {{#each lcCategories}}
+        <a href="/admin/categories/{{ItemID}}/products?page=1"
+          class="list-group-item list-group-item-action {{#if isActive}}active{{/if}}">
+          {{ItemName}}
+          {{#if num_of_products}}
+          <span class="badge badge-danger float-right">{{num_of_products}}</span>
+          {{/if}}
+        </a>
+        {{/each}}
+      </div>
+    </div>
   </div>
   <div class="col-sm-9 mt-4">
     <!--Phần Slider những thứ nổi bật của trang web-->

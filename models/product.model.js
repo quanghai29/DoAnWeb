@@ -9,9 +9,10 @@ module.exports = {
     addOfferProduct: entity => db.add('offerpro', entity),
 
     //load 
+    getListItem: id=>db.load(`select distinct p.ProID,p.TimeEnd,min(pi.ID),pi.imgURL from products as p right join proimage as pi on p.ProID = pi.ProID  where Item = ${id}`),
     all: id => db.load(`select * from products where Item = ${id}`),
     getPro: id => db.loadOnePro(`select * from products where ProID = ${id}`),
-    getDetailPro: id => db.loadOnePro(`select * from prodetails where ProID = ${id}`),
+    getAceptedDetailPro: id => db.loadOnePro(`select * from prodetails where ProID = ${id} and Modified=0`),
     getImgPro: id => db.loadOnePro(`select * from proimage where ProID = ${id}`),
     getProStatus: status=>db.load(`select ProID, ProName, TimeBegin, TimeEnd from products where StatusID=${status}`),
     //bidder đã đặt giá cao nhất trước đó
@@ -19,6 +20,10 @@ module.exports = {
     getProductPrice: id => db.loadOnePro(`select p.PriceBegin,p.PriceStep from products as p where ProID =${id}`),
     //Người đã đặt giá trước đó vào đặt giá tiếp
     getOfferBidder: (id,Bidder) => db.loadOnePro(`select * from offerpro where ProID =${id} and Bidder = ${Bidder}`),
+    //sản phẩm đang sell
+    getSellingProduct: () => db.load(`select * from products where StatusID = 0 and StatusAcceptFromAdmin= 0`),
+    //lịch sử ddasus giá
+    getHisProduct: (id) => db.load(`select PricePlaceBid,TimePlace,f_Username from offerpro as o inner join member as m ON o.Bidder=m.f_ID where ProID = ${id}`),
 
     //Xóa
     del: id => db.delete(`delete from products where ProID = ${id}`),
@@ -37,6 +42,12 @@ module.exports = {
         return db.patchtwocondition('offerpro', entity, condition1, condition2);
     },
 
+    updateStatusPro: entity => {
+        const condition = { ProID: entity.ProID };
+        delete entity.ProID;
+        return db.patch('products', entity, condition);
+    },
+    
     //Đếm
     countByCat: async Item => {
         const rows = await db.load(`select count(*) as total from products where Item = ${Item}`);

@@ -105,75 +105,76 @@
             </div>
         </div>
     </div>
-    <h4 class="font-weight text-info mt-5"> Mô Tả Sản Phẩm</h4>
+    <h4 class="font-weight text-info mt-5"> Lịch sử đấu giá</h4>
     <div class="row">
-        <div class="col-xl-10 col-md-10 col-sm-12 shadow pt-5">
-            {{#each detailPro}}
-                {{{Description}}}
-            {{/each}}
+        <div class="col-xl-2 col-md-5 col-sm-12 font-weight-bold p-4">
+            User
+        </div>
+         <div class="col-xl-2 col-md-5 col-sm-12 font-weight-bold p-4">
+            Amount
+        </div>
+        <div class="col-xl-5 col-md-5 col-sm-12 font-weight-bold p-4">
+            Time
         </div>
     </div>
+    {{#each historyOffer}}
+     <div class="row">
+        <div class="col-xl-2 col-md-5 col-sm-12  p-4">
+            {{f_Username}}
+        </div>
+         <div class="col-xl-2 col-md-5 col-sm-12  p-4">
+            {{PricePlaceBid}}
+        </div>
+        <div class="col-xl-5 col-md-5 col-sm-12  p-4">
+            {{TimePlace}}
+        </div>
+    </div>
+    {{/each}}
 
+    <h4 class="font-weight text-info mt-5"> Mô Tả Sản Phẩm</h4>
+    
+    <div class="row">
+        <div class="col-xl-10 col-md-10 col-sm-12 shadow rounded-top pb-2">
+            {{#each detailPro}}
+            <div class="row p-4">
+                    <i class="fa fa-pencil text-warning"> {{DateWrite}}</i>
+                    {{{Description}}}
+            </div>
+            {{/each}}
+            {{#if isAuthenticated}}
+            <a class="btn btn-info text-light mb-2 mt-4" href="javascript: DescriptionPro();">Add Description</a>
+            <form action="/user/product/addDescription/{{this.product.ProID}}" method="POST"
+                name="frmDescription" id="frmDescription" style="display: none;">
+                <textarea class="form-control" id="Description" name="Description"></textarea>
+                <button type="submit" class="btn btn-primary text-align d-flex mt-2">
+                    <h4>Submit Description</h4>
+                    <i class="fa fa-hand-pointer-o ml-2 mt-2"></i>
+                </button>
+            </form>
+            {{/if}}
+        </div>
+    </div>
     <hr>
-    {{!-- <div class="row">
-        <h3>Sản phẩm cùng chuyên mục</h3>
+     <h3>Sản phẩm cùng chuyên mục</h3>
+    <div class="row">
         <div class="card-deck mt-5">
-            <div class="card border-0 zoom">
-                <img src="Images/Dell/lap06.jpg" class="card-img-top" alt="...">
+            <div class="col-4">
+            {{#each relaveProduct}}
+                <div class="card border-0 zoom">
+                <img src="/Images/{{ProID}}/{{imgURL}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
+                    <h5 class="card-title"></h5>
                     <p class="card-text"></p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    <button type="button" class="btn btn-danger mr-5 w-100">I am a Button</button>
+                    <p class="card-text"><h5 class="text-info" id='{{ProID}}'>
+                        </h5></p>
+                    <a  class="btn btn-danger mr-5 w-100 text-light" href="/categories/product/{{ProID}}">Đấu giá ngay</a>
                 </div>
-            </div>
-            <div class="card border-0 zoom">
-                <img src="Images/Dell/lap07.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text"></p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    <button type="button" class="btn btn-danger mr-5 w-100">I am a Button</button>
                 </div>
-            </div>
-            <div class="card border-0 zoom">
-                <img src="Images/Dell/lap05.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text"></p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    <button type="button" class="btn btn-danger mr-5 w-100">I am a Button</button>
-                </div>
-            </div>
-            <div class="card border-0 zoom">
-                <img src="Images/Dell/lap09.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text"></p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    <button type="button" class="btn btn-danger mr-5 w-100">I am a Button</button>
-                </div>
-            </div>
-            <div class="card border-0 zoom">
-                <img src="Images/Dell/lap01.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text"></p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    <button type="button" class="btn btn-danger mr-5 w-100">I am a Button</button>
-                </div>
+            {{/each}}
             </div>
         </div>
-    </div> --}}
+    </div>
 </div>
-{{!-- <ul id="lightSlider" class="gallery">
-    <li data-thumb="/Images/34/2e18cd80-2aeb-11ea-9260-fbe94b06d95a.png"> <a href="#">
-            <img src="/Images/34/2e18cd80-2aeb-11ea-9260-fbe94b06d95a.png" /></a></li>
-    <li data-thumb="Images/34/2e18cd80-2aeb-11ea-9260-fbe94b06d95a.png"> <a href="#">
-            <img src="/Images/34/2e18cd80-2aeb-11ea-9260-fbe94b06d95a.png" /></a></li>
-    <li data-thumb="/Images/34/2e18cd80-2aeb-11ea-9260-fbe94b06d95a.png"> <a href="#">
-            <img src="/Images/34/2e18cd80-2aeb-11ea-9260-fbe94b06d95a.png" /></a></li>
-</ul> --}}
 
 {{#section 'css'}}
 <style>
@@ -183,8 +184,8 @@
 
 <script>
     
+    //Excute khi load trang
     $(document).ready(function () {
-
         //=========================================================================================
         //Slider Image*******************/
         var clickImg = function () {
@@ -209,11 +210,11 @@
         //Expries Time*****************************/
         //Lấy thời điểm kết thúc
         var timeEnd="{{this.product.TimeEnd}}";
-        var countTimeExpire = setInterval(() => {
-            var timer= moment(timeEnd, "YYYY-MM-DD HH:mm:ss").fromNow();
-            $('.timeExipre').html(timer + " ...");
-            console.log(timer);
-        }, 1000);
+       // console.log(timeEnd);
+        setTimeEnd(timeEnd,'.timeExipre');
+
+
+      
 
         //======================Formart Number Load to label html===================================
         $('#PriBuyNow').html(numeral({{this.product.PriBuyNow}}).format('0,0') + ' đ');
@@ -230,18 +231,19 @@
         //==========================================================================================
         /*Thông báo Nếu người đăng nhập hiện tại đang là người có giá cao nhất*/
        
-        //ẩn button offautoplacebtn
-        $('#offAutoPlacebtn').hide();
+        
 
         //===========================================================================================
         /*Nếu là đáu giá tự động thì gửi request liên tục tới trang */
-         //Kiểm tra time đã hết chưa
-        
+        //Kiểm tra time đã hết chưa
+        //ẩn button offautoplacebtn
+        $('#offAutoPlacebtn').hide();
         {{#if this.historyOfferBidder}}
         {{#if this.historyOfferBidder.MaxBid}}
             var timeEnd="{{this.product.TimeEnd}}";
             var timeMoment=moment().format("YYYY-MM-DD HH:mm:ss");
-            // Tự động gia hạn thêm 10'
+            console.log(timeMoment);
+            // Xem thử đã hết hạn
             var distance=moment(timeEnd,"YYYY-MM-DD HH:mm:ss").diff(moment(timeMoment,"YYYY-MM-DD HH:mm:ss"),'minutes');
 
             if(distance >0)
@@ -264,12 +266,28 @@
                 MaxBidInterval= setInterval(sendMaxBid,5000);
             }
 
-           
         {{/if}}
         {{/if}}
+
+        //Sản phẩm liên quan
+        {{#each relaveProduct}}
+          setTimeEnd(timeEnd,'#{{ProID}}');
+        {{/each}}
     });
 
-     //Formart Number
+    //Set time End
+    function setTimeEnd(timeEnd,el)
+    {
+        console.log(timeEnd);
+        console.log(el);
+        var countTimeExpire = setInterval(() => {
+            var timer= moment(timeEnd, "YYYY-MM-DD HH:mm:ss").fromNow();
+            $(el).html(timer + " ...");
+            console.log(timer);
+        }, 1000);
+    }
+   
+     //Formart Number ========================================================================
     function formatNumber(el) {
         var number = numeral(el.value);
         
@@ -367,7 +385,7 @@
     }
     
 
-    //Đấu Giá tự đông----------
+    //Đấu Giá tự đông ==========================================================================
     function AutoPlaceBid(){
         var isExpries= ExpriesTimes();
         if(isExpries === false)
@@ -409,7 +427,7 @@
         })
     }
 
-    //Tắt đấu giá tự động
+    //Tắt đấu giá tự động ==========================================================================
     function offAutoPlaceBid(){
         var maxValue=null;
         $('#autoPlacebtn').show();
@@ -417,9 +435,39 @@
         $('#autoPlaceBid').val(maxValue);
         $('#frmOffAutoPlaceBid').submit();
     }
-    //Sen Request to Server
+    
+
+    //Sen Request to Server =========================================================================
     function sendMaxBid(){
         $('#frmAutoPlaceBid').submit();
+    }
+
+    //Thêm mô tả sản phẩm
+    function DescriptionPro(){
+        console.log({{role}});
+        {{#if isAuthenticated}}
+        if({{authUser.f_ID}} !== {{this.product.SellerID}})
+        {
+            return (
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Sorry',
+                    text: 'Bạn không được dùng chức năng này',
+            }));
+        }
+        {{/if}}
+        $('#frmDescription').show();
+        tinymce.init({
+        selector: '#Description',
+        height: 400,
+        plugins: 'paste image link autolink lists table media',
+        menubar: false,
+        toolbar: [
+            'undo redo | bold italic underline strikethrough | numlist bullist | alignleft aligncenter alignright',
+            'forecolor backcolor',
+            'table link image media',
+            ],
+        });
     }
 </script>
 {{/section}}
