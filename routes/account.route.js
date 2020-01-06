@@ -17,11 +17,16 @@ router.post('/signup', async (req, res) => {
 
   //Kiểm tra tên username người dùng nhập vào đã tồn tại trong database chưa
   var username = req.body.f_Username;
-  const check = await userModel.allUserNames(username);
-  if (check) {
+  const checkName = await userModel.checkUserNames(username);
+
+  //Kiểm tra email đăng kí đã tồn tại chưa
+  var email=req.body.f_Email;
+  const checkMail=await userModel.checkMail(email);
+  if (checkName || checkMail) {
     res.render('vwAccount/signup', {
       layout: false,
-      check
+      checkName,
+      checkMail
     });
   }
   else {
