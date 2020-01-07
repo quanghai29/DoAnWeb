@@ -50,7 +50,7 @@ module.exports = {
 
     //Đếm
     countByCat: async Item => {
-        const rows = await db.load(`select count(*) as total from products where Item = ${Item}`);
+        const rows = await db.load(`select count(*) as total from products where Item = ${Item} and StatusAcceptFromAdmin=0`);
         return rows[0].total;
     },
     pageByCat: (Item, offset) => db.load(`select distinct p.*,min(pi.ID),pi.imgURL from products as p right join proimage as pi on p.ProID = pi.ProID  where Item = ${Item} limit ${config.paginate.limit} offset ${offset}`),
