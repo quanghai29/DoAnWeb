@@ -13,9 +13,9 @@
               <a href="/categories/{{ItemID}}/products?page=1"
                 class="list-group-item list-group-item-action {{#if isActive}}active{{/if}}">
                 {{ItemName}}
-                {{#if num_of_products}}
+                {{!-- {{#if num_of_products}}
                 <span class="badge badge-danger float-right">{{num_of_products}}</span>
-                {{/if}}
+                {{/if}} --}}
               </a>
               {{/each}}
             </div>
@@ -68,58 +68,127 @@
     <hr>
   </div>
   <div class="mygroupcard">
-    {{#each top5day}}
-    <div class="card zoom img-card mt-2 ml-5 mr-1" onclick="detailItem()">
-      <img src="Images/{{image}}" class="card-img-top" alt="..." height="130">
-      <div class="card-body mt-3">
-        <h5 class="card-title mb-4">{{name}}</h5>
-        <p class="card-text text-center"><i class="fa fa-gavel" aria-hidden="true"></i> {{pricecurrent}}
-          (ID:{{IDcustomer}})</p>
-        <p class="card-text timer text-center"></p>
-      </div>
-    </div>
+     {{#each topTimeEnd}}
+    {{!-- <div class="card zoom img-card mt-2 ml-5 mr-1 h-100" onclick="detailItem()">
+        <img src="/Images/{{ProID}}/{{imgURL}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title mb-4">{{ProName}}</h5>
+            <p class="card-text text-center"><i class="fa fa-gavel" aria-hidden="true"></i> {{format PriceBegin}} đ</p>
+            <p class="card-text"></p>
+            <p class="card-text">
+                <h5 class="text-info" id='{{ProID}}'>
+                </h5>
+            </p>
+            <a class="btn btn-danger mr-5 w-100 text-light" href="/categories/product/{{ProID}}">Đấu giá ngay</a>
+        </div>
+    </div> --}}
+    <div class="col-sm-2 mb-3">
+                    <div class="card h-100" onclick="detailItem()">
+                        <div class="card-body">
+                            <img src="/Images/{{ProID}}/{{imgURL}}" class="card-img-top" alt="...">
+                            <h5 class="card-title mb-4">{{ProName}}</h5>
+                            <p class="card-text text-center"><i class="fa fa-gavel" aria-hidden="true"></i>
+                                {{format PriceBegin}} đ</p>
+                            <p class="card-text"></p>
+                            <p class="card-text">
+                                <h5 class="text-info" id='{{ProID}}'>
+                                </h5>
+                            </p>
+                        </div>
+                        <div class="card-footer text-muted text-center">
+                            <a class="btn btn-danger mr-5 w-100 text-light" href="/categories/product/{{ProID}}">Đấu
+                                giá
+                                ngay</a>
+                        </div>
+
+                    </div>
+                </div>
+    {{/each}}
+  <div class="mytitle">
+  <h2>Top 5 sản phẩm giá cao nhất</h2>
+  <hr>
+  </div>
+  <div class="mygroupcard">
+     {{#each topValue}}
+     <div class="col-sm-2 mb-3">
+                    <div class="card h-100" onclick="detailItem()">
+                        <div class="card-body">
+                            <img src="/Images/{{ProID}}/{{imgURL}}" class="card-img-top" alt="...">
+                            <h5 class="card-title mb-4">{{ProName}}</h5>
+                            <p class="card-text text-center"><i class="fa fa-gavel" aria-hidden="true"></i>
+                                {{format PriceBegin}} đ</p>
+                            <p class="card-text"></p>
+                            <p class="card-text">
+                                <h5 class="text-info" id='{{ProID}}'>
+                                </h5>
+                            </p>
+                        </div>
+                        <div class="card-footer text-muted text-center">
+                            <a class="btn btn-danger mr-5 w-100 text-light" href="/categories/product/{{ProID}}">Đấu
+                                giá
+                                ngay</a>
+                        </div>
+
+                    </div>
+                </div>
     {{/each}}
   </div>
+  <div class="mytitle">
+  <h2>Top 5 sản phẩm nhiều lượt ra giá</h2>
+  <hr>
+  </div>
+  <div class="mygroupcard">
+     {{#each topValue}}
+     <div class="col-sm-2 mb-3">
+                    <div class="card h-100" onclick="detailItem()">
+                        <div class="card-body">
+                            <img src="/Images/{{ProID}}/{{imgURL}}" class="card-img-top" alt="...">
+                            <h5 class="card-title mb-4">{{ProName}}</h5>
+                            <p class="card-text text-center"><i class="fa fa-gavel" aria-hidden="true"></i>
+                                {{format PriceBegin}} đ</p>
+                            <p class="card-text"></p>
+                            <p class="card-text">
+                                <h5 class="text-info" id='{{ProID}}'>
+                                </h5>
+                            </p>
+                        </div>
+                        <div class="card-footer text-muted text-center">
+                            <a class="btn btn-danger mr-5 w-100 text-light" href="/categories/product/{{ProID}}">Đấu
+                                giá
+                                ngay</a>
+                        </div>
 
+                    </div>
+                </div>
+    {{/each}}
+  </div>
 
   <!--Top 5 sản phẩm có nhiều lượt ra giá nhất-->
-  <div class="mytitle">
-    <h2>Top 5 sản phẩm có nhiều lượt ra giá nhất</h2>
-    <hr>
-  </div>
-  <div class="mygroupcard">
-    {{#each top5offer}}
-    <div class="card zoom img-card mt-2 ml-5 mr-1" onclick="detailItem()">
-      <img src="Images/{{image}}" class="card-img-top" alt="..." height="130">
-      <div class="card-body mt-3">
-        <h5 class="card-title mb-4">{{name}}</h5>
-        <p class="card-text text-center"><i class="fa fa-gavel" aria-hidden="true"></i> {{pricecurrent}}
-          (ID:{{IDcustomer}})</p>
-        <p class="card-text timer text-center"></p>
-      </div>
-    </div>
-    {{/each}}
-  </div>
 
-  <!--TOp 5 sản phẩm có giá cao nhất-->
-  <div class="mytitle">
-    <h2>Top 5 sản phẩm có giá cao nhất</h2>
-    <hr>
-  </div>
-  <div class="mygroupcard">
-    {{#each top5value}}
-    <div class="card zoom img-card mt-2 ml-5 mr-1" onclick="detailItem()">
-      <img src="Images/{{image}}" class="card-img-top" alt="..." height="130">
-      <div class="card-body mt-3">
-        <h5 class="card-title mb-4">{{name}}</h5>
-        <p class="card-text text-center"><i class="fa fa-gavel" aria-hidden="true"></i> {{pricecurrent}}
-          (ID:{{IDcustomer}})</p>
-        <p class="card-text timer text-center"></p>
-      </div>
-    </div>
-    {{/each}}
-  </div>
 </div>
-<p class="show">
-</p>
-<!--///////////////////////////////////////////////////////////////////////-->
+
+
+{{#section 'js'}}
+<script>
+    $(document).ready(function () {
+    //Sản phẩm liên quan
+        {{#each topTimeEnd}}
+          setTimeEnd("{{TimeEnd}}",'#{{ProID}}');
+        {{/each}}
+        {{#each topValue}}
+          setTimeEnd("{{TimeEnd}}",'#{{ProID}}');
+        {{/each}}
+    })
+        //Set time End
+    function setTimeEnd(timeEnd,el)
+    {
+        console.log(timeEnd);
+        console.log(el);
+        var countTimeExpire = setInterval(() => {
+            var timer= moment(timeEnd, "YYYY-MM-DD HH:mm:ss").fromNow();
+            $(el).html(timer + " ...");
+            console.log(timer);
+        }, 1000);
+    }
+</script>
+{{/section}}

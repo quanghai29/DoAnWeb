@@ -1,7 +1,7 @@
 const categoryModel = require('../models/category.model');
 const productModel = require('../models/product.model');
 const userModel = require('../models/user.model');
-
+const moment = require('moment');//formart thời gian
 module.exports = function (app) {
   app.use(async (req, res, next) => {
     // const rows = await categoryModel.allWithDetails();
@@ -48,6 +48,30 @@ module.exports = function (app) {
   app.use(async (req, res, next) => {
     const rows = await productModel.numProAdd();
     res.locals.lcProAdd = rows[0];
+    next();
+  })
+
+  app.use(async (req, res, next) => {
+    const rows = await productModel.getTopTimeEnd();
+
+    for(var i=0; i<rows.length;i++)
+    {
+      rows[i].TimeEnd= moment(rows[i].TimeEnd,'YYYY-MM-DDTHH:mm:ss.SSSZ').format('YYYY-MM-DD HH:mm:ss');
+    }
+    console.log(rows);
+    res.locals.topTimeEnd = rows;
+    next();
+  })
+
+  app.use(async (req, res, next) => {
+    const rows = await productModel.getTopValue();
+
+    for(var i=0; i<rows.length;i++)
+    {
+      rows[i].TimeEnd= moment(rows[i].TimeEnd,'YYYY-MM-DDTHH:mm:ss.SSSZ').format('YYYY-MM-DD HH:mm:ss');
+    }
+    console.log(rows);
+    res.locals.topValue = rows;
     next();
   })
 

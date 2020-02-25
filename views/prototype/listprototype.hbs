@@ -10,21 +10,37 @@
 </div>
 {{else}}
 <div class="mygroupcard row">
-    {{#each this.products}}
-    <div class="card zoom img-card mt-2 ml-5 mr-1 h-100" onclick="detailItem()">
-        <img src="/Images/{{ProID}}/{{imgURL}}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title mb-4">{{ProName}}</h5>
-            <p class="card-text text-center"><i class="fa fa-gavel" aria-hidden="true"></i> {{format PriceBegin}} đ</p>
-            <p class="card-text"></p>
-            <p class="card-text">
-                <h5 class="text-info" id='{{ProID}}'>
-                </h5>
-            </p>
-            <a class="btn btn-danger mr-5 w-100 text-light" href="/categories/product/{{ProID}}">Đấu giá ngay</a>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-9">
+            <div class="row">
+                {{#each this.products}}
+                <div class="col-sm-4 mb-3">
+                    <div class="card h-100" onclick="detailItem()">
+                        <div class="card-body">
+                            <img src="/Images/{{ProID}}/{{imgURL}}" class="card-img-top" alt="...">
+                            <h5 class="card-title mb-4">{{ProName}}</h5>
+                            <p class="card-text text-center"><i class="fa fa-gavel" aria-hidden="true"></i>
+                                {{format PriceBegin}} đ</p>
+                            <p class="card-text"></p>
+                            <p class="card-text">
+                                <h5 class="text-info" id='{{ProID}}'>
+                                </h5>
+                            </p>
+                        </div>
+                        <div class="card-footer text-muted text-center">
+                            <a class="btn btn-danger mr-5 w-100 text-light" href="/categories/product/{{ProID}}">Đấu
+                                giá
+                                ngay</a>
+                        </div>
+
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            <div class="col-sm-1"></div>
         </div>
     </div>
-    {{/each}}
 </div>
 <div class="row mt-4">
     <div class="col-sm-12">
@@ -62,18 +78,17 @@
 {{#section 'js'}}
 <script>
     $(document).ready(function () {
-    //Sản phẩm liên quan
+        //Sản phẩm liên quan
         {{#each products}}
-          setTimeEnd("{{TimeEnd}}",'#{{ProID}}');
+        setTimeEnd("{{TimeEnd}}", '#{{ProID}}');
         {{/each}}
     })
-        //Set time End
-    function setTimeEnd(timeEnd,el)
-    {
+    //Set time End
+    function setTimeEnd(timeEnd, el) {
         console.log(timeEnd);
         console.log(el);
         var countTimeExpire = setInterval(() => {
-            var timer= moment(timeEnd, "YYYY-MM-DD HH:mm:ss").fromNow();
+            var timer = moment(timeEnd, "YYYY-MM-DD HH:mm:ss").fromNow();
             $(el).html(timer + " ...");
             console.log(timer);
         }, 1000);

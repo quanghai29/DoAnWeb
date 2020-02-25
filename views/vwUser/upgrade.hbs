@@ -31,11 +31,13 @@
                     <li>Buy product</li>
                     <li>Sell product</li>
                 </ul>
-                <form action="/user/upgrade/{{authUser.f_ID}}" id="frmUpgrade">
-                </form>
+                
+
                 {{#if bidder}}
-                <a href="javascript: upgrade();" type="button" class="btn btn-lg btn-block btn-primary" id="UpgradeSeller">
-                    Get started</a>
+                <form action="/user/upgrade" id="frmUpgrade" method="POST">
+                    <button type="submit" class="btn btn-lg btn-block btn-primary" id="UpgradeSeller">
+                    Get started</button>
+                </form>
                 {{else}}
                 <button type="button" class="btn btn-lg btn-block btn-primary">
                     <i class="fa fa-check fa-10x">Already</i></button>
@@ -55,9 +57,6 @@
             })
         {{/if}}
     })
-    function upgrade(){
-        $('#frmUpgrade').submit();
-    }
 </script>
    
 {{/section}}
