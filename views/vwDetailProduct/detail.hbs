@@ -137,7 +137,7 @@
         <div class="col-xl-10 col-md-10 col-sm-12 shadow rounded-top pb-2">
             {{#each detailPro}}
             <div class="row p-4">
-                    <i class="fa fa-pencil text-warning"> {{DateWrite}}</i>
+                    <i class="fa fa-pencil text-warning d-block"> {{DateWrite}}</i>
                     {{{Description}}}
             </div>
             {{/each}}
@@ -158,20 +158,25 @@
      <h3>Sản phẩm cùng chuyên mục</h3>
     <div class="row">
         <div class="card-deck mt-5">
-            <div class="col-4">
             {{#each relaveProduct}}
-                <div class="card border-0 zoom">
-                <img src="/Images/{{ProID}}/{{imgURL}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title"></h5>
-                    <p class="card-text"></p>
-                    <p class="card-text"><h5 class="text-info" id='{{ProID}}'>
-                        </h5></p>
-                    <a  class="btn btn-danger mr-5 w-100 text-light" href="/categories/product/{{ProID}}">Đấu giá ngay</a>
-                </div>
+               <div class="col-sm-3 mb-3">
+                    <div class="card h-100" onclick="detailItem()">
+                        <img src="/Images/{{ProID}}/{{imgURL}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title mb-4">{{ProName}}</h5>
+                            <p class="card-text text-center"><i class="fa fa-gavel" aria-hidden="true"></i>
+                                {{format PriceBegin}} đ</p>
+                            <p class="card-text"></p>
+                            <p class="card-text">
+                                <h5 class="text-info" id='{{ProID}}'>
+                                </h5>
+                            </p>
+                            <a class="btn btn-danger mr-5 w-100 text-light" href="/categories/product/{{ProID}}">Đấu giá
+                                ngay</a>
+                        </div>
+                    </div>
                 </div>
             {{/each}}
-            </div>
         </div>
     </div>
 </div>

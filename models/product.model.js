@@ -9,7 +9,7 @@ module.exports = {
     addOfferProduct: entity => db.add('offerpro', entity),
 
     //load 
-    getListItem: id => db.load(`select distinct p.ProID,p.TimeEnd,min(pi.ID),pi.imgURL from products as p right join proimage as pi on p.ProID = pi.ProID  where Item = ${id}`),
+    getListItem: id => db.load(`select p.*,count(*),pi.imgURL from products as p inner join proimage as pi on p.ProID = pi.ProID  where Item = ${id} group by(p.ProID)`),
     all: id => db.load(`select * from products where Item = ${id}`),
     getPro: id => db.loadOnePro(`select * from products where ProID = ${id}`),
     getAceptedDetailPro: id => db.loadOnePro(`select * from prodetails where ProID = ${id} and Modified=0`),
@@ -25,6 +25,8 @@ module.exports = {
     //lịch sử ddasus giá
     getHisProduct: (id) => db.load(`select PricePlaceBid,TimePlace,f_Username from offerpro as o inner join member as m ON o.Bidder=m.f_ID where ProID = ${id}`),
 
+    getTopTimeEnd: () => db.load(`SELECT p.*,count(*),pi.imgURL FROM products as p inner join proimage as pi on p.ProID = pi.ProID  group by(p.ProID) ORDER BY TimeEnd DESC limit 5 `),
+    getTopValue: () => db.load(`SELECT p.*,count(*),pi.imgURL FROM products as p inner join proimage as pi on p.ProID = pi.ProID  group by(p.ProID) ORDER BY PriceBegin DESC limit 5 `),
     //Xóa
     del: id => db.delete(`delete from products where ProID = ${id}`),
 
@@ -53,7 +55,7 @@ module.exports = {
         const rows = await db.load(`select count(*) as total from products where Item = ${Item} and StatusAcceptFromAdmin=0`);
         return rows[0].total;
     },
-    pageByCat: (Item, offset) => db.load(`select distinct p.*,min(pi.ID),pi.imgURL from products as p right join proimage as pi on p.ProID = pi.ProID  where Item = ${Item} limit ${config.paginate.limit} offset ${offset}`),
+    pageByCat: (Item, offset) => db.load(`select p.*,count(*),pi.imgURL from products as p right join proimage as pi on p.ProID = pi.ProID  where Item = ${Item} group by(p.ProID) limit ${config.paginate.limit} offset ${offset}`),
     //     console.log(condition, entity);
     //     return db.patch('products',entity,condition);
     // },
@@ -84,4 +86,5 @@ module.exports = {
     NotAcceptEditPro: id => db.del('prodetails', { ProDeID: id }),
     numProAdd: _ => db.load('SELECT COUNT(ProID) as num_pro_need_add FROM products WHERE StatusAcceptFromAdmin=1'),
     numModifieds: _ => db.load('SELECT COUNT(d.ProDeID) as num_pro_modified FROM prodetails d, products p WHERE d.Modified=1 AND d.ProID=p.ProID'),
+
 };

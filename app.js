@@ -90,6 +90,6 @@ app.use( (err, req, res, next)=> {
 
 //listen to Port 3000
 const PORT = 3000;
-app.listen(PORT, () => {
+app.listen(process.env.PORT ||  PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 })

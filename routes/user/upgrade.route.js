@@ -16,10 +16,10 @@ router.post('/upgrade',roleBidder, async (req, res) => {
     f_ID: req.session.authUser.f_ID,
     f_UpgradeWaitStatus: 1
   }
+  console.log(enity);
   const rows= await userModel.patch(enity);
-  res.render('vwUser/upgrade',{
-    waitUpgrade: true
-  });
+  console.log(rows);
+  res.redirect('/');
 });
 router.get('/err',(req,res)=>{
     throw new Error('error occured');
