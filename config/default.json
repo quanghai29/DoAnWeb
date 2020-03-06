@@ -1,11 +1,11 @@
 {
     "mysql": {
       "connectionLimit": 50,
-      "host": "127.0.0.1",
+      "host": "us-cdbr-iron-east-04.cleardb.net",
       "port": 3306,
-      "user": "root",
-      "password":"root",
-      "database": "auction"
+      "user": "bf7faf441dea46",
+      "password":"9fba6fc1",
+      "database": "heroku_07c993efc6a29f6"
     },
     "paginate": {
       "limit": 6
