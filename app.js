@@ -40,7 +40,7 @@ app.engine('hbs', exphbs(
 
 
 // app.use(require('./middlewares/locals.mdw'));
-
+app.use('/account', require('./routes/account.route'));
 require('./middlewares/locals.mdw')(app);
 require('./middlewares/routes.mdw')(app);
 

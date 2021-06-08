@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
     <style>
         body {
             background: linear-gradient(-135deg, #c850c0, #4158d0);
@@ -22,28 +21,21 @@
             color: red;
             font-weight: bold;
         }
+
     </style>
 </head>
 
-<body>
-    {{!-- form login --}}
-    <div class="container w-50 px-md-5 py-1 shadow-lg my-5 bg-white">
-        <form  onsubmit="return validate();" method="POST" id="frmRegister" name="frmRegister">
+<body> {{!-- form login --}} <div class="container w-50 px-md-5 py-1 shadow-lg my-5 bg-white">
+        <form onsubmit="return validate();" method="POST" id="frmRegister" name="frmRegister">
             <div class="text-center mt-5">
                 <h1 class="h1 font-weight-bold">Sign Up</h1>
             </div>
-
             <div class="mb-4">
                 <h1 class="h3 mb-3 font-weight-light">Thông tin bắt buộc</h1>
             </div>
             <div class="form-label-group mb-4 fg">
-                <label for="inputUsername">User Name</label>
-                {{#if this.checkName}}
-                <label id="warningUsername">The name is existed! Please choose a another name</label>
-                {{/if}}
-                 <label id="lengthName"></label>
-                <input oninput="checkUsername()" type="text" id="txtUsername" name="f_Username" class="form-control" placeholder="haimtp"
-                    autofocus="true" required>
+                <label for="inputUsername">User Name</label> {{#if this.checkName}} <label id="warningUsername">The name is existed! Please choose a another name</label> {{/if}} <label id="lengthName"></label>
+                <input oninput="checkUsername()" type="text" id="txtUsername" name="f_Username" class="form-control" placeholder="haimtp" autofocus="true" required>
             </div>
             <div class="form-label-group mb-4">
                 <label for="inputPassword">Password</label>
@@ -52,8 +44,7 @@
             <div class="form-label-group fg">
                 <label for="inputConfirmPassword">Confirm Password</label>
                 <label id="confirm"></label>
-                <input oninput="checkConfirm()" type="password" id="txtConfirmPassword" name="confirmPass"
-                    class="form-control" required>
+                <input oninput="checkConfirm()" type="password" id="txtConfirmPassword" name="confirmPass" class="form-control" required>
             </div>
             <hr>
             <div class="mb-4">
@@ -61,8 +52,7 @@
             </div>
             <div class="form-label-group mb-4">
                 <label for="inputName">Name</label>
-                <input type="text" id="txtName" name="f_Name" class="form-control" placeholder="Quang Hai"
-                    autofocus="true" required>
+                <input type="text" id="txtName" name="f_Name" class="form-control" placeholder="Quang Hai" autofocus="true" required>
             </div>
             <div class="form-label-group mb-4">
                 <label for="inputEmail">Giới Tính</label>
@@ -71,15 +61,10 @@
                     <option value="1">Nữ</option>
                 </select>
             </div>
-
             <div class="form-label-group mb-4 fg">
                 <label for="inputEmail">Email address</label>
-                <label id="warningEmail"></label>
-                {{#if this.checkMail}}
-                <label id="existedEmail" class="float-right font-weight-bold text-danger">The email is existed! Please enter a another email</label>
-                {{/if}}
-                <input oninput="checkEmail()" onchange="checkEmail()" type="text" id="txtEmail" name="f_Email"
-                    class="form-control" placeholder="QH@micro.com" required>
+                <label id="warningEmail"></label> {{#if this.checkMail}} <label id="existedEmail" class="float-right font-weight-bold text-danger">The email is existed! Please enter a another email</label> {{/if}} <input oninput="checkEmail()" onchange="checkEmail()" type="text" id="txtEmail"
+                    name="f_Email" class="form-control" placeholder="QH@micro.com" required>
             </div>
             <div class="form-label-group mb-4">
                 <label for="inputEmail">Address</label>
@@ -94,8 +79,7 @@
         </form>
         <div class="container text-center">
             <a class href="/">
-                <button class="btn btn-lg btn-warning mb-2" type="submit">
-                    Home<i class="fa fa-home fa-10x"></i>
+                <button class="btn btn-lg btn-warning mb-2" type="submit"> Home<i class="fa fa-home fa-10x"></i>
                 </button>
             </a>
         </div>
@@ -104,15 +88,30 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+        checkSuccess();
         $('#txtDOB').datetimepicker({
             // format: 'd/m/Y H:i'
             format: 'd/m/Y',
             timepicker: false,
             mask: true,
         });
+
+        function checkSuccess() {
+            console.log({{ this.success }});
+            const success = {{ this.success }};
+            if (success) {
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Sign up success',
+                    showConfirmButton: true
+                })
+            }
+        }
+
         function validate() {
             if (checkUsername() == true && checkConfirm() == true && checkEmail() == true && checkDOB() == true) {
                 return true;
@@ -172,7 +171,7 @@
         function checkUsername() {
             var Uname = frmRegister.f_Username.value;
             if (Uname.length > 50) {
-                document.getElementById('lengthName').innerHTML="Dài quá rồi ông nội!!!Dưới 50 character thôi!please";
+                document.getElementById('lengthName').innerHTML = "The username is too long";
                 return false;
             }
             return true;

@@ -2,7 +2,7 @@
 
 module.exports = function (app) {
   //app.use('/demo', require('../routes/demo.route'));
-  app.use('/account', require('../routes/account.route'));
+  
   app.use('/user', require('../routes/user/profile.route'));
   app.use('/user', require('../routes/user/upgrade.route'));
   //app.use('/user', require('../routes/user/orders.route'));

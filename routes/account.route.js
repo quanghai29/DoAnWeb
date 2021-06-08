@@ -46,10 +46,13 @@ router.post('/signup', async (req, res) => {
     delete entity.raw_password;
     delete entity.dob;
     delete entity.confirmPass;
-    console.log(entity);
+    //console.log(entity);
     const result = await userModel.add(entity);
     console.log(result);
-    res.render('home');
+    res.render('vwAccount/signup', {
+      layout: false,
+      success: true
+    });
   }
 });
 

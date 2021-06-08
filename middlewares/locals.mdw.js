@@ -33,51 +33,51 @@ module.exports = function (app) {
     next();
   })
 
-  app.use(async (req, res, next) => {
-    const rows = await categoryModel.allWithDetail();
-    res.locals.lcCategories = rows;
-    next();
-  })
+  // app.use(async (req, res, next) => {
+  //   const rows = await categoryModel.allWithDetail();
+  //   res.locals.lcCategories = rows;
+  //   next();
+  // })
 
-  app.use(async (req, res, next) => {
-    const rows = await userModel.numUserUpgrade();
-    res.locals.lcUpgrades = rows[0];
-    next();
-  })
+  // app.use(async (req, res, next) => {
+  //   const rows = await userModel.numUserUpgrade();
+  //   res.locals.lcUpgrades = rows[0];
+  //   next();
+  // })
 
-  app.use(async (req, res, next) => {
-    const rows = await productModel.numProAdd();
-    res.locals.lcProAdd = rows[0];
-    next();
-  })
+  // app.use(async (req, res, next) => {
+  //   const rows = await productModel.numProAdd();
+  //   res.locals.lcProAdd = rows[0];
+  //   next();
+  // })
 
-  app.use(async (req, res, next) => {
-    const rows = await productModel.getTopTimeEnd();
+  // app.use(async (req, res, next) => {
+  //   const rows = await productModel.getTopTimeEnd();
 
-    for(var i=0; i<rows.length;i++)
-    {
-      rows[i].TimeEnd= moment(rows[i].TimeEnd,'YYYY-MM-DDTHH:mm:ss.SSSZ').format('YYYY-MM-DD HH:mm:ss');
-    }
-    console.log(rows);
-    res.locals.topTimeEnd = rows;
-    next();
-  })
+  //   for(var i=0; i<rows.length;i++)
+  //   {
+  //     rows[i].TimeEnd= moment(rows[i].TimeEnd,'YYYY-MM-DDTHH:mm:ss.SSSZ').format('YYYY-MM-DD HH:mm:ss');
+  //   }
+  //   //console.log(rows);
+  //   res.locals.topTimeEnd = rows;
+  //   next();
+  // })
 
-  app.use(async (req, res, next) => {
-    const rows = await productModel.getTopValue();
+  // app.use(async (req, res, next) => {
+  //   const rows = await productModel.getTopValue();
 
-    for(var i=0; i<rows.length;i++)
-    {
-      rows[i].TimeEnd= moment(rows[i].TimeEnd,'YYYY-MM-DDTHH:mm:ss.SSSZ').format('YYYY-MM-DD HH:mm:ss');
-    }
-    console.log(rows);
-    res.locals.topValue = rows;
-    next();
-  })
+  //   for(var i=0; i<rows.length;i++)
+  //   {
+  //     rows[i].TimeEnd= moment(rows[i].TimeEnd,'YYYY-MM-DDTHH:mm:ss.SSSZ').format('YYYY-MM-DD HH:mm:ss');
+  //   }
+  //   //console.log(rows);
+  //   res.locals.topValue = rows;
+  //   next();
+  // })
 
-  app.use(async (req, res, next) => {
-    const rows = await productModel.numModifieds();
-    res.locals.lcModify = rows[0];
-    next();
-  })
+  // app.use(async (req, res, next) => {
+  //   const rows = await productModel.numModifieds();
+  //   res.locals.lcModify = rows[0];
+  //   next();
+  // })
 };
