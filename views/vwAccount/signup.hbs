@@ -41,10 +41,16 @@
                 <label for="inputPassword">Password</label>
                 <input type="password" id="txtPassword" name="raw_password" class="form-control" required>
             </div>
-            <div class="form-label-group fg">
+            <div class="form-label-group fg mb-4">
                 <label for="inputConfirmPassword">Confirm Password</label>
                 <label id="confirm"></label>
                 <input oninput="checkConfirm()" type="password" id="txtConfirmPassword" name="confirmPass" class="form-control" required>
+            </div>
+            <div class="form-label-group mb-4 fg">
+                <label for="inputEmail">Email address</label>
+                <label id="warningEmail"></label> {{#if this.checkMail}} <label id="existedEmail" class="float-right font-weight-bold text-danger">The email is existed! Please enter a another email</label> {{/if}} 
+                <input oninput="checkEmail()" onchange="checkEmail()" type="text" id="txtEmail"
+                    name="f_Email" class="form-control" placeholder="QH@micro.com" required>
             </div>
             <hr>
             <div class="mb-4">
@@ -60,11 +66,6 @@
                     <option value="0">Nam</option>
                     <option value="1">Nữ</option>
                 </select>
-            </div>
-            <div class="form-label-group mb-4 fg">
-                <label for="inputEmail">Email address</label>
-                <label id="warningEmail"></label> {{#if this.checkMail}} <label id="existedEmail" class="float-right font-weight-bold text-danger">The email is existed! Please enter a another email</label> {{/if}} <input oninput="checkEmail()" onchange="checkEmail()" type="text" id="txtEmail"
-                    name="f_Email" class="form-control" placeholder="QH@micro.com">
             </div>
             <div class="form-label-group mb-4">
                 <label for="inputEmail">Address</label>
