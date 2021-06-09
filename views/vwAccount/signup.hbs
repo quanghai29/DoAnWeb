@@ -96,12 +96,11 @@
             // format: 'd/m/Y H:i'
             format: 'd/m/Y',
             timepicker: false,
-            mask: true,
+            //mask: true,
         });
 
         function checkSuccess() {
-            console.log({{ this.success }});
-            const success = {{ this.success }};
+            const success = '{{ this.success }}';
             if (success) {
                 Swal.fire({
                     position: 'top-center',
@@ -135,6 +134,8 @@
 
         function checkEmail() {
             var str = frmRegister.f_Email.value;
+            if(str === '')
+                return true;
             if (isEmail(str) === false) {
                 document.getElementById("warningEmail").innerHTML = "Please fill out a valid email format!";
                 return false;
